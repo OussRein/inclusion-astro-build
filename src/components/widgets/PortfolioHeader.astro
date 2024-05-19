@@ -1,0 +1,24 @@
+---
+import type { Widget } from '~/types';
+import { findLatestPortfolios } from '~/utils/portfolio';
+import PortfolioItem from '../ui/PortfolioItem.astro';
+
+export interface Props extends Widget {
+  title?: string;
+  linkText?: string;
+  linkUrl?: string | URL;
+  information?: string;
+  count?: number;
+}
+
+const count = 12;
+
+const portfolioElements = (await findLatestPortfolios({ count })).sort((a,b) => a.order - b.order);;
+
+---
+<section class="relative not-prose" id="portfolio-header">
+
+<div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
+  {portfolioElements.map((portfolio) => <PortfolioItem portfolio={portfolio} />)}
+</div>
+</section>

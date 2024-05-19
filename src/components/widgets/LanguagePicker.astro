@@ -1,0 +1,38 @@
+---
+import { Icon } from "astro-icon/components";
+import { languages, routes } from "~/i18n/ui";
+import { getRouteFromUrl } from "~/i18n/utils";
+
+const route = getRouteFromUrl(Astro.url);
+
+function translatePath(path: string, l: string) {
+      const pathName = path.replaceAll('/', '')
+      const hasTranslation = "fr" !== l && routes[l] !== undefined && routes[l][pathName] !== undefined
+      const translatedPath = hasTranslation ? '/' + routes[l][pathName] : path
+      if (path === '/') return l === "fr" ? path : `/${l}`
+      return l === "fr" ? translatedPath : `/${l}${translatedPath}`
+    }
+---
+
+<li class="dropdown">
+      <>
+        <button type="button" class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center">
+          Languages
+          <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
+        </button>
+        <ul class="dropdown-menu md:backdrop-blur-md  rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-orange-400 md:min-w-[200px] drop-shadow-xl">
+            {Object.entries(languages).map(([lang, label]) => (
+            <li>
+              <a
+                class:list={[
+                  'first:rounded-t last:rounded-b md:hover:bg-orange-300 hover:text-link py-2 px-5 block whitespace-no-wrap',
+                ]}
+                href={translatePath(`/${route ? route : ''}`, lang)}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </>
+  </li>

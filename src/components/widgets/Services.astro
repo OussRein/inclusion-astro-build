@@ -1,0 +1,42 @@
+---
+import ServiceGrid from '../ui/ServiceGrid.astro';
+
+const services = [
+  {
+    title: 'PRODUCT LAUNCHING',
+    services: [
+      {
+        title: 'Strategy',
+        subtitle:
+          'We combine innovative technologies with proven digital expertise to develop strategies that grow awareness, traffic, engagement, and sales.',
+      },
+      {
+        title: 'PRODUCT DESIGN',
+        subtitle: 'A collection of matured techniques to build meaningful and user-driven designs.',
+      },
+      {
+        title: 'Brand Elevation',
+        subtitle: 'Winning brand strategies and culture-driven stories.',
+      },
+      {
+        title: 'DIGITAL TRANSFORMATION',
+        subtitle: 'We provide frameworks and guidance for innovating your marketing and digital customer experience',
+      },
+    ],
+  },
+];
+---
+
+<section class="max-w-5xl mx-auto mt-10">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+          <div class="text-center pb-6 md:pb-10 max-w-6xl mx-auto">
+            <p class="text-xl text-muted">
+                <span class="font-semibold text-lg text-orange-400 uppercase">Winning in the Digital Age</span>
+            </p>
+            <h2 class="pt-0 text-4xl md:text-4xl font-bold leading-tighter tracking-tighter font-heading">
+                Discover what’s there for you with <span class="text-accent text-orange-400"> INCLUSION</span>
+            </h2>
+          </div>
+      </div>
+  {services.map((service) => <ServiceGrid service={service} />)}
+</section>

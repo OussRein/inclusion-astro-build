@@ -1,0 +1,84 @@
+---
+import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
+
+import merge from 'lodash.merge';
+import type { ImageMetadata } from 'astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+import { getCanonical, getPermalink } from '~/utils/permalinks';
+import { getStaticPathsPortfolioPost } from '~/utils/portfolio';
+import { findImage } from '~/utils/images';
+import type { MetaData } from '~/types';
+
+export const prerender = true;
+
+export const getStaticPaths = (async () => {
+  return await getStaticPathsPortfolioPost('en');
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { portfolio } = Astro.props as Props;
+
+console.log("FRANKREICH;")
+const url = getCanonical(getPermalink(portfolio.permalink, 'portfolio'));
+const image = (await findImage(portfolio.image)) as ImageMetadata | string | undefined;
+
+const metadata = merge(
+  {
+    title: portfolio.title,
+    description: portfolio.excerpt,
+    openGraph: {
+      type: 'portfolio',
+      ...(image
+        ? { images: [{ url: image, width: (image as ImageMetadata)?.width, height: (image as ImageMetadata)?.height }] }
+        : {}),
+    },
+  },
+  { ...(portfolio?.metadata ? { ...portfolio.metadata, canonical: portfolio.metadata?.canonical || url } : {}) }
+) as MetaData;
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Portfolio Content ******************* -->
+  <section class="relative md:-mt-[76px] not-prose">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
+      <div class="py-12 md:py-20 lg:py-0 lg:flex lg:items-center lg:h-screen lg:gap-8">
+        <div class="basis-1/2 text-center lg:text-left pb-10 md:pb-16 mx-auto">
+          {
+            portfolio.title && (
+              <p
+                class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase"
+                set:html={portfolio.category.title}
+              />
+            )
+          }
+          {
+            portfolio.title && (
+              <h1
+                class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
+                set:html={portfolio.title}
+              />
+            )
+          }
+          <div class="max-w-3xl mx-auto lg:max-w-none">
+            {portfolio.excerpt && <p class="text-xl text-muted mb-6 dark:text-slate-300" set:html={portfolio.excerpt} />}
+  
+          </div>
+        </div>
+        <div class="basis-1/2">
+          {
+            portfolio.image && (
+              <div class="relative m-auto">
+                <img class="mx-auto rounded-md w-full lg:max-w-screen-md md:lg:max-w-screen-sm xl:max-w-screen-lg" transition:name={portfolio.id} src={portfolio.image} alt="Mobilis Twenty" width="500" height="600">
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
