@@ -1,31 +1,32 @@
 import type { PaginateFunction } from 'astro';
-import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import type { Post } from '~/types';
+import type { CategoryNode, Post } from '~/types';
 import { APP_BLOG } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
 
 const generatePermalink = async ({
   id,
   slug,
-  publishDate,
-  category,
+  date,
+  categories,
 }: {
   id: string;
   slug: string;
-  publishDate: Date;
-  category: string | undefined;
+  date: Date;
+  categories: {
+    nodes: CategoryNode[];
+  };
 }) => {
-  const year = String(publishDate.getFullYear()).padStart(4, '0');
-  const month = String(publishDate.getMonth() + 1).padStart(2, '0');
-  const day = String(publishDate.getDate()).padStart(2, '0');
-  const hour = String(publishDate.getHours()).padStart(2, '0');
-  const minute = String(publishDate.getMinutes()).padStart(2, '0');
-  const second = String(publishDate.getSeconds()).padStart(2, '0');
+  const year = String(date.getFullYear()).padStart(4, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const hour = String(date.getHours()).padStart(2, '0');
+  const minute = String(date.getMinutes()).padStart(2, '0');
+  const second = String(date.getSeconds()).padStart(2, '0');
 
   const permalink = POST_PERMALINK_PATTERN.replace('%slug%', slug)
     .replace('%id%', id)
-    .replace('%category%', category || '')
+    .replace('%category%', categories.nodes[0].slug || '')
     .replace('%year%', year)
     .replace('%month%', month)
     .replace('%day%', day)
@@ -45,28 +46,19 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   const { Content, remarkPluginFrontmatter } = await post.render();
 
   const {
-    publishDate: rawPublishDate = new Date(),
-    updateDate: rawUpdateDate,
+    date: rawPublishDate = new Date(),
     title,
     excerpt,
     image,
     tags: rawTags = [],
-    category: rawCategory,
+    categories,
     author,
     draft = false,
     metadata = {},
   } = data;
 
   const slug = cleanSlug(rawSlug); // cleanSlug(rawSlug.split('/').pop());
-  const publishDate = new Date(rawPublishDate);
-  const updateDate = rawUpdateDate ? new Date(rawUpdateDate) : undefined;
-
-  const category = rawCategory
-    ? {
-        slug: cleanSlug(rawCategory),
-        title: rawCategory,
-      }
-    : undefined;
+  const date = new Date(rawPublishDate);
 
   const tags = rawTags.map((tag: string) => ({
     slug: cleanSlug(tag),
@@ -76,39 +68,63 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   return {
     id: id,
     slug: slug,
-    permalink: await generatePermalink({ id, slug, publishDate, category: category?.slug }),
-
-    publishDate: publishDate,
-    updateDate: updateDate,
-
+    permalink: await generatePermalink({ id, slug, date, categories: categories }),
+    date: date,
     title: title,
     excerpt: excerpt,
-    image: image,
-
-    category: category,
+    featuredImage: image,
+    categories: categories,
     tags: tags,
     author: author,
-
     draft: draft,
-
     metadata,
-
     Content: Content,
     // or 'content' in case you consume from API
-
     readingTime: remarkPluginFrontmatter?.readingTime,
   };
 };
 
 const load = async function (): Promise<Array<Post>> {
-  const posts = await getCollection('post');
-  const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
+  const response = await fetch('https://inclusion.dz/graphql', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: `
+      query getPosts {
+    posts(first: 100, after: null, where: {categoryNotIn: [131]}) {
+      edges {
+        node {
+          id
+          title
+          slug
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
+          date
+          excerpt
+          categories {
+            nodes {
+              name
+              databaseId
+            }
+          }
+        }
+      }
+    }
+  }
+        `,
+    }),
+  });
 
-  const results = (await Promise.all(normalizedPosts))
-    .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
-    .filter((post) => !post.draft);
+  // destructure data from our JSON
+  const { data } = await response.json();
 
-  return results;
+  //  assign the array of nodes to "posts" variable for usability
+  const posts = data.posts.edges;
+  
+  return posts;
 };
 
 let _posts: Array<Post>;
@@ -187,7 +203,7 @@ export const getStaticPathsBlogPost = async () => {
   if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
   return (await fetchPosts()).flatMap((post) => ({
     params: {
-      blog: post.permalink,
+      blog: 'blog/' + post.permalink,
     },
     props: { post },
   }));
@@ -198,14 +214,16 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
   const posts = await fetchPosts();
+  console.log("getStaticPathsBlogCategory")
+  console.log(posts)
   const categories = {};
   posts.map((post) => {
-    post.category?.slug && (categories[post.category?.slug] = post.category);
+    post.node.categories.nodes[0].slug && (categories[post.node.categories.nodes[0].slug] = post.node.categories.nodes[0]);
   });
 
   return Array.from(Object.keys(categories)).flatMap((categorySlug) =>
     paginate(
-      posts.filter((post) => post.category?.slug && categorySlug === post.category?.slug),
+      posts.filter((post) => post.categories.nodes[0].slug && categorySlug === post.categories.nodes[0].slug),
       {
         params: { category: categorySlug, blog: CATEGORY_BASE || undefined },
         pageSize: blogPostsPerPage,
@@ -243,36 +261,14 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
 /** */
 export async function getRelatedPosts(originalPost: Post, maxResults: number = 4): Promise<Post[]> {
   const allPosts = await fetchPosts();
-  const originalTagsSet = new Set(originalPost.tags ? originalPost.tags.map((tag) => tag.slug) : []);
 
-  const postsWithScores = allPosts.reduce((acc: { post: Post; score: number }[], iteratedPost: Post) => {
-    if (iteratedPost.slug === originalPost.slug) return acc;
+  const i = 0.5 - Math.random();
 
-    let score = 0;
-    if (iteratedPost.category && originalPost.category && iteratedPost.category.slug === originalPost.category.slug) {
-      score += 5;
-    }
+  const sortedPosts= allPosts.sort(() => i);
 
-    if (iteratedPost.tags) {
-      iteratedPost.tags.forEach((tag) => {
-        if (originalTagsSet.has(tag.slug)) {
-          score += 1;
-        }
-      });
-    }
+  const selectedPosts = sortedPosts.slice(0, maxResults);
 
-    acc.push({ post: iteratedPost, score });
-    return acc;
-  }, []);
-
-  postsWithScores.sort((a, b) => b.score - a.score);
-
-  const selectedPosts: Post[] = [];
-  let i = 0;
-  while (selectedPosts.length < maxResults && i < postsWithScores.length) {
-    selectedPosts.push(postsWithScores[i].post);
-    i++;
-  }
-
+  console.log('selectedPosts')
+  console.log(selectedPosts)
   return selectedPosts;
 }
