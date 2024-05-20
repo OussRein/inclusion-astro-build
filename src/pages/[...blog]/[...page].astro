@@ -51,10 +51,9 @@ export const getStaticPaths = (async ({ paginate }) => {
   //  assign the array of nodes to "posts" variable for usability
   var posts = data.posts.edges;
 
-
   return paginate(posts, {
     params: { blog: 'blog' },
-    pageSize: 5,
+    pageSize: 6,
   });
 }) satisfies GetStaticPaths;
 
@@ -85,7 +84,7 @@ const metadata = {
     >
       The Blog
     </Headline>
-    <BlogList posts={posts} />
+    <BlogList posts={posts} currentPage={currentPage} />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
     <!--
       <PostTags tags={allCategories} class="mb-2" title="Search by Categories:" isCategory />

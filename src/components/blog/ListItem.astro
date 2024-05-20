@@ -11,14 +11,15 @@ import { getFormattedDate } from '~/utils/utils';
 
 export interface Props {
   post: Post;
+  currentPage: number;
 }
 
-const { post } = Astro.props;
+const { post, currentPage } = Astro.props;
 const image = post.featuredImage.node.sourceUrl;
 const date = new Date(post.date)
 const formattedDate = getFormattedDate(date);
 
-const link = 'blog/'+post.slug;
+const link = currentPage === 1 ? 'blog/' + post.slug : post.slug;
 ---
 
 <article class={`max-w-md mx-auto md:max-w-none grid gap-6 md:gap-8 ${image ? 'md:grid-cols-2' : ''}`}>

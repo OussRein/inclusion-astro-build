@@ -4,16 +4,17 @@ import type { Post } from '~/types';
 
 export interface Props {
   posts: Array<Post>;
+  currentPage: number
 }
 
-const { posts } = Astro.props;
+const { posts, currentPage } = Astro.props;
 ---
 
 <ul>
   {
     posts.map((post) => (
       <li class="mb-12 md:mb-20">
-        <Item post={post.node} />
+        <Item post={post.node} currentPage={currentPage} />
       </li>
     ))
   }
