@@ -214,8 +214,6 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
   const posts = await fetchPosts();
-  console.log("getStaticPathsBlogCategory")
-  console.log(posts)
   const categories = {};
   posts.map((post) => {
     post.node.categories.nodes[0].slug && (categories[post.node.categories.nodes[0].slug] = post.node.categories.nodes[0]);
@@ -268,7 +266,5 @@ export async function getRelatedPosts(originalPost: Post, maxResults: number = 4
 
   const selectedPosts = sortedPosts.slice(0, maxResults);
 
-  console.log('selectedPosts')
-  console.log(selectedPosts)
   return selectedPosts;
 }

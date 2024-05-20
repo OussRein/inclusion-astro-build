@@ -8,23 +8,74 @@ import SinglePost from '~/components/blog/SinglePost.astro';
 import ToBlogLink from '~/components/blog/ToBlogLink.astro';
 
 import { getCanonical, getPermalink } from '~/utils/permalinks';
-import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
-import { findImage } from '~/utils/images';
+import { blogPostRobots } from '~/utils/blog';
 import type { MetaData } from '~/types';
 import RelatedPosts from '~/components/blog/RelatedPosts.astro';
 
 export const prerender = true;
 
 export const getStaticPaths = (async () => {
-  return await getStaticPathsBlogPost();
+  const response = await fetch('https://inclusion.dz/graphql', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: `
+    query getPosts {
+  posts(first: 100, after: null, where: {categoryNotIn: [131]}) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      node {
+        id
+        title
+        slug
+        featuredImage {
+          node {
+            sourceUrl
+          }
+        }
+        date
+        excerpt
+        categories {
+          nodes {
+            name
+            databaseId
+          }
+        }
+      }
+    }
+  }
+}
+      `,
+    }),
+  });
+
+  // destructure data from our JSON
+  const { data } = await response.json();
+
+  //  assign the array of nodes to "posts" variable for usability
+  const posts33 = data.posts.edges;
+
+  console.log(posts33)
+  return posts33.flatMap((post) => ({
+    params: {
+      blog: 'blog/' + post.node.slug,
+    },
+    props: { post: post.node },
+  }));
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { post } = Astro.props as Props;
 
-const url = getCanonical(getPermalink(post.permalink, 'post'));
-const image = (await findImage(post.image)) as ImageMetadata | string | undefined;
+const url = getCanonical(getPermalink(post.slug, 'post'));
+console.log("const url = getCanonical(getPermalink(post.slug, 'post'));")
+
+console.log(url)
+const image = post.featuredImage.node.sourceUrl;
 
 const metadata = merge(
   {
@@ -43,11 +94,48 @@ const metadata = merge(
   },
   { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
 ) as MetaData;
+
+const postResponse = await fetch('https://inclusion.dz/graphql', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    query: `
+    query getContent {
+  post(id: "${post.id}", idType: ID) {
+    content
+    author {
+      node {
+        name
+      }
+    }
+    date
+    id
+    slug
+    title
+    categories {
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+      `,
+  }),
+});
+
+// destructure data from our JSON
+const { data } = await postResponse.json();
+
+//  assign the array of nodes to "posts" variable for usability
+const content = data.post;
 ---
 
 <Layout metadata={metadata}>
-  <SinglePost post={{ ...post, image: image }} url={url}>
-    {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
+  <SinglePost post={{ ...content, image: image }} url={url}>
+    {content.Content ? <post.Content /> : <Fragment set:html={content.content || ''} />}
   </SinglePost>
   <ToBlogLink />
   <RelatedPosts post={post} />

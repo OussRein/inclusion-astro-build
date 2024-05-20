@@ -1,6 +1,4 @@
 ---
-import { APP_BLOG } from 'astrowind:config';
-
 import { getRelatedPosts } from '~/utils/blog';
 import BlogHighlightedPosts from '../widgets/BlogHighlightedPosts.astro';
 import type { Post } from '~/types';
@@ -12,17 +10,17 @@ export interface Props {
 
 const { post } = Astro.props;
 
-const relatedPosts = post.tags ? await getRelatedPosts(post, 4) : [];
+const relatedPosts = await getRelatedPosts(post, 3);
 ---
 
 {
-  APP_BLOG.isRelatedPostsEnabled ? (
+  
     <BlogHighlightedPosts
       classes={{ container: 'pt-0 lg:pt-0 md:pt-0' }}
       title="Related Posts"
       linkText="View All Posts"
       linkUrl={getBlogPermalink()}
       postIds={relatedPosts.map((post) => post.id)}
+      posts={relatedPosts}
     />
-  ) : null
 }

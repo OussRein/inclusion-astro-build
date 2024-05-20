@@ -16,6 +16,9 @@ export interface Props {
 }
 
 const { post, url } = Astro.props;
+
+const date = new Date(post.date)
+const formattedDate = getFormattedDate(date);
 ---
 
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
@@ -24,26 +27,27 @@ const { post, url } = Astro.props;
       <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center">
         <p>
           <Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
-          <time datetime={String(post.publishDate)} class="inline-block">{getFormattedDate(post.publishDate)}</time>
+          <time datetime={String(post.date)} class="inline-block">{formattedDate}</time>
           {
-            post.author && (
+            post.author.node.name && (
               <>
                 {' '}
                 · <Icon name="tabler:user" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
-                <span class="inline-block">{post.author}</span>
+                <span class="inline-block">{post.author.node.name}</span>
               </>
             )
           }
           {
-            post.category && (
+            post.categories.edges.map((category) => ((
               <>
                 {' '}
                 ·{' '}
-                <a class="hover:underline inline-block" href={getPermalink(post.category.slug, 'category')}>
-                  {post.category.title}
+                <a class="hover:underline inline-block" href={getPermalink(category.node.slug, 'category')}>
+                  {category.node.name}
                 </a>
               </>
             )
+            ))
           }
           {
             post.readingTime && (

@@ -20,7 +20,6 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { portfolio } = Astro.props as Props;
 
-console.log("ARABIC;")
 const url = getCanonical(getPermalink(portfolio.permalink, 'portfolio'));
 const image = (await findImage(portfolio.image)) as ImageMetadata | string | undefined;
 

@@ -26,7 +26,6 @@ export const findImageFromWordpress = async (
 ): Promise<string | ImageMetadata | undefined | null> => {
   // Not string
   const res = await fetch(""+ imagePath);
-  console.log(res);
   const media = await res.json();
 
   return media?.guid?.rendered;

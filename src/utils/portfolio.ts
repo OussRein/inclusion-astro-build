@@ -101,9 +101,6 @@ const load = async function (lang?: string): Promise<Array<Portfolio>> {
     .sort((a, b) => b.realisationDate.valueOf() - a.realisationDate.valueOf())
     .filter((portfolio) => !portfolio.draft);
 
-    console.log('const load = async function');
-  console.log(lang)
-
   if (lang) {
     const resultsByLanguage = results.filter((portfolio) => portfolio.language === lang);
     return resultsByLanguage

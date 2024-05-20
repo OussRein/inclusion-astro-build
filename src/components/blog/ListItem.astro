@@ -1,14 +1,12 @@
 ---
-import type { ImageMetadata } from 'astro';
+import type {  } from 'astro';
 import { Icon } from 'astro-icon/components';
 import Image from '~/components/common/Image.astro';
 import PostTags from '~/components/blog/Tags.astro';
 
-import { APP_BLOG } from 'astrowind:config';
 import type { Post } from '~/types';
 
 import { getPermalink } from '~/utils/permalinks';
-import { findImageFromWordpress } from '~/utils/images';
 import { getFormattedDate } from '~/utils/utils';
 
 export interface Props {
@@ -16,9 +14,11 @@ export interface Props {
 }
 
 const { post } = Astro.props;
-const image = (await findImageFromWordpress(post.featured_media)) as ImageMetadata | undefined;
+const image = post.featuredImage.node.sourceUrl;
+const date = new Date(post.date)
+const formattedDate = getFormattedDate(date);
 
-const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : '';
+const link = 'blog/'+post.slug;
 ---
 
 <article class={`max-w-md mx-auto md:max-w-none grid gap-6 md:gap-8 ${image ? 'md:grid-cols-2' : ''}`}>
@@ -65,26 +65,27 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
       <div class="mb-1">
         <span class="text-sm">
           <Icon name="tabler:clock" class="w-3.5 h-3.5 inline-block -mt-0.5 dark:text-gray-400" />
-          <time datetime={String(post.publishDate)} class="inline-block">{getFormattedDate(post.publishDate)}</time>
+          <time datetime={String(post.date)} class="inline-block">{formattedDate}</time>
           {
-            post.author && (
+            post.author?.node?.name && (
               <>
                 {' '}
                 · <Icon name="tabler:user" class="w-3.5 h-3.5 inline-block -mt-0.5 dark:text-gray-400" />
-                <span>{post.author}</span>
+                <span>{post.author?.node?.name}</span>
               </>
             )
           }
           {
-            post.category && (
+            post.categories.nodes.map((category) => ((
               <>
                 {' '}
                 ·{' '}
-                <a class="hover:underline" href={getPermalink(post.category.slug, 'category')}>
-                  {post.category.title}
+                <a class="hover:underline" href={getPermalink(category.slug, 'category')}>
+                  {category.name}
                 </a>
               </>
             )
+            ))
           }
         </span>
       </div>
@@ -95,16 +96,16 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
               class="inline-block hover:text-primary dark:hover:text-blue-700 transition ease-in duration-200"
               href={link}
             >
-              {post.title.rendered}
+              {post.title}
             </a>
           ) : (
-          post.title.rendered
+          post.title
           )
         }
       </h2>
     </header>
 
-    {post.excerpt && <p class="flex-grow text-muted dark:text-slate-400 text-lg">{post.excerpt}</p>}
+    {post.excerpt && <p set:html={post.excerpt} class="flex-grow text-muted dark:text-slate-400 text-lg"></p>}
     {
       post.tags && Array.isArray(post.tags) ? (
         <footer class="mt-5">

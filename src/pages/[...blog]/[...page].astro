@@ -7,21 +7,62 @@ import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
 // import PostTags from "~/components/blog/Tags.astro";
 
-import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
+import { blogListRobots } from '~/utils/blog';
 
 export const prerender = true;
 
 export const getStaticPaths = (async ({ paginate }) => {
-  return await getStaticPathsBlogList({ paginate });
+  const response = await fetch('https://inclusion.dz/graphql', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: `
+      query getPosts {
+    posts(first: 100, after: null, where: {categoryNotIn: [131]}) {
+      edges {
+        node {
+          id
+          title
+          slug
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
+          date
+          excerpt
+          categories {
+            nodes {
+              name
+              databaseId
+            }
+          }
+        }
+      }
+    }
+  }
+        `,
+    }),
+  });
+
+  // destructure data from our JSON
+  const { data } = await response.json();
+
+  //  assign the array of nodes to "posts" variable for usability
+  var posts = data.posts.edges;
+
+
+  return paginate(posts, {
+    params: { blog: 'blog' },
+    pageSize: 5,
+  });
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { page } = Astro.props as Props;
+const posts = page.data
 const currentPage = page.currentPage ?? 1;
-
-// const allCategories = await findCategories();
-// const allTags = await findTags();
 
 const metadata = {
   title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
@@ -34,8 +75,6 @@ const metadata = {
   },
 };
 
-let res = await fetch("https://inclusion.dz/wp-json/wp/v2/posts");
-let posts = await res.json();
 
 ---
 
