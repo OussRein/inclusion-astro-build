@@ -8,33 +8,40 @@ export interface Post {
   /** A post’s unique slug – part of the post’s URL based on its name, i.e. a post called “My Sample Page” has a slug “my-sample-page”. */
   slug: string;
 
-  featured_media: string;
+  /** The title of the post */
+  title: string;
+
+  /**  The post's featured picture*/
+  featuredImage: {
+    node: {
+      sourceUrl: string;
+    }
+  };
 
   /**  */
   permalink: string;
 
-  link: string;
-
   /**  */
-  publishDate: Date;
-  /**  */
-  updateDate?: Date;
-
-  /**  */
-  title: {
-    rendered: string
-  };
+  date: Date;
+  
   /** Optional summary of post content. */
   excerpt?: string;
   /**  */
   image?: ImageMetadata | string;
 
   /**  */
-  category?: Taxonomy;
+  categories: {
+    nodes: CategoryNode[];
+  };
   /**  */
   tags?: Taxonomy[];
-  /**  */
-  author?: string;
+
+  /** The author structure */
+  author?: {
+    node: {
+      name: string;
+    }
+  }
 
   /**  */
   metadata?: MetaData;
@@ -92,6 +99,12 @@ export interface Portfolio {
   Content?: AstroComponentFactory;
   content?: string;
 
+}
+
+export interface CategoryNode {
+  databaseId: number;
+  slug: string;
+  name: string;
 }
 
 export interface Taxonomy {
