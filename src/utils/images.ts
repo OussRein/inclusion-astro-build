@@ -25,7 +25,8 @@ export const findImageFromWordpress = async (
   imagePath?: string | ImageMetadata | null
 ): Promise<string | ImageMetadata | undefined | null> => {
   // Not string
-  const res = await fetch("https://inclusion.dz/wp-json/wp/v2/media/"+ imagePath);
+  const res = await fetch(""+ imagePath);
+  console.log(res);
   const media = await res.json();
 
   return media?.guid?.rendered;
