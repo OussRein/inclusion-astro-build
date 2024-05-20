@@ -4,6 +4,27 @@ import type { CategoryNode, Post } from '~/types';
 import { APP_BLOG } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
 
+const cleanGraphQLResponse = function(input) : Array<Post> {
+  const output : Array<Post>  = [];
+  const isObject = obj => {
+    return obj !== null && typeof obj === 'object' && !Array.isArray(obj)
+  }
+
+  Object.keys(input).forEach(key => {
+    if (input[key] && input[key].edges) {
+      output[key] = input[key].edges.map(edge =>
+        cleanGraphQLResponse(edge.node)
+      )
+    } else if (isObject(input[key])) {
+      output[key] = cleanGraphQLResponse(input[key])
+    } else if (key !== '__typename') {
+      output[key] = input[key]
+    }
+  })
+
+  return output;
+}
+
 const generatePermalink = async ({
   id,
   slug,
@@ -122,7 +143,7 @@ const load = async function (): Promise<Array<Post>> {
   const { data } = await response.json();
 
   //  assign the array of nodes to "posts" variable for usability
-  const posts = data.posts.edges;
+  const posts = cleanGraphQLResponse(data.posts) ;
   
   return posts;
 };
@@ -216,7 +237,7 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
   const posts = await fetchPosts();
   const categories = {};
   posts.map((post) => {
-    post.node.categories.nodes[0].slug && (categories[post.node.categories.nodes[0].slug] = post.node.categories.nodes[0]);
+    post.categories.nodes[0].slug && (categories[post.categories.nodes[0].slug] = post.categories.nodes[0]);
   });
 
   return Array.from(Object.keys(categories)).flatMap((categorySlug) =>

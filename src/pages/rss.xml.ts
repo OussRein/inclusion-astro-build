@@ -13,6 +13,7 @@ export const GET = async () => {
   }
 
   const posts = await fetchPosts();
+  console.log(posts)
 
   const rss = await getRssString({
     title: `${SITE.name}’s Blog`,
@@ -20,10 +21,10 @@ export const GET = async () => {
     site: import.meta.env.SITE,
 
     items: posts.map((post) => ({
-      link: getPermalink(post.permalink, 'post'),
+      link: getPermalink(post.slug, 'post'),
       title: post.title,
       description: post.excerpt,
-      pubDate: post.date,
+      pubDate: new Date(post.date),
     })),
 
     trailingSlash: SITE.trailingSlash,
