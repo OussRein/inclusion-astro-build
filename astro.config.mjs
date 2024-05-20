@@ -25,7 +25,6 @@ const whenExternalScripts = (items = []) =>
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  site: 'https://OussRein.github.io',
   output: 'static',
   integrations: [
     tailwind({
