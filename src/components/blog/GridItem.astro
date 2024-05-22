@@ -1,17 +1,13 @@
 ---
-import { APP_BLOG } from 'astrowind:config';
 import type { Post } from '~/types';
-
 import Image from '~/components/common/Image.astro';
-
-import { getPermalink } from '~/utils/permalinks';
 
 export interface Props {
   post: Post;
 }
 
 const { post } = Astro.props;
-const image = post.featuredImage.node.sourceUrl;
+const image = post.featuredImage.sourceUrl;
 
 const link = 'blog/'+post.slug;
 ---
