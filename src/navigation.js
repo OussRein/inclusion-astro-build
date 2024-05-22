@@ -1,50 +1,143 @@
 import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {
-  links: [
-    {
-      text: 'About us',
-      href: getPermalink('/about'),
-    },
-    {
-      text: 'Services',
-      links: [
-        {
-          text: 'Lead Generation',
-          href: getPermalink('/landing/lead-generation'),
-        },
-        {
-          text: 'Long-form Sales',
-          href: getPermalink('/landing/sales'),
-        },
-        {
-          text: 'Click-Through',
-          href: getPermalink('/landing/click-through'),
-        },
-        {
-          text: 'Product Details (or Services)',
-          href: getPermalink('/landing/product'),
-        },
-        {
-          text: 'Coming Soon or Pre-Launch',
-          href: getPermalink('/landing/pre-launch'),
-        },
-        {
-          text: 'Subscription',
-          href: getPermalink('/landing/subscription'),
-        },
-      ],
-    },
-    {
-      text: 'Blog',
-      href: getBlogPermalink(),
-    },
-    {
-      text: 'Contact',
-      href: '/contact',
-    },
-  ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  fr: {
+    links: [
+      {
+        text: 'About us',
+        href: getPermalink('/about'),
+      },
+      {
+        text: 'Services',
+        links: [
+          {
+            text: 'Lead Generation',
+            href: getPermalink('/landing/lead-generation'),
+          },
+          {
+            text: 'Long-form Sales',
+            href: getPermalink('/landing/sales'),
+          },
+          {
+            text: 'Click-Through',
+            href: getPermalink('/landing/click-through'),
+          },
+          {
+            text: 'Product Details (or Services)',
+            href: getPermalink('/landing/product'),
+          },
+          {
+            text: 'Coming Soon or Pre-Launch',
+            href: getPermalink('/landing/pre-launch'),
+          },
+          {
+            text: 'Subscription',
+            href: getPermalink('/landing/subscription'),
+          },
+        ],
+      },
+      {
+        text: 'Blog',
+        href: getBlogPermalink(),
+      },
+      {
+        text: 'Contact',
+        href: '/contact',
+      },
+    ],
+    actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  },
+  en: {
+    links: [
+      {
+        text: 'About us',
+        href: getPermalink('/about'),
+      },
+      {
+        text: 'Services',
+        links: [
+          {
+            text: 'Lead Generation',
+            href: getPermalink('/landing/lead-generation'),
+          },
+          {
+            text: 'Long-form Sales',
+            href: getPermalink('/landing/sales'),
+          },
+          {
+            text: 'Click-Through',
+            href: getPermalink('/landing/click-through'),
+          },
+          {
+            text: 'Product Details (or Services)',
+            href: getPermalink('/landing/product'),
+          },
+          {
+            text: 'Coming Soon or Pre-Launch',
+            href: getPermalink('/landing/pre-launch'),
+          },
+          {
+            text: 'Subscription',
+            href: getPermalink('/landing/subscription'),
+          },
+        ],
+      },
+      {
+        text: 'Blog',
+        href: getBlogPermalink(),
+      },
+      {
+        text: 'Contact',
+        href: '/contact',
+      },
+    ],
+    actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  },
+  ar: {
+    links: [
+      {
+        text: 'من نحن',
+        href: getPermalink('/ar/about'),
+      },
+      {
+        text: 'خدماتنا',
+        links: [
+          {
+            text: 'خدمة 1',
+            href: getPermalink('/ar/landing/lead-generation'),
+          },
+          {
+            text: 'Long-form Sales',
+            href: getPermalink('/ar/landing/sales'),
+          },
+          {
+            text: 'Click-Through',
+            href: getPermalink('/ar/landing/click-through'),
+          },
+          {
+            text: 'Product Details (or Services)',
+            href: getPermalink('/ar/landing/product'),
+          },
+          {
+            text: 'Coming Soon or Pre-Launch',
+            href: getPermalink('/ar/landing/pre-launch'),
+          },
+          {
+            text: 'Subscription',
+            href: getPermalink('/ar/landing/subscription'),
+          },
+        ],
+      },
+      {
+        text: 'المدونة',
+        href: getBlogPermalink(),
+      },
+      {
+        text: 'تواصل معنا',
+        href: '/ar/contact',
+      },
+    ],
+  },
 };
 
 export const footerData = {
