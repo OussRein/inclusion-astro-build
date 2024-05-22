@@ -6,17 +6,25 @@ import Footer from '~/components/widgets/Footer.astro';
 import { headerData, footerData } from '~/navigation';
 
 import type { MetaData } from '~/types';
+import { getLangFromUrl } from '~/i18n/utils';
 
 export interface Props {
   metadata?: MetaData;
 }
 
 const { metadata } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+var languageHeaderData;
+if (lang === 'ar') languageHeaderData = headerData.ar;
+else if (lang === 'en') languageHeaderData = headerData.en;
+else languageHeaderData = headerData.fr;
+
 ---
 
 <Layout metadata={metadata}>
   <slot name="header">
-    <Header {...headerData} isSticky showRssFeed showToggleTheme />
+    <Header {...languageHeaderData} isSticky showRssFeed showToggleTheme />
   </slot>
   <main>
     <slot />

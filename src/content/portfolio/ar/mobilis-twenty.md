@@ -1,16 +1,16 @@
 ---
 realisationDate: 2023-08-12T00:00:00Z
 order: 1
-language: fr
-title: Mobilis Twenty
-excerpt: 20 years aniv of mobilis.
+language: ar
+title: موبيليس 20 سنة
+excerpt: احتفالية 20 سنة منذ انشاء شركة موبيليس.
 image: https://inclusion.dz/wp-content/uploads/2024/05/Visuel-Twenty-highlight-3.png
-category: UI/UX design
+category: UI/UX تصميم
 tags:
   - astro
   - tailwind css
 metadata:
-  canonical: https://astrowind.vercel.app/portfolio/mobilis-twenty
+  canonical: https://inclusion.dz/ar/portfolio/mobilis-twenty
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

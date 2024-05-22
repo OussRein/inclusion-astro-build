@@ -1,16 +1,15 @@
 ---
 realisationDate: 2023-08-12T00:00:00Z
 order: 6
-language: fr
-title: Happy Dry
-excerpt: Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.
+language: ar
+title: هابي الجاف
+excerpt: ابدأ رحلتك على الويب مع AstroWind – استخدم Astro وTailwind CSS لإنشاء موقع مذهل. استكشف دليلنا الآن.
 image: https://inclusion.dz/wp-content/uploads/2024/05/b592304c4b237727ead3c80d7e5bfcc9.png
-category: 3D Digital art
+category: فن رقمي ثلاثي الأبعاد
 tags:
-  - astro
-  - tailwind css
+- أسترو
 metadata:
-  canonical: https://inclusion.dz/portfolio/happy-dry
+  canonical: https://inclusion.dz/ar/portfolio/happy-dry
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

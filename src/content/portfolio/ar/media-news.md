@@ -1,16 +1,16 @@
 ---
 realisationDate: 2023-08-12T00:00:00Z
 order: 8
-language: fr
-title: Media News channel
-excerpt: Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.
+language: ar
+title: قناة أخبار الإعلام
+excerpt: AL24 News، قناة تلفزيونية مخصصة حصريا للأخبار على مدار الساعة ، تبث من الجزائر العاصمة عبر القمر الصناعي نايل سات. تركز AL24 News على الأخبار الدولية على وجه الخصوص. تغطي أقسام القناة المختلفة أخبار اليوم ، وهي  السياسة والاقتصاد والمالية والأعمال والصحة والزراعة والثقافة والرياضة.
 image: https://inclusion.dz/wp-content/uploads/2024/05/shooting-studio-scenes-silhouette-images-which-film-team-working-movie-video.png
-category: Strategy & Digital Moderation
+category: الاستراتيجية والإشراف الرقمي
 tags:
   - astro
   - tailwind css
 metadata:
-  canonical: https://astrowind.vercel.app/portfolio/media-news-channel
+  canonical: https://inclusion.dz/ar/portfolio/media-news-channel
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

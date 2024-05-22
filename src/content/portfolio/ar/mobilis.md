@@ -1,16 +1,16 @@
 ---
 realisationDate: 2023-08-12T00:00:00Z
 order: 10
-language: fr
-title: Mobilis
-excerpt: Mobilis est l'un des principaux opérateurs de télécommunications en Algérie, offrant une gamme complète de services de téléphonie mobile, d'internet et de solutions de communication aux particuliers et aux entreprises.
+language: ar
+title: موبيليس
+excerpt: موبيليس هي واحدة من الشركات الرئيسية في مجال الاتصالات في الجزائر، حيث تقدم مجموعة كاملة من خدمات الهاتف المحمول والإنترنت وحلول الاتصال للأفراد والشركات.
 image: https://inclusion.dz/wp-content/uploads/2024/05/Capture-décran-2023-11-09-à-18.39.57.png
-category: Graphic design
+category: تصميم وديزاين
 tags:
   - astro
   - tailwind css
 metadata:
-  canonical: https://astrowind.vercel.app/portfolio/mobilis
+  canonical: https://inclusion.dz/ar/portfolio/mobilis
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
