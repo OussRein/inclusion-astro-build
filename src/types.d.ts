@@ -16,9 +16,7 @@ export interface Post {
 
   /**  The post's featured picture*/
   featuredImage: {
-    node: {
       sourceUrl: string;
-    }
   };
 
   /**  */
@@ -33,17 +31,13 @@ export interface Post {
   image?: ImageMetadata | string;
 
   /**  */
-  categories: {
-    nodes: CategoryNode[];
-  };
+  categories: CategoryNode[];
   /**  */
   tags?: Taxonomy[];
 
   /** The author structure */
   author?: {
-    node: {
       name: string;
-    }
   }
 
   /**  */
