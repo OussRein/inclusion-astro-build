@@ -14,7 +14,7 @@ const { posts, currentPage } = Astro.props;
   {
     posts.map((post) => (
       <li class="mb-12 md:mb-20">
-        <Item post={post.node} currentPage={currentPage} />
+        <Item post={post} currentPage={currentPage} />
       </li>
     ))
   }

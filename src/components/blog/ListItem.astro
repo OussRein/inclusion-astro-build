@@ -15,7 +15,7 @@ export interface Props {
 }
 
 const { post, currentPage } = Astro.props;
-const image = post.featuredImage.node.sourceUrl;
+const image = post.featuredImage.sourceUrl;
 const date = new Date(post.date)
 const formattedDate = getFormattedDate(date);
 
@@ -68,16 +68,16 @@ const link = currentPage === 1 ? 'blog/' + post.slug : post.slug;
           <Icon name="tabler:clock" class="w-3.5 h-3.5 inline-block -mt-0.5 dark:text-gray-400" />
           <time datetime={String(post.date)} class="inline-block">{formattedDate}</time>
           {
-            post.author?.node?.name && (
+            post.author?.name && (
               <>
                 {' '}
                 · <Icon name="tabler:user" class="w-3.5 h-3.5 inline-block -mt-0.5 dark:text-gray-400" />
-                <span>{post.author?.node?.name}</span>
+                <span>{post.author.name}</span>
               </>
             )
           }
           {
-            post.categories.nodes.map((category) => ((
+            post.categories.map((category) => ((
               <>
                 {' '}
                 ·{' '}

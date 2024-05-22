@@ -29,21 +29,21 @@ const formattedDate = getFormattedDate(date);
           <Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
           <time datetime={String(post.date)} class="inline-block">{formattedDate}</time>
           {
-            post.author.node.name && (
+            post.author?.name && (
               <>
                 {' '}
                 · <Icon name="tabler:user" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
-                <span class="inline-block">{post.author.node.name}</span>
+                <span class="inline-block">{post.author.name}</span>
               </>
             )
           }
           {
-            post.categories.edges.map((category) => ((
+            post.categories.map((category) => ((
               <>
                 {' '}
                 ·{' '}
-                <a class="hover:underline inline-block" href={getPermalink(category.node.slug, 'category')}>
-                  {category.node.name}
+                <a class="hover:underline inline-block" href={getPermalink(category.slug, 'category')}>
+                  {category.name}
                 </a>
               </>
             )

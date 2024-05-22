@@ -4,25 +4,55 @@ import type { CategoryNode, Post } from '~/types';
 import { APP_BLOG } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
 
-const cleanGraphQLResponse = function(input) : Array<Post> {
-  const output : Array<Post>  = [];
-  const isObject = obj => {
-    return obj !== null && typeof obj === 'object' && !Array.isArray(obj)
-  }
 
-  Object.keys(input).forEach(key => {
-    if (input[key] && input[key].edges) {
-      output[key] = input[key].edges.map(edge =>
-        cleanGraphQLResponse(edge.node)
-      )
-    } else if (isObject(input[key])) {
-      output[key] = cleanGraphQLResponse(input[key])
-    } else if (key !== '__typename') {
-      output[key] = input[key]
+function removeNodesAndEdgesOfPosts(response: Post[]): Post[] {
+  const transform = (data: any): any => {
+    if (Array.isArray(data)) {
+      return data.map(item => transform(item.node || item));
+    } else if (typeof data === 'object' && data !== null) {
+      const newData: any = {};
+      for (const key in data) {
+        if (key === 'nodes' || key === 'edges') {
+          if (Array.isArray(data[key])) {
+            return transform(data[key]); // Directly return transformed array
+          }
+        } else if (key === 'node') {
+          return transform(data[key]);
+        } else {
+          newData[key] = transform(data[key]);
+        }
+      }
+      return newData;
     }
-  })
+    return data;
+  };
 
-  return output;
+  return transform(response);
+}
+
+function removeNodesAndEdgesOfSinglePost(response: Post): Post {
+  const transform = (data: any): any => {
+    if (Array.isArray(data)) {
+      return data.map(item => transform(item.node || item));
+    } else if (typeof data === 'object' && data !== null) {
+      const newData: any = {};
+      for (const key in data) {
+        if (key === 'nodes' || key === 'edges') {
+          if (Array.isArray(data[key])) {
+            return transform(data[key]); // Directly return transformed array
+          }
+        } else if (key === 'node') {
+          return transform(data[key]);
+        } else {
+          newData[key] = transform(data[key]);
+        }
+      }
+      return newData;
+    }
+    return data;
+  };
+
+  return transform(response);
 }
 
 const generatePermalink = async ({
@@ -105,14 +135,23 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   };
 };
 
-const load = async function (): Promise<Array<Post>> {
+enum LanguageCodeFilterEnum {
+  DEFAULT = 'default',
+  ALL = 'all',
+  EN = 'EN',
+  FR = 'FR',
+  AR = 'AR',
+}
+
+
+const load = async function (lang?:LanguageCodeFilterEnum): Promise<Array<Post>> {
   const response = await fetch('https://inclusion.dz/graphql', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       query: `
       query getPosts {
-    posts(first: 100, after: null, where: {categoryNotIn: [131]}) {
+    posts(first: 100, after: null, where: {categoryNotIn: [131], language: `+ LanguageCodeFilterEnum.FR +`}) {
       edges {
         node {
           id
@@ -143,12 +182,16 @@ const load = async function (): Promise<Array<Post>> {
   const { data } = await response.json();
 
   //  assign the array of nodes to "posts" variable for usability
-  const posts = cleanGraphQLResponse(data.posts) ;
+
+  const posts = removeNodesAndEdgesOfPosts(data.posts.edges) ;
   
   return posts;
 };
 
 let _posts: Array<Post>;
+let _enPosts: Array<Post>;
+let _frPosts: Array<Post>;
+let _arPosts: Array<Post>;
 
 /** */
 export const isBlogEnabled = APP_BLOG.isEnabled;
@@ -166,8 +209,31 @@ export const blogTagRobots = APP_BLOG.tag.robots;
 export const blogPostsPerPage = APP_BLOG?.postsPerPage;
 
 /** */
-export const fetchPosts = async (): Promise<Array<Post>> => {
-  if (!_posts) {
+export const fetchPosts = async (lang?: string): Promise<Array<Post>> => {
+  if (lang) {
+    if (lang === 'fr'){
+
+      if (!_frPosts) {
+        _frPosts = await load(LanguageCodeFilterEnum.FR);
+      }
+      return _frPosts;
+      
+    }else if (lang === 'en'){
+
+      if (!_enPosts) {
+        _enPosts = await load(LanguageCodeFilterEnum.EN);
+      }
+      return _enPosts;
+
+    }else if (lang === 'ar'){
+
+      if (!_arPosts) {
+        _arPosts = await load(LanguageCodeFilterEnum.AR);
+      }
+      return _arPosts;
+
+    }
+  }else if (!_posts) {
     _posts = await load();
   }
 
@@ -189,17 +255,46 @@ export const findPostsBySlugs = async (slugs: Array<string>): Promise<Array<Post
 };
 
 /** */
-export const findPostsByIds = async (ids: Array<string>): Promise<Array<Post>> => {
-  if (!Array.isArray(ids)) return [];
+export const findPostById = async (id: string): Promise<Post> => {
+  
+  const postResponse = await fetch('https://inclusion.dz/graphql', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: `
+      query getContent {
+    post(id: "${id}", idType: ID) {
+      content
+      author {
+        node {
+          name
+        }
+      }
+      date
+      id
+      slug
+      title
+      categories {
+        edges {
+          node {
+            id
+            name
+          }
+        }
+      }
+    }
+  }
+        `,
+    }),
+  });
 
-  const posts = await fetchPosts();
+  // destructure data from our JSON
+  const { data } = await postResponse.json();
 
-  return ids.reduce(function (r: Array<Post>, id: string) {
-    posts.some(function (post: Post) {
-      return id === post.id && r.push(post);
-    });
-    return r;
-  }, []);
+  //  assign the array of nodes to "posts" variable for usability
+  const content = removeNodesAndEdgesOfSinglePost(data.post);
+
+  return content;
 };
 
 /** */
@@ -211,20 +306,18 @@ export const findLatestPosts = async ({ count }: { count?: number }): Promise<Ar
 };
 
 /** */
-export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateFunction }) => {
-  if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
-  return paginate(await fetchPosts(), {
+export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateFunction }, lang?: string ) => {
+  return paginate(await fetchPosts(lang), {
     params: { blog: BLOG_BASE || undefined },
-    pageSize: blogPostsPerPage,
+    pageSize: 6,
   });
 };
 
 /** */
 export const getStaticPathsBlogPost = async () => {
-  if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
   return (await fetchPosts()).flatMap((post) => ({
     params: {
-      blog: 'blog/' + post.permalink,
+      blog: 'blog/' + post.slug,
     },
     props: { post },
   }));
@@ -236,13 +329,13 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
 
   const posts = await fetchPosts();
   const categories = {};
-  posts.map((post) => {
-    post.categories.nodes[0].slug && (categories[post.categories.nodes[0].slug] = post.categories.nodes[0]);
-  });
+  /*posts.map((post) => {
+    post.categories[0].slug && (categories[post.categories[0].slug] = post.categories[0]);
+  });*/
 
   return Array.from(Object.keys(categories)).flatMap((categorySlug) =>
     paginate(
-      posts.filter((post) => post.categories.nodes[0].slug && categorySlug === post.categories.nodes[0].slug),
+      posts.filter((post) => post.categories[0].slug && categorySlug === post.categories[0].slug),
       {
         params: { category: categorySlug, blog: CATEGORY_BASE || undefined },
         pageSize: blogPostsPerPage,
@@ -280,7 +373,7 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
 /** */
 export async function getRelatedPosts(originalPost: Post, maxResults: number = 4): Promise<Post[]> {
   const allPosts = await fetchPosts();
-
+  console.log(allPosts.length)
   const i = 0.5 - Math.random();
 
   const sortedPosts= allPosts.sort(() => i);

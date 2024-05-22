@@ -1,19 +1,11 @@
 import { getRssString } from '@astrojs/rss';
 
-import { SITE, METADATA, APP_BLOG } from 'astrowind:config';
+import { SITE, METADATA } from 'astrowind:config';
 import { fetchPosts } from '~/utils/blog';
 import { getPermalink } from '~/utils/permalinks';
 
 export const GET = async () => {
-  if (!APP_BLOG.isEnabled) {
-    return new Response(null, {
-      status: 404,
-      statusText: 'Not found',
-    });
-  }
-
   const posts = await fetchPosts();
-  console.log(posts)
 
   const rss = await getRssString({
     title: `${SITE.name}’s Blog`,
