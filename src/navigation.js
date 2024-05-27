@@ -1,5 +1,60 @@
 import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
+const services = [
+  {
+    title: 'PRODUCT LAUNCHING',
+    services: [
+      {
+        subtitle: 'We combine innovative technologies with proven digital expertise to develop strategies that grow awareness, traffic, engagement, and sales.',
+        text: 'Strategy',
+        href: getPermalink('/services/strategy'),
+      },
+      {
+        subtitle: 'A collection of matured techniques to build meaningful and user-driven designs.',
+        text: 'PRODUCT DESIGN',
+        href: getPermalink('/services/product-design'),
+      },
+      {
+        subtitle: 'Winning brand strategies and culture-driven stories.',
+        text: 'Brand Elevation',
+        href: getPermalink('/services/brand-elevation'),
+      },
+      {
+        subtitle: 'We provide frameworks and guidance for innovating your marketing and digital customer experience',
+        text: 'DIGITAL TRANSFORMATION',
+        href: getPermalink('/services/digital-transformation'),
+      },
+      {
+        subtitle: 'We provide frameworks and guidance for innovating your customer experience',
+        text: 'DIGITAL Intelligence',
+        href: getPermalink('/services/digital-intelligence'),
+      },
+    ],
+  },
+  {
+    title: 'Development',
+    services: [
+      {
+        title: 'Strategy',
+        subtitle:
+          'We combine innovative technologies with proven digital expertise to develop strategies that grow awareness, traffic, engagement, and sales.',
+      },
+      {
+        title: 'PRODUCT DESIGN',
+        subtitle: 'A collection of matured techniques to build meaningful and user-driven designs.',
+      },
+      {
+        title: 'Brand Elevation',
+        subtitle: 'Winning brand strategies and culture-driven stories.',
+      },
+      {
+        title: 'DIGITAL TRANSFORMATION',
+        subtitle: 'We provide frameworks and guidance for innovating your marketing and digital customer experience',
+      },
+    ],
+  },
+];
+
 export const headerData = {
   fr: {
     links: [

@@ -48,8 +48,162 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
-
+const services = [
+  {
+    title: 'PRODUCT LAUNCHING',
+    services: [
+      {
+        subtitle:
+          'We combine innovative technologies with proven digital expertise to develop strategies that grow awareness, traffic, engagement, and sales.',
+        text: 'Strategy',
+      },
+      {
+        subtitle: 'A collection of matured techniques to build meaningful and user-driven designs.',
+        text: 'PRODUCT DESIGN',
+      },
+      {
+        subtitle: 'Winning brand strategies and culture-driven stories.',
+        text: 'Brand Elevation',
+      },
+      {
+        subtitle: 'We provide frameworks and guidance for innovating your marketing and digital customer experience',
+        text: 'DIGITAL TRANSFORMATION',
+      },
+      {
+        subtitle: 'We provide frameworks and guidance for innovating your customer experience',
+        text: 'DIGITAL Intelligence',
+      },
+    ],
+  },
+  {
+    title: 'Development',
+    services: [
+      {
+        title: 'Strategy',
+        subtitle:
+          'We combine innovative technologies with proven digital expertise to develop strategies that grow awareness, traffic, engagement, and sales.',
+      },
+      {
+        title: 'PRODUCT DESIGN',
+        subtitle: 'A collection of matured techniques to build meaningful and user-driven designs.',
+      },
+      {
+        title: 'Brand Elevation',
+        subtitle: 'Winning brand strategies and culture-driven stories.',
+      },
+      {
+        title: 'DIGITAL TRANSFORMATION',
+        subtitle: 'We provide frameworks and guidance for innovating your marketing and digital customer experience',
+      },
+    ],
+  },
+];
 ---
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const menuItems = document.querySelectorAll(".hoverable-menu-item");
+  const dynamicGrid = document.querySelector(".dynamic-grid-items");
+
+  const services = [
+  {
+    title: 'PRODUCT LAUNCHING',
+    services: [
+      {
+        subtitle:
+          'We combine innovative technologies with proven digital expertise to develop strategies that grow awareness, traffic, engagement, and sales.',
+        text: 'Strategy',
+      },
+      {
+        subtitle: 'A collection of matured techniques to build meaningful and user-driven designs.',
+        text: 'PRODUCT DESIGN',
+      },
+      {
+        subtitle: 'Winning brand strategies and culture-driven stories.',
+        text: 'Brand Elevation',
+      },
+      {
+        subtitle: 'We provide frameworks and guidance for innovating your marketing and digital customer experience',
+        text: 'DIGITAL TRANSFORMATION',
+      },
+      {
+        subtitle: 'We provide frameworks and guidance for innovating your customer experience',
+        text: 'DIGITAL Intelligence',
+      },
+    ],
+  },
+  {
+    title: 'Development',
+    services: [
+      {
+        text: 'DEV',
+        subtitle:
+          'We combine innovative technologies with proven digital expertise to develop strategies that grow awareness, traffic, engagement, and sales.',
+      },
+      {
+        text: 'PRODUCT DESIGN',
+        subtitle: 'A collection of matured techniques to build meaningful and user-driven designs.',
+      },
+      {
+        text: 'Brand Elevation',
+        subtitle: 'Winning brand strategies and culture-driven stories.',
+      },
+      {
+        text: 'DIGITAL TRANSFORMATION',
+        subtitle: 'We provide frameworks and guidance for innovating your marketing and digital customer experience',
+      },
+    ],
+  },
+];
+
+  const updateGridContent = (index) => {
+    const item = services[index];
+    dynamicGrid.innerHTML = '';
+    item.services.forEach((service) => 
+    dynamicGrid.innerHTML = dynamicGrid.innerHTML + `
+      <div>
+        <a
+          href="javascript:;"
+          class="px-3 py-5 hover:bg-gray-50 hover:rounded-xl flex items-center transition-all duration-500"
+        >
+          <div class="bg-lime-50 rounded-lg w-12 h-12 flex items-center justify-center">
+            <svg
+              width="38"
+              height="38"
+              viewBox="0 0 38 38"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                opacity="0.3"
+                d="M6.3335 8.70801C6.3335 7.39633 7.39682 6.33301 8.7085 6.33301H21.3752C22.6868 6.33301 23.7502 7.39633 23.7502 8.70801V21.3747C23.7502 22.6863 22.6868 23.7497 21.3752 23.7497H8.7085C7.39682 23.7497 6.3335 22.6863 6.3335 21.3747V8.70801Z"
+                fill="#84CC16"
+              />
+              <path
+                d="M14.25 16.625C14.25 15.3133 15.3133 14.25 16.625 14.25H29.2917C30.6033 14.25 31.6667 15.3133 31.6667 16.625V29.2917C31.6667 30.6033 30.6033 31.6667 29.2917 31.6667H16.625C15.3133 31.6667 14.25 30.6033 14.25 29.2917V16.625Z"
+                fill="#84CC16"
+              />
+            </svg>
+          </div>
+          <div class="ml-4 w-4/5">
+            <h5 class=" text-gray-900 text-base mb-1.5 font-semibold">${service.text}</h5>
+          </div>
+        </a>
+      </div>
+    `
+  );
+
+  };
+
+  menuItems.forEach((item, index) => {
+    item.addEventListener("mouseover", () => updateGridContent(index));
+  });
+
+  // Initialize with the first grid item
+  updateGridContent(0);
+});
+
+
+</script>
 
 <header
   class:list={[
@@ -61,7 +215,7 @@ const translatePath = useTranslatedPath(lang);
 >
   <div
     class:list={[
-      'relative text-default py-2 px-2 md:px-6 mx-auto w-full bg-orange-400',
+      'relative text-default px-2 md:px-6 mx-auto w-full bg-orange-400',
       {
         'md:flex md:justify-between': position !== 'center',
       },
@@ -129,7 +283,273 @@ const translatePath = useTranslatedPath(lang);
         }
 
         <LanguagePicker />
+
+        <!--Hoverable Link-->
+
+        <li class="group hoverable hover:bg-orange-400 hover:text-white">
+          <button type="button" class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center">
+            Services
+            <Icon
+              name="tabler:chevron-down"
+              class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline group-hover:-rotate-180"
+            />
+          </button>
+          <div class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-orange-100">
+            <div class="container grid grid-cols-1 md:grid-cols-4">
+              <div class="flex flex-col justify-between">
+                <ul class="text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                  <li class="hovverable-menu-item">
+                    <a
+                      href="javascript:;"
+                      class="px-3 py-5 hover:bg-gray-50 hover:rounded-xl flex items-center transition-all duration-500"
+                    >
+                      <div class="bg-rose-50 rounded-lg w-12 h-12 flex items-center justify-center">
+                        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            opacity="0.3"
+                            d="M15.092 11.4813C16.0377 10.9509 17.2126 10.9509 18.1583 11.4813L25.4363 15.5637C26.3539 16.0783 26.9168 17.0148 26.9168 18.0265V26.3072C26.9168 27.3189 26.3539 28.2553 25.4363 28.77L18.1583 32.8523C17.2126 33.3828 16.0377 33.3828 15.092 32.8523L7.81401 28.77C6.89644 28.2553 6.3335 27.3189 6.3335 26.3072V18.0265C6.3335 17.0148 6.89644 16.0783 7.81401 15.5637L15.092 11.4813Z"
+                            fill="#F43F5E"></path>
+                          <path
+                            d="M20.2043 4.82947C21.0987 4.30099 22.2098 4.30099 23.1041 4.82946L29.9869 8.8966C30.8547 9.40936 31.3871 10.3423 31.3871 11.3502V19.6001C31.3871 20.608 30.8547 21.541 29.9869 22.0537L23.1041 26.1209C22.2098 26.6494 21.0987 26.6494 20.2044 26.1209L13.3215 22.0537C12.4538 21.541 11.9214 20.608 11.9214 19.6001V11.3502C11.9214 10.3423 12.4538 9.40936 13.3215 8.8966L20.2043 4.82947Z"
+                            fill="#F43F5E"></path>
+                        </svg>
+                      </div>
+                      <div class="ml-4 w-4/5">
+                        <h4 class="text-gray-900 text-base mb-1.5 font-semibold">Security</h4>
+                        <p class="text-xs font-medium text-gray-400">
+                          To ensure your privacy all information are highly encrypted
+                        </p>
+                      </div>
+                    </a>
+                  </li>
+                  {
+                    services.map((service, index) => (
+                      <li class="hoverable-menu-item" data-index={index}>
+                        <a
+                          href="javascript:;"
+                          class="px-3 py-5 hover:bg-gray-50 hover:rounded-xl flex items-center transition-all duration-500"
+                        >
+                          <div class="bg-lime-50 rounded-lg w-12 h-12 flex items-center justify-center">
+                            <svg
+                              width="38"
+                              height="38"
+                              viewBox="0 0 38 38"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                opacity="0.3"
+                                d="M6.3335 8.70801C6.3335 7.39633 7.39682 6.33301 8.7085 6.33301H21.3752C22.6868 6.33301 23.7502 7.39633 23.7502 8.70801V21.3747C23.7502 22.6863 22.6868 23.7497 21.3752 23.7497H8.7085C7.39682 23.7497 6.3335 22.6863 6.3335 21.3747V8.70801Z"
+                                fill="#84CC16"
+                              />
+                              <path
+                                d="M14.25 16.625C14.25 15.3133 15.3133 14.25 16.625 14.25H29.2917C30.6033 14.25 31.6667 15.3133 31.6667 16.625V29.2917C31.6667 30.6033 30.6033 31.6667 29.2917 31.6667H16.625C15.3133 31.6667 14.25 30.6033 14.25 29.2917V16.625Z"
+                                fill="#84CC16"
+                              />
+                            </svg>
+                          </div>
+                          <div class="ml-4 w-4/5">
+                            <h5 class=" text-gray-900 text-base mb-1.5 font-semibold"> {service.title}</h5>
+                          </div>
+                        </a>
+                      </li>
+                    ))
+                  }
+                  <li class="hoverable-menu-item">
+                    <a
+                      href="javascript:;"
+                      class="px-3 py-5 hover:bg-gray-50 hover:rounded-xl flex items-center transition-all duration-500"
+                    >
+                      <div class="bg-indigo-50 rounded-lg w-12 h-12 flex items-center justify-center">
+                        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            opacity="0.3"
+                            d="M11.1086 7.89499C11.4505 6.95739 12.342 6.3335 13.34 6.3335H23.5237C25.1727 6.3335 26.3199 7.97275 25.755 9.522L20.5597 23.772C20.2179 24.7096 19.3264 25.3335 18.3284 25.3335H8.14465C6.49564 25.3335 5.34848 23.6942 5.91332 22.145L11.1086 7.89499Z"
+                            fill="#4F46E5"></path>
+                          <path
+                            d="M17.4416 14.228C17.7835 13.2904 18.675 12.6665 19.673 12.6665H29.8567C31.5057 12.6665 32.6529 14.3058 32.088 15.855L26.8927 30.105C26.5509 31.0426 25.6594 31.6665 24.6614 31.6665H14.4777C12.8286 31.6665 11.6815 30.0273 12.2463 28.478L17.4416 14.228Z"
+                            fill="#4F46E5"></path>
+                        </svg>
+                      </div>
+                      <div class="ml-4 w-4/5">
+                        <h5 class="text-gray-900 text-base mb-1.5 font-semibold">Documentation</h5>
+                        <p class="text-xs font-medium text-gray-400">
+                          Organized documentation will help you save tone of your time
+                        </p>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="">
+                    <a
+                      href="javascript:;"
+                      class="px-3 py-5 hover:bg-gray-50 hover:rounded-xl flex items-center transition-all duration-500"
+                    >
+                      <div class="bg-cyan-50 rounded-lg w-12 h-12 flex items-center justify-center">
+                        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            opacity="0.3"
+                            d="M24.5114 33.2423C26.9097 33.0921 29.1569 32.0322 30.7847 30.2836C32.4125 28.535 33.2952 26.2325 33.249 23.856C33.2028 21.4795 32.2312 19.2123 30.5366 17.5269C28.842 15.8415 26.5553 14.868 24.1529 14.8091H16.5879C15.6055 14.8091 14.8096 15.5892 14.8096 16.568V24.0221C14.8075 25.2655 15.06 26.4965 15.5517 27.6408C16.0433 28.7851 16.7641 29.8192 17.6706 30.6806C18.5771 31.5421 19.6505 32.2132 20.8261 32.6534C22.0018 33.0937 23.2554 33.294 24.5114 33.2423Z"
+                            fill="#06B6D4"></path>
+                          <path
+                            d="M13.4894 4.75796C11.091 4.90819 8.84381 5.96805 7.21604 7.71666C5.58826 9.46527 4.7055 11.7677 4.75173 14.1442C4.79795 16.5207 5.76959 18.7879 7.46415 20.4733C9.15872 22.1587 11.4455 23.1323 13.8479 23.1912H21.4129C21.8845 23.1912 22.3368 23.0059 22.6703 22.676C23.0038 22.3461 23.1912 21.8988 23.1912 21.4323V13.9781C23.1932 12.7347 22.9408 11.5038 22.4491 10.3595C21.9574 9.21514 21.2366 8.18109 20.3301 7.31962C19.4236 6.45815 18.3503 5.78708 17.1746 5.34683C15.9989 4.90659 14.7454 4.70628 13.4894 4.75796Z"
+                            fill="#06B6D4"></path>
+                        </svg>
+                      </div>
+                      <div class="ml-4 w-4/5">
+                        <h5 class="text-gray-900 text-base mb-1.5 font-semibold">Support</h5>
+                        <p class="text-xs font-medium text-gray-400">
+                          Need help? our customer support is here to help you anytime
+                        </p>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <!--Dynamic grid items go here depending on which item i hover or click-->
+                <div class="dynamic-grid-items col-span-2">
+                  <div>
+                    <h3>Hover over an item</h3>
+                  </div>
+              </div>
+
+              <div
+                class="relative bg-gray-700 rounded-md m-3 bg-top bg-cover bg-[url('https://inclusion.dz/wp-content/uploads/2024/05/articleInline_Design-System-Design-et-marque_Transparent_Vertical_q8ta6w0i.png')]"
+              >
+                <div class="bg-black/60 h-full p-6 flex flex-col rounded-md">
+                  <div class="mb-6 bg-center relative flex flex-col">
+                    <h3 class="text-lg font-bold text-white uppercase">A NEXT-LEVEL APPROACH TO DIGITAL</h3>
+                  </div>
+                  <div class="mb-6 col-span-3">
+                    <div class="flex flex-col justify-between">
+                      Inclusion digital team makes it easier than ever to push your company's performance, conduct
+                      industry research and make strategic decisions.
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    class="text-white bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800 shadow-lg shadow-orange-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                    >Check it out</button
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
       </ul>
     </nav>
   </div>
 </header>
+
+<style>
+  /* #Mega Menu Styles –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .mega-menu {
+    display: none;
+    left: 0;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 1s ease,
+      visibility 1s ease;
+  }
+
+  .mega-menu.show {
+    display: block;
+    animation: fadeIn 1s ease;
+  }
+
+  .mega-menu.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  /* #hoverable Class Styles –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .hoverable {
+    position: static;
+  }
+
+  .hoverable > a:after {
+    content: '\25BC';
+    font-size: 10px;
+    padding-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+
+  .hoverable:hover .mega-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    animation: fadeIn 1s ease;
+  }
+
+  .hoverable:hover .mega-menu.visible {
+    animation: none;
+  }
+
+  .hoverable:not(:hover) .mega-menu {
+    animation: fadeOut 1s ease;
+    animation-fill-mode: forwards;
+  }
+
+  /* #toggle Class Styles –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .toggleable > label:after {
+    content: '\25BC';
+    font-size: 10px;
+    padding-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+
+  .toggle-input {
+    display: none;
+  }
+
+  .toggle-input:not(:checked) ~ .mega-menu {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    animation: fadeOut 1s ease;
+  }
+
+  .toggle-input:checked ~ .mega-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    animation: fadeIn 1s ease;
+  }
+
+  .toggle-input:checked + label {
+    color: white;
+    background: #c76a00; /*@apply bg-blue-800 */
+  }
+
+  .toggle-input:checked ~ label:after {
+    content: '\25B2';
+    font-size: 10px;
+    padding-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+</style>
