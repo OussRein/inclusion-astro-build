@@ -1,55 +1,96 @@
 import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
-const services = [
+export const services = [
   {
-    title: 'PRODUCT LAUNCHING',
+    title: 'Strategy & Marketing',
     services: [
       {
-        subtitle: 'We combine innovative technologies with proven digital expertise to develop strategies that grow awareness, traffic, engagement, and sales.',
-        text: 'Strategy',
-        href: getPermalink('/services/strategy'),
+        subtitle: 'Navigate the ever-evolving digital landscape with a roadmap for leveraging online channels to achieve your business goals.',
+        title: 'Digital Strategy',
+        href: getPermalink('/services/digital-strategy'),
       },
       {
-        subtitle: 'A collection of matured techniques to build meaningful and user-driven designs.',
-        text: 'PRODUCT DESIGN',
-        href: getPermalink('/services/product-design'),
+        subtitle: 'Our data-driven marketing strategies help you reach your ideal customers, build brand awareness, and achieve marketing objectives.',
+        title: 'Marketing & Communication',
+        href: getPermalink('/services/marketing-communication'),
       },
       {
-        subtitle: 'Winning brand strategies and culture-driven stories.',
-        text: 'Brand Elevation',
-        href: getPermalink('/services/brand-elevation'),
+        subtitle: 'Engage your audience and build brand loyalty through targeted social media campaigns.',
+        title: 'Social Media Marketing',
+        href: getPermalink('/services/social-media-marketing'),
       },
       {
-        subtitle: 'We provide frameworks and guidance for innovating your marketing and digital customer experience',
-        text: 'DIGITAL TRANSFORMATION',
-        href: getPermalink('/services/digital-transformation'),
+        subtitle: 'Create engaging and informative content that attracts and educates potential customers.',
+        title: 'Content Marketing',
+        href: getPermalink('/services/content-marketing'),
       },
       {
-        subtitle: 'We provide frameworks and guidance for innovating your customer experience',
-        text: 'DIGITAL Intelligence',
+        subtitle: 'Gain valuable customer insights and competitor analysis to inform strategic planning and marketing decisions.',
+        title: 'Market Research',
+        href: getPermalink('/services/social-media-marketing'),
+      },
+      {
+        subtitle: 'Reach your target audience and drive targeted traffic through paid advertising campaigns on search engines, social media, and other platforms.',
+        title: 'Paid Media Advertising',
         href: getPermalink('/services/digital-intelligence'),
       },
     ],
   },
   {
-    title: 'Development',
+    title: 'Development & Technology',
     services: [
       {
-        title: 'Strategy',
-        subtitle:
-          'We combine innovative technologies with proven digital expertise to develop strategies that grow awareness, traffic, engagement, and sales.',
+        title: 'Website Development',
+        subtitle: 'Create a functional and engaging website that represents your brand and drives conversions.',
       },
       {
-        title: 'PRODUCT DESIGN',
-        subtitle: 'A collection of matured techniques to build meaningful and user-driven designs.',
+        title: 'App Development​',
+        subtitle: 'Transform your business processes or provide value to customers with custom web and mobile applications.',
       },
       {
-        title: 'Brand Elevation',
-        subtitle: 'Winning brand strategies and culture-driven stories.',
+        title: 'Solutions Architecture​',
+        subtitle: 'Our team of architects designs and engineers scalable and secure technology solutions tailored to your specific needs.',
       },
       {
-        title: 'DIGITAL TRANSFORMATION',
-        subtitle: 'We provide frameworks and guidance for innovating your marketing and digital customer experience',
+        title: 'Cloud Solutions',
+        subtitle: 'Migrate your operations to the cloud for increased scalability, flexibility, and cost-efficiency.',
+      },
+      {
+        title: 'Security',
+        subtitle: 'Protect your data, systems, and applications from cyber threats with our comprehensive security solutions.',
+      },
+      {
+        title: 'Content Management Systems (CMS)',
+        subtitle: 'Seamlessly integrate a CMS with your existing systems for easier content creation and management.',
+      },
+    ],
+  },
+  {
+    title: 'Branding & Design',
+    services: [
+      {
+        title: 'Branding',
+        subtitle: 'We help you establish a distinct brand identity with a compelling logo, clear brand guidelines, and a consistent voice that resonates with your audience.',
+      },
+      {
+        title: 'Logo Design',
+        subtitle: 'Create a unique and memorable logo that visually represents your brand.',
+      },
+      {
+        title: 'Brand Identity',
+        subtitle: 'Ensure a consistent brand image across all touchpoints with clear brand guidelines.',
+      },
+      {
+        title: 'Experience Design ',
+        subtitle: 'Our team of user experience (UX) and user interface (UI) designers create user-friendly and visually appealing websites, mobile apps, and e-commerce experiences.',
+      },
+      {
+        title: 'Website & App Design',
+        subtitle: 'Protect your data, systems, and applications from cyber threats with our comprehensive security solutions.',
+      },
+      {
+        title: 'User Experience (UX) Research',
+        subtitle: 'Gather user feedback and optimize the usability of your digital products for a seamless user experience.',
       },
     ],
   },
@@ -64,32 +105,7 @@ export const headerData = {
       },
       {
         text: 'Services',
-        links: [
-          {
-            text: 'Lead Generation',
-            href: getPermalink('/landing/lead-generation'),
-          },
-          {
-            text: 'Long-form Sales',
-            href: getPermalink('/landing/sales'),
-          },
-          {
-            text: 'Click-Through',
-            href: getPermalink('/landing/click-through'),
-          },
-          {
-            text: 'Product Details (or Services)',
-            href: getPermalink('/landing/product'),
-          },
-          {
-            text: 'Coming Soon or Pre-Launch',
-            href: getPermalink('/landing/pre-launch'),
-          },
-          {
-            text: 'Subscription',
-            href: getPermalink('/landing/subscription'),
-          },
-        ],
+        links: services
       },
       {
         text: 'Blog',
@@ -153,35 +169,6 @@ export const headerData = {
       {
         text: 'من نحن',
         href: getPermalink('/ar/about'),
-      },
-      {
-        text: 'خدماتنا',
-        links: [
-          {
-            text: 'خدمة 1',
-            href: getPermalink('/ar/landing/lead-generation'),
-          },
-          {
-            text: 'Long-form Sales',
-            href: getPermalink('/ar/landing/sales'),
-          },
-          {
-            text: 'Click-Through',
-            href: getPermalink('/ar/landing/click-through'),
-          },
-          {
-            text: 'Product Details (or Services)',
-            href: getPermalink('/ar/landing/product'),
-          },
-          {
-            text: 'Coming Soon or Pre-Launch',
-            href: getPermalink('/ar/landing/pre-launch'),
-          },
-          {
-            text: 'Subscription',
-            href: getPermalink('/ar/landing/subscription'),
-          },
-        ],
       },
       {
         text: 'المدونة',
