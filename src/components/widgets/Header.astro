@@ -9,7 +9,8 @@ import { trimSlash } from '~/utils/permalinks';
 import type { CallToAction } from '~/types';
 import LanguagePicker from './LanguagePicker.astro';
 import { getLangFromUrl } from '~/i18n/utils';
-import { useTranslatedPath } from '~/i18n/utils';
+import { useTranslatedPath, getRouteFromUrl } from '~/i18n/utils';
+import { languages, routes } from '~/i18n/ui';
 
 interface Link {
   text?: string;
@@ -49,6 +50,16 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
+
+const route = getRouteFromUrl(Astro.url);
+
+function translatePathOfLanguage(path: string, l: string) {
+  const pathName = path.replaceAll('/', '');
+  const hasTranslation = 'fr' !== l && routes[l] !== undefined && routes[l][pathName] !== undefined;
+  const translatedPath = hasTranslation ? '/' + routes[l][pathName] : path;
+  if (path === '/') return l === 'fr' ? path : `/${l}`;
+  return l === 'fr' ? translatedPath : `/${l}${translatedPath}`;
+}
 ---
 
 <header
@@ -61,7 +72,7 @@ const translatePath = useTranslatedPath(lang);
 >
   <div
     class:list={[
-      'relative text-default px-2 md:px-6 mx-auto w-full bg-[#F38300]',
+      'relative text-default md:px-6 mx-auto w-full bg-[#F38300]',
       {
         'md:flex md:justify-between': position !== 'center',
       },
@@ -73,7 +84,7 @@ const translatePath = useTranslatedPath(lang);
       },
     ]}
   >
-    <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between']}>
+    <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex px-2 justify-between']}>
       <a class="flex items-center" href={translatePath(getHomePermalink())}>
         <Logo />
       </a>
@@ -187,23 +198,93 @@ const translatePath = useTranslatedPath(lang);
               )
             )
           }
+
+          <li>
+            <>
+              <button
+                type="button"
+                class="first-menu-level flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              >
+                <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap"
+                  ><svg
+                    class="w-4 h-4 rtl:flip-180"
+                    fill="black"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                    ><title>ionicons-v5-l</title><line
+                      x1="48"
+                      y1="112"
+                      x2="336"
+                      y2="112"
+                      style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                    ></line><line
+                      x1="192"
+                      y1="64"
+                      x2="192"
+                      y2="112"
+                      style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                    ></line><polyline
+                      points="272 448 368 224 464 448"
+                      style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                    ></polyline><line
+                      x1="301.5"
+                      y1="384"
+                      x2="434.5"
+                      y2="384"
+                      style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                    ></line><path
+                      d="M281.3,112S257,206,199,277,80,384,80,384"
+                      style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                    ></path><path
+                      d="M256,336s-35-27-72-75-56-85-56-85"
+                      style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                    ></path></svg
+                  >Languages</span
+                >
+                <svg
+                  class="w-3 h-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m1 1 4 4 4-4"></path>
+                </svg>
+              </button>
+              <ul class="dropdown-example2 hidden py-2 space-y-2">
+                {
+                  Object.entries(languages).map(([lang, label]) => (
+                    <li>
+                      <a
+                        href={translatePathOfLanguage(`/${route ? route : ''}`, lang)}
+                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      >
+                        {label}
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </>
+          </li>
         </ul>
       </div>
     </nav>
 
-    <nav
-      class="items-right w-full md:w-auto hidden md:flex md:mx-5 text-default text-white overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:justify-self-end"
-      aria-label="Main navigation"
-    >
-      <ul
-        class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center"
-      >
+    <nav class="items-right w-full md:w-auto hidden md:flex md:mx-5 text-default text-white overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:justify-self-end"
+      aria-label="Main navigation">
+      <ul class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center">
         {
           links.map(({ text, href, links }) =>
             text === 'Services' ? (
               <HeaderServices services={links} />
             ) : (
-              <li class={links?.length ? 'dropdown bg-[#F38300]' : 'bg-[#F38300]'}>
+              <li class={links?.length ? 'dropdown' : ''}>
                 {links?.length ? (
                   <>
                     <button type="button" class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center">
@@ -274,8 +355,8 @@ const translatePath = useTranslatedPath(lang);
       servicesDropdown.classList.toggle('hidden');
     });
 
-    document.querySelector("#mobile-menu").addEventListener("click", function (event) {
-    event.stopPropagation();
-  });
+    document.querySelector('#mobile-menu').addEventListener('click', function (event) {
+      event.stopPropagation();
+    });
   });
 </script>
