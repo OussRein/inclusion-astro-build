@@ -1,0 +1,266 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Link {
+  text?: string;
+  services?: Array<Link>;
+}
+
+interface ServicesMenuLink extends Link {
+  links?: Array<ServicesMenuLink>;
+}
+
+export interface Props {
+  services?: Array<ServicesMenuLink>;
+}
+
+const { services = [] } = Astro.props;
+
+console.log(services);
+console.log('links');
+---
+
+<!--Hoverable Link-->
+<li class="group hoverable bg-[#F38300] hover:bg-orange-400 hover:text-white">
+  <button type="button" class="hover:text-link px-4 py-3 flex items-center">
+    Services
+    <Icon
+      name="tabler:chevron-down"
+      class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline group-hover:-rotate-180"
+    />
+  </button>
+  <div class="mx-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-white rounded-b-lg">
+    <div class="container grid grid-cols-1 md:grid-cols-4 rounded-b-lg">
+      <div class="flex flex-col justify-between bg-orange-100 border-r-2 border-orange-500 rounded-bl-lg">
+        <ul class="text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+            <div class="mx-3 py-3 ml-6">
+                <h5 class=" text-orange-700 text-lg mb-1.5 font-bold"> We have a full wide range of services</h5>
+                <h6 class=" text-gray-900 text-sm mb-1.5 font-semibold"> Tailored just for you</h6>
+              </div>
+          {
+            services.map((service, index) => (
+              <li class="hoverable-menu-item mx-6" data-index={index}>
+                <a href="javascript:;" class="mx-3 py-3 hover:rounded-xl flex items-center transition-all duration-500">
+                  <div class="ml-4 flex items-center">
+                    <div class="">
+                      <h5 class=" text-orange-900 text-md mb-1.5 font-bold"> {service.title}</h5>
+                      <h6 class=" text-gray-900 text-sm mb-1.5 font-semibold"> the best {service.title} for you</h6>
+                    </div>
+                    <div class="align-middle">
+                      <svg
+                        class="w-6 h-6 text-gray-800 dark:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m7 16 4-4-4-4m6 8 4-4-4-4"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!--Dynamic grid items go here depending on which item i hover or click-->
+      <div class="bg-orange-50 px-6 dynamic-grid-items col-span-2 py-3">
+        {
+          services.map((activities, index) => (
+            <div class="dynamic-grid-item" style="display: none;" data-index={index}>
+              <div class="relative grid grid-cols-3 gap-4">
+                {activities.services.map((service) => (
+                  <a href="javascript:;" class="h-52 relative rounded-lg flex items-center transition-all duration-500">
+                    <img
+                      class="colored-back max-h-full rounded-lg"
+                      src="https://inclusion.dz/wp-content/uploads/2022/01/disruption-catalyst-payments-nxt-now.jpg"
+                      height="100"
+                      width="250"
+                      alt=""
+                    />
+
+                    <div class="absolute colored-back pl-4 pt-20 pb-3 rounded-lg bottom-0 w-full">
+                      <h5 class=" text-white text-base mb-1.5 font-semibold">{service.title}</h5>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <div
+        class="relative bg-gray-700 rounded-md m-3 bg-top bg-cover bg-[url('https://inclusion.dz/wp-content/uploads/2024/05/articleInline_Design-System-Design-et-marque_Transparent_Vertical_q8ta6w0i.png')]"
+      >
+        <div class="bg-black/60 h-full p-6 flex flex-col rounded-md">
+          <div class="mb-6 bg-center relative flex flex-col">
+            <h3 class="text-lg font-bold text-white uppercase">A NEXT-LEVEL APPROACH TO DIGITAL</h3>
+          </div>
+          <div class="mb-6 col-span-3">
+            <div class="flex flex-col justify-between">
+              Inclusion digital team makes it easier than ever to push your company's performance, conduct industry
+              research and make strategic decisions.
+            </div>
+          </div>
+          <button
+            type="button"
+            class="text-white bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800 shadow-lg shadow-orange-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            >Check it out</button
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const menuItems = document.querySelectorAll('.hoverable-menu-item');
+    const dynamicGrid = document.querySelectorAll('.dynamic-grid-item');
+
+    const updateGridContent = (index) => {
+      dynamicGrid.forEach((item) => {
+        item.style.display = 'none';
+      });
+      menuItems.forEach((item) => {
+        item.style.backgroundColor = 'rgb(255 237 213)';
+      });
+      dynamicGrid[index].style.display = 'block';
+      menuItems[index].style.backgroundColor = '#fff';
+    };
+
+    menuItems.forEach((item, index) => {
+      item.addEventListener('click', () => updateGridContent(index));
+    });
+
+    // Initialize with the first grid item
+    updateGridContent(0);
+  });
+</script>
+<style>
+  .colored-back {
+    background: orange;
+    background: -moz-linear-gradient(185deg, transparent 10%, #ff8000 95%);
+    background: -webkit-linear-gradient(185deg, transparent 10%, #ff8000 95%);
+    background: linear-gradient(185deg, transparent 10%, #ff8000 95%);
+  }
+  /* #Mega Menu Styles –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .mega-menu {
+    display: none;
+    left: 0;
+    position: absolute;
+    text-align: left;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 1s ease,
+      visibility 1s ease;
+  }
+
+  .mega-menu.show {
+    display: block;
+    animation: fadeIn 1s ease;
+  }
+
+  .mega-menu.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  /* #hoverable Class Styles –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .hoverable {
+    position: static;
+  }
+
+  .hoverable > a:after {
+    content: '\25BC';
+    font-size: 10px;
+    padding-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+
+  .hoverable:hover .mega-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    animation: fadeIn 1s ease;
+  }
+
+  .hoverable:hover .mega-menu.visible {
+    animation: none;
+  }
+
+  .hoverable:not(:hover) .mega-menu {
+    animation: fadeOut 1s ease;
+    animation-fill-mode: forwards;
+  }
+
+  /* #toggle Class Styles –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .toggleable > label:after {
+    content: '\25BC';
+    font-size: 10px;
+    padding-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+
+  .toggle-input {
+    display: none;
+  }
+
+  .toggle-input:not(:checked) ~ .mega-menu {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    animation: fadeOut 1s ease;
+  }
+
+  .toggle-input:checked ~ .mega-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    animation: fadeIn 1s ease;
+  }
+
+  .toggle-input:checked + label {
+    color: white;
+    background: #c76a00; /*@apply bg-blue-800 */
+  }
+
+  .toggle-input:checked ~ label:after {
+    content: '\25B2';
+    font-size: 10px;
+    padding-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+</style>
