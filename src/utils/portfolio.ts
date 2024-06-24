@@ -1,7 +1,7 @@
 import type { PaginateFunction } from 'astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import type { Portfolio } from '~/types';
+import type { Portfolio, Taxonomy } from '~/types';
 import { APP_PORTFOLIO } from 'astrowind:config';
 import { cleanSlug, trimSlash, CATEGORY_BASE, TAG_BASE, PORFOLIO_PERMALINK_PATTERN, PORFOLIO_BASE } from './permalinks';
 
@@ -55,15 +55,13 @@ const getNormalizedPortfolio = async (portfolio: CollectionEntry<'portfolio'>): 
     category: rawCategory,
   } = data;
 
-  const slug = cleanSlug(rawSlug); // cleanSlug(rawSlug.split('/').pop());
+  const slug = language === 'ar' ? cleanSlug(rawSlug).replace('ar/','') : cleanSlug(rawSlug).replace('en/',''); // cleanSlug(rawSlug.split('/').pop());
   const realisationDate = new Date(rawPublishDate);
 
-  const category = rawCategory
-    ? {
+  const category: Taxonomy = {
         slug: cleanSlug(rawCategory),
-        title: rawCategory,
-      }
-    : undefined;
+        title: rawCategory ? rawCategory : '',
+      };
 
   const tags = rawTags.map((tag: string) => ({
     slug: cleanSlug(tag),
@@ -123,6 +121,7 @@ export const blogPostsPerPage = APP_PORTFOLIO?.postsPerPage;
 export const fetchPortfolios = async (lang?: string): Promise<Array<Portfolio>> => {
   if (lang) {
     _portfolios = await load(lang);
+    console.log(_portfolios);
   }
   else if (!_portfolios) {
     _portfolios = await load();
