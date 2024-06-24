@@ -123,7 +123,7 @@ function translatePathOfLanguage(path: string, l: string) {
                     </svg>
                   </button>
                   <ul id="dropdown-example" class="hidden py-2 space-y-2">
-                    {links.map((activity, index) => (
+                    {links?.map((activity, index) => (
                       <li>
                         <button
                           type="button"
@@ -350,12 +350,12 @@ function translatePathOfLanguage(path: string, l: string) {
       });
     });
 
-    servicesButton.addEventListener('click', function (event) {
+    servicesButton?.addEventListener('click', function (event) {
       event.stopPropagation();
-      servicesDropdown.classList.toggle('hidden');
+      servicesDropdown?.classList.toggle('hidden');
     });
 
-    document.querySelector('#mobile-menu').addEventListener('click', function (event) {
+    document.querySelector('#mobile-menu')?.addEventListener('click', function (event) {
       event.stopPropagation();
     });
   });
