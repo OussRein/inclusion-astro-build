@@ -15,12 +15,14 @@ const link = translatePath(getPermalink(portfolio.permalink, 'portfolio'));
 
 <a href={link}>
     <div transition:name={portfolio.id}
-    class="relative bg-center relative flex flex-col justify-end shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur"
+    class="relative bg-center relative flex flex-col justify-end shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur "
     >
-      <img class="w-full h-full" src={portfolio.image} alt={portfolio.title}>
-      <div class="absolute p-6">
-        <div class="text-lg font-bold text-white uppercase" style="text-shadow: 0 0px 2px rgb(69, 69, 69);">{portfolio.title}</div>
-        <p class="font-semi uppercase text-white" style="text-shadow: 0 0px 2px black;">{portfolio.category ? portfolio.category.title : ""}</p>  
-      </div>
+      <img class="w-full h-full " src={portfolio.image} alt={portfolio.title}>
+      <div class="w-full h-full absolute p-6 bg-gradient-to-t from-black/40 flex flex-col justify-end">
+        <div class="mb-0">
+          <div class="text-lg font-bold text-white uppercase" style="text-shadow: 0 0px 2px rgb(69, 69, 69);">{portfolio.title}</div>
+          <p class="font-semi uppercase text-white" style="text-shadow: 0 0px 2px black;">{portfolio.category ? portfolio.category.title : ""}</p>    
+        </div>
+        </div>
       </div>
   </a>
