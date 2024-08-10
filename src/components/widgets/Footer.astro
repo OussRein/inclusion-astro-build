@@ -2,7 +2,10 @@
 import { Icon } from 'astro-icon/components';
 import { SITE } from 'astrowind:config';
 import { getHomePermalink } from '~/utils/permalinks';
+import type { ServiceCategory } from '~/types';
 
+
+// Existing Link type with optional properties
 interface Link {
   text?: string;
   href?: string;
@@ -10,13 +13,8 @@ interface Link {
   icon?: string;
 }
 
-interface Links {
-  title?: string;
-  links: Array<Link>;
-}
-
 export interface Props {
-  links: Array<Links>;
+  links: Array<ServiceCategory>;
   secondaryLinks: Array<Link>;
   socialLinks: Array<Link>;
   footNote?: string;
@@ -24,6 +22,7 @@ export interface Props {
 }
 
 const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+
 ---
 
 <footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800 not-prose']}>
@@ -50,19 +49,20 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
         </div>
       </div>
       {
-        links.map(({ title, links }) => (
+        links.map(({ title, services }) => (
           <div class="col-span-6 md:col-span-3 lg:col-span-2">
             <div class="dark:text-gray-300 font-medium mb-2">{title}</div>
-            {links && Array.isArray(links) && links.length > 0 && (
+            {services && Array.isArray(services) && services.length > 0 && (
               <ul class="text-sm">
-                {links.map(({ text, href, ariaLabel }) => (
+                {services.map(( serviceCategory: ServiceCategory ) => (
                   <li class="mb-2">
                     <a
                       class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
-                      href={href}
-                      aria-label={ariaLabel}
+                      href={serviceCategory.href}
+                      aria-label={serviceCategory.callToAction}
                     >
-                      <Fragment set:html={text} />
+                      
+                      <Fragment set:html={serviceCategory.title} />
                     </a>
                   </li>
                 ))}
