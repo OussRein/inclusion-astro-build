@@ -6,12 +6,13 @@ import HeaderServices from '~/components/widgets/HeaderServices.astro';
 
 import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash } from '~/utils/permalinks';
-import type { CallToAction } from '~/types';
+import type { CallToAction, ServiceCategory } from '~/types';
 import LanguagePicker from './LanguagePicker.astro';
 import { getLangFromUrl } from '~/i18n/utils';
 import { useTranslatedPath, getRouteFromUrl } from '~/i18n/utils';
 import { languages, routes } from '~/i18n/ui';
 
+// Existing Link type with optional properties
 interface Link {
   text?: string;
   href?: string;
@@ -19,10 +20,11 @@ interface Link {
   icon?: string;
 }
 
+// ActionLink remains the same as CallToAction
 interface ActionLink extends CallToAction {}
 
 interface MenuLink extends Link {
-  links?: Array<MenuLink>;
+  links?: Array<Link | ServiceCategory>;
 }
 
 export interface Props {
@@ -123,13 +125,15 @@ function translatePathOfLanguage(path: string, l: string) {
                     </svg>
                   </button>
                   <ul id="dropdown-example" class="hidden py-2 space-y-2">
-                    {links?.map((activity, index) => (
+                    {links?.map((serviceCategory: ServiceCategory, index) => (
                       <li>
                         <button
                           type="button"
                           class="first-menu-level flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                         >
-                          <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">{activity.title}</span>
+                          <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
+                            {serviceCategory.title}
+                          </span>
                           <svg
                             class="w-3 h-3"
                             aria-hidden="true"
@@ -147,7 +151,7 @@ function translatePathOfLanguage(path: string, l: string) {
                           </svg>
                         </button>
                         <ul class="dropdown-example2 hidden py-2 space-y-2" data-index={index}>
-                          {activity.services.map((service) => (
+                          {serviceCategory.services.map((service) => (
                             <li>
                               <a
                                 href="#"
@@ -163,7 +167,7 @@ function translatePathOfLanguage(path: string, l: string) {
                   </ul>
                 </li>
               ) : links?.length ? (
-                links.map(({ text: text2, href: href2 }) => (
+              (links as Link[]).map(({ text: text2, href: href2 }) => (
                   <li>
                     <a
                       href={translatePath(href2!)}
@@ -276,13 +280,17 @@ function translatePathOfLanguage(path: string, l: string) {
       </div>
     </nav>
 
-    <nav class="items-right w-full md:w-auto hidden md:flex md:mx-5 text-default text-white overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:justify-self-end"
-      aria-label="Main navigation">
-      <ul class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center">
+    <nav
+      class="items-right w-full md:w-auto hidden md:flex md:mx-5 text-default text-white overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:justify-self-end"
+      aria-label="Main navigation"
+    >
+      <ul
+        class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center"
+      >
         {
           links.map(({ text, href, links }) =>
             text === 'Services' ? (
-              <HeaderServices services={links} />
+              <HeaderServices services={(links as ServiceCategory[])} />
             ) : (
               <li class={links?.length ? 'dropdown' : ''}>
                 {links?.length ? (
@@ -295,7 +303,7 @@ function translatePathOfLanguage(path: string, l: string) {
                       />
                     </button>
                     <ul class="dropdown-menu md:backdrop-blur-md  rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-orange-400 md:min-w-[200px] drop-shadow-xl">
-                      {links.map(({ text: text2, href: href2 }) => (
+                      {(links as Link[]).map(({ text: text2, href: href2 }) => (
                         <li>
                           <a
                             class:list={[
