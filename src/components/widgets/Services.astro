@@ -1,6 +1,14 @@
 ---
+import { getLangFromUrl } from '~/i18n/utils';
 import ServiceGrid from '../ui/ServiceGrid.astro';
 import { services } from '~/navigation';
+import type { ServiceCategory } from '~/types';
+
+const lang = getLangFromUrl(Astro.url);
+let languageServices : Array<ServiceCategory>;
+if (lang === 'ar') languageServices = services.ar;
+else if (lang === 'en') languageServices = services.en;
+else languageServices = services.fr;
 
 ---
 
@@ -15,5 +23,5 @@ import { services } from '~/navigation';
             </h2>
           </div>
       </div>
-  {services.map((service) => <ServiceGrid service={service} />)}
+  {languageServices.map((service) => <ServiceGrid service={service} />)}
 </section>
