@@ -1,8 +1,8 @@
 ---
-import Features2 from '~/components/widgets/Features2.astro';
+import Carousel from '~/components/widgets/Carousel.astro';
+import ContactCallForAction from '~/components/widgets/ContactCallForAction.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
+import Values from '~/components/widgets/Values.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
@@ -13,178 +13,54 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
 
-  <Hero >
-    <Fragment slot="title">
-      Elevate your online presence with our <br />
-      <span class="text-accent dark:text-white highlight"> Beautiful Website Templates</span>
-    </Fragment>
+  <Hero />
 
-    <Fragment slot="subtitle">
-      Donec efficitur, ipsum quis congue luctus, mauris magna convallis mauris, eu auctor nisi lectus non augue. Donec
-      quis lorem non massa vulputate efficitur ac at turpis. Sed tincidunt ex a nunc convallis, et lobortis nisi tempus.
-      Suspendisse vitae nisi eget tortor luctus maximus sed non lectus.
-    </Fragment>
-  </Hero>
+  <!-- Carousel Widget ****************** -->
 
+  <Carousel />
 
-  <div class="slider">
-    <div class="slide-track">
-      <div class="slide">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
-      </div>
-      <div class="slide">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
-      </div>
-      <div class="slide">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
-      </div>
-      <div class="slide">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
-      </div>
-      <div class="slide">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
-      </div>
-      <div class="slide">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
-      </div>
-      <div class="slide">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
-      </div>
-      <div class="slide">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
-      </div>
-      <div class="slide">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
-      </div>
-      <div class="slide">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
-      </div>
-      <div class="slide">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
-      </div>
-      <div class="slide">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
-      </div>
-      <div class="slide">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
-      </div>
-      <div class="slide">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+  <!-- Steps2 Widget ****************** -->
+
+  <section
+    class="relative not-prose py-12 bg-[url('https://inclusion.dz/wp-content/uploads/2022/01/Fond-Background.png')]"
+  >
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="py-12 md:py-12">
+        <div class="max-w-6xl mx-auto">
+          <h1
+            class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-0 font-heading dark:text-gray-200"
+          >
+            Qui somme nous
+          </h1>
+          <p class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase mt-0 mb-6">
+            AND OUR PHILOSOPHY
+          </p>
+          <p class="text-xl text-gray-900 mb-4">
+            Dans un contexte de concurrence et d’accroissement des risques, les entreprises font face à de nombreux
+            défis. L’évolution des marchés, les changements continus induits par une compétition féroce, aussi bien sur
+            le plan local, régional, qu’international, font subir aux entreprises des contraintes nouvelles.
+          </p>
+          <p class="text-xl text-gray-900 mb-4">
+            Grâce à notre aide, Votre entreprise ne vivera plus ces changements comme une contrainte mais comme une
+            nouvelle donne qui ouvrira de nouvelles opportunités et des perspectives d’avenir.
+          </p>
+          <p class="text-xl text-gray-900 mb-4">
+            Notre philosophie consiste à travailler en étroite collaboration avec nos clients en comprenant leurs
+            besoins spécifiques et en fournissant des solutions qui leurs permettent de faire face à l’environnement
+            commercial concurrentiel et instable d’aujourd’hui.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- Stats Widget ****************** -->
+  </section>
 
-  <Stats
-    title="Statistics about us"
-    stats={[
-      { title: 'Offices', amount: '4' },
-      { title: 'Employees', amount: '248' },
-      { title: 'Templates', amount: '12' },
-      { title: 'Awards', amount: '24' },
-    ]}
-  />
+  <!-- VALUES Widget ****************** -->
 
-  <!-- Steps2 Widget ****************** -->
+  <Values />
 
-  <Steps2
-    title="Our values"
-    subtitle="Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus. Nulla facilisi. Vestibulum malesuada lacus."
-    items={[
-      {
-        title: 'Customer-centric approach',
-        description:
-          'Donec id nibh neque. Quisque et fermentum tortor. Fusce vitae dolor a mauris dignissim commodo. Ut eleifend luctus condimentum.',
-      },
-      {
-        title: 'Constant Improvement',
-        description:
-          'Phasellus laoreet fermentum venenatis. Vivamus dapibus pulvinar arcu eget mattis. Fusce eget mauris leo.',
-      },
-      {
-        title: 'Ethical Practices',
-        description:
-          'Vestibulum imperdiet libero et lectus molestie, et maximus augue porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-      },
-    ]}
-  />
+  <!-- ContactCallForAction Widget ************** -->
 
-  <!-- Steps2 Widget ****************** -->
-
-  <Steps2
-    title="Achievements"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
-    isReversed={true}
-    callToAction={{
-      text: 'See more',
-      href: '/',
-    }}
-    items={[
-      {
-        title: 'Global reach',
-        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
-        icon: 'tabler:globe',
-      },
-      {
-        title: 'Positive customer feedback and reviews',
-        description:
-          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
-        icon: 'tabler:message-star',
-      },
-      {
-        title: 'Awards and recognition as industry experts',
-        description:
-          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
-        icon: 'tabler:award',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Our locations"
-    tagline="Find us"
-    columns={4}
-    items={[
-      {
-        title: 'EE.UU',
-        description: '1234 Lorem Ipsum St, 12345, Miami',
-      },
-      {
-        title: 'Spain',
-        description: '5678 Lorem Ipsum St, 56789, Madrid',
-      },
-      {
-        title: 'Australia',
-        description: '9012 Lorem Ipsum St, 90123, Sydney',
-      },
-      {
-        title: 'Brazil',
-        description: '3456 Lorem Ipsum St, 34567, São Paulo',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Technical Support"
-    tagline="Contact us"
-    columns={2}
-    items={[
-      {
-        title: 'Chat with us',
-        description:
-          'Integer luctus laoreet libero, auctor varius purus rutrum sit amet. Ut nec molestie nisi, quis eleifend mi.',
-        icon: 'tabler:messages',
-      },
-      {
-        title: 'Call us',
-        description:
-          'Mauris faucibus finibus orci, in posuere elit viverra non. In hac habitasse platea dictumst. Cras lobortis metus a hendrerit congue.',
-        icon: 'tabler:headset',
-      },
-    ]}
+  <ContactCallForAction
+    description="We combine innovative technologies with proven digital expertise to develop strategies that grow awareness, traffic, engagement, and sales. We analyze emerging markets, positioning, customer profiles, behavioral data, and more to identify opportunities that will grow your business."
   />
 </Layout>
