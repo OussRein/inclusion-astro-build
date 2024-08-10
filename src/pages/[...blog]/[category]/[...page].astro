@@ -10,12 +10,15 @@ import Pagination from '~/components/blog/Pagination.astro';
 export const prerender = true;
 
 export const getStaticPaths = (async ({ paginate }) => {
-  return await getStaticPathsBlogCategory({ paginate });
+  return await getStaticPathsBlogCategory({ paginate }, 'FR');
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths> & { category: Record<string, string> };
 
 const { page, category } = Astro.props as Props;
+
+console.log("InferGetStaticPropsType")
+console.log(page)
 
 const currentPage = page.currentPage ?? 1;
 

@@ -121,7 +121,6 @@ export const blogPostsPerPage = APP_PORTFOLIO?.postsPerPage;
 export const fetchPortfolios = async (lang?: string): Promise<Array<Portfolio>> => {
   if (lang) {
     _portfolios = await load(lang);
-    console.log(_portfolios);
   }
   else if (!_portfolios) {
     _portfolios = await load();

@@ -41,7 +41,7 @@ export const getCanonical = (path = ''): string | URL => {
 };
 
 /** */
-export const getPermalink = (slug = '', type = 'page'): string => {
+export const getPermalink = (slug = '', type = 'page', lang = 'fr'): string => {
 
   let permalink: string;
 
@@ -81,7 +81,7 @@ export const getPermalink = (slug = '', type = 'page'): string => {
       break;
 
     case 'post':
-      permalink = createPath(trimSlash(slug));
+      permalink = '/blog' + createPath(trimSlash(slug));
       break;
 
     case 'page':
@@ -89,6 +89,7 @@ export const getPermalink = (slug = '', type = 'page'): string => {
       permalink = createPath(slug);
       break;
   }
+  if (lang != "fr") permalink = lang + permalink;
 
   return definitivePermalink(permalink);
 };

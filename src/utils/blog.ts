@@ -151,7 +151,7 @@ const load = async function (lang?:LanguageCodeFilterEnum): Promise<Array<Post>>
     body: JSON.stringify({
       query: `
       query getPosts {
-    posts(first: 100, after: null, where: {categoryNotIn: [131], language: `+ LanguageCodeFilterEnum.FR +`}) {
+    posts(first: 100, after: null, where: {categoryNotIn: [131], language: `+ lang +`}) {
       edges {
         node {
           id
@@ -167,6 +167,7 @@ const load = async function (lang?:LanguageCodeFilterEnum): Promise<Array<Post>>
           categories {
             nodes {
               name
+              slug
               databaseId
             }
           }
@@ -211,26 +212,27 @@ export const blogPostsPerPage = APP_BLOG?.postsPerPage;
 /** */
 export const fetchPosts = async (lang?: string): Promise<Array<Post>> => {
   if (lang) {
-    if (lang === 'fr'){
-
+    if (lang === 'FR'){
       if (!_frPosts) {
         _frPosts = await load(LanguageCodeFilterEnum.FR);
       }
-      return _frPosts;
+      _posts = _frPosts;
+      return _posts;
       
-    }else if (lang === 'en'){
+    }else if (lang === 'EN'){
 
       if (!_enPosts) {
         _enPosts = await load(LanguageCodeFilterEnum.EN);
       }
-      return _enPosts;
+      _posts = _enPosts;
+      return _posts;
 
-    }else if (lang === 'ar'){
-
+    }else if (lang === 'AR'){
       if (!_arPosts) {
         _arPosts = await load(LanguageCodeFilterEnum.AR);
       }
-      return _arPosts;
+      _posts = _arPosts;
+      return _posts;
 
     }
   }else if (!_posts) {
@@ -278,6 +280,7 @@ export const findPostById = async (id: string): Promise<Post> => {
         edges {
           node {
             id
+            slug
             name
           }
         }
@@ -324,14 +327,14 @@ export const getStaticPathsBlogPost = async () => {
 };
 
 /** */
-export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: PaginateFunction }) => {
+export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: PaginateFunction }, lang: string) => {
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
-  const posts = await fetchPosts();
+  const posts = await fetchPosts(lang);
   const categories = {};
-  /*posts.map((post) => {
+  posts.map((post) => {
     post.categories[0].slug && (categories[post.categories[0].slug] = post.categories[0]);
-  });*/
+  });
 
   return Array.from(Object.keys(categories)).flatMap((categorySlug) =>
     paginate(
@@ -373,7 +376,6 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
 /** */
 export async function getRelatedPosts(originalPost: Post, maxResults: number = 4): Promise<Post[]> {
   const allPosts = await fetchPosts();
-  console.log(allPosts.length)
   const i = 0.5 - Math.random();
 
   const sortedPosts= allPosts.sort(() => i);

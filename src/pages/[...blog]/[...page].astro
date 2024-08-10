@@ -14,7 +14,7 @@ export const prerender = true;
 
 
 export const getStaticPaths = (async ({ paginate }) => {
-  return getStaticPathsBlogList({ paginate });
+  return getStaticPathsBlogList({ paginate }, 'FR');
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;

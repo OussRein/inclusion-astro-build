@@ -21,7 +21,6 @@ export const getStaticPaths = (async () => {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { post } = Astro.props as Props;
-console.log(post)
 const url = getCanonical(getPermalink(post.slug, 'post'));
 const image = post.featuredImage.sourceUrl;
 
