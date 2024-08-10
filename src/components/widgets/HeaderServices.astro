@@ -1,23 +1,12 @@
 ---
 import { Icon } from 'astro-icon/components';
-
-interface Link {
-  text?: string;
-  services?: Array<Link>;
-}
-
-interface ServicesMenuLink extends Link {
-  links?: Array<ServicesMenuLink>;
-}
+import type { ServiceCategory } from '~/types';
 
 export interface Props {
-  services?: Array<ServicesMenuLink>;
+  services?: Array<ServiceCategory>;
 }
 
 const { services = [] } = Astro.props;
-
-console.log(services);
-console.log('links');
 ---
 
 <!--Hoverable Link-->
@@ -32,19 +21,15 @@ console.log('links');
   <div class="mx-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-white rounded-b-lg">
     <div class="container grid grid-cols-1 md:grid-cols-4 rounded-b-lg">
       <div class="flex flex-col justify-between bg-orange-100 border-r-2 border-orange-500 rounded-bl-lg">
-        <ul class="text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
-            <div class="mx-3 py-3 ml-6">
-                <h5 class=" text-orange-700 text-lg mb-1.5 font-bold"> We have a full wide range of services</h5>
-                <h6 class=" text-gray-900 text-sm mb-1.5 font-semibold"> Tailored just for you</h6>
-              </div>
+        <ul class="text-sm text-gray-700 mt-6" aria-labelledby="dropdownLargeButton">
           {
-            services.map((service, index) => (
+            services.map((service: ServiceCategory, index) => (
               <li class="hoverable-menu-item mx-6" data-index={index}>
                 <a href="javascript:;" class="mx-3 py-3 hover:rounded-xl flex items-center transition-all duration-500">
                   <div class="ml-4 flex items-center">
                     <div class="">
                       <h5 class=" text-orange-900 text-md mb-1.5 font-bold"> {service.title}</h5>
-                      <h6 class=" text-gray-900 text-sm mb-1.5 font-semibold"> the best {service.title} for you</h6>
+                      <h6 class=" text-gray-900 text-sm mb-1.5 font-semibold"> {service.callToAction}</h6>
                     </div>
                     <div class="align-middle">
                       <svg
@@ -125,8 +110,8 @@ console.log('links');
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    const menuItems = document.querySelectorAll('.hoverable-menu-item');
-    const dynamicGrid = document.querySelectorAll('.dynamic-grid-item');
+    const menuItems = document.querySelectorAll<HTMLElement>('.hoverable-menu-item');
+    const dynamicGrid = document.querySelectorAll<HTMLElement>('.dynamic-grid-item');
 
     const updateGridContent = (index) => {
       dynamicGrid.forEach((item) => {
