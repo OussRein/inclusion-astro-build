@@ -1,0 +1,91 @@
+---
+const {
+  services,
+  excludedServiceTitle
+} = Astro.props;
+
+const otherServices = services.filter((service) => service.title != excludedServiceTitle);
+
+console.log(otherServices);
+---
+
+<section class="relative">
+    <div class="relative w-full bg-gray-200 mx-auto px-4 sm:px-6">
+      <div class="py-12 md:py-20 px-20 lg:py-0 lg:flex lg:items-center lg:gap-8">
+        <div class="text-center pb-10 pt-20 md:pb-16 mx-auto">
+          <div class="mx-auto">
+            <h2
+              class="text-2xl md:text-5xl font-bold leading-tighter tracking-tighter mb-8 font-heading dark:text-gray-200"
+            >
+              A full package for success
+            </h2>
+          </div>
+          <div>
+            <ol class="justify-center group/list grid grid-cols-3 w-full">
+                { otherServices.map((service) => (
+                                <li class="justify-center w-full p-6 rounded-lg text-slate-800 hover:font-bold">
+                <div class="justify-center group relative pb-1 transition-all text-left">
+                  <div
+                    class="basis-1/2 after:content-[''] after:block after:relative after:top-6 after:w-1/4 after:left-0 after:border-t-2 after:border-orange-600"
+                  >
+                    <div class="relative m-auto">
+                      <img
+                        class="mx-auto rounded-md w-full lg:max-w-screen-md md:lg:max-w-screen-sm xl:max-w-screen-lg"
+                        src={service.image}
+                        alt={service.title}
+                        width="500"
+                        height="600"
+                      />
+                    </div>
+                  </div>
+                  <h3 class="font-medium leading-snug mt-10">
+                    <div>
+                      <a
+                        class="inline-flex items-baseline font-bold text-xl text-orange-600 leading-tight group/link"
+                        href="https://inclusion.dz/"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                      >
+                        <>
+                          <span>{service.title}</span>
+                        </>
+                      </a>
+                    </div>
+                    <div class="mt-4">
+                      <p class="" aria-hidden="true">{service.catchPhrase}</p>
+                    </div>
+                  </h3>
+
+                  <div>
+                    <button
+                      type="button"
+                      class="hover:text-orange-500 font-medium leading-snug mt-4 inline-flex items-center"
+                    >
+                      Discover more
+                      <svg
+                        class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 14 5"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M1 5h12m0 0L9 1m4 4L9 9"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </li>
+              
+              ))
+                }
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

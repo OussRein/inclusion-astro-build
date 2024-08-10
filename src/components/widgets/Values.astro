@@ -1,0 +1,149 @@
+---
+import { getLangFromUrl } from '~/i18n/utils';
+import Headline from '~/components/ui/Headline.astro';
+import { Icon } from 'astro-icon/components';
+
+let values = {
+  fr: {
+    title: 'Nos Valeurs',
+    subtitle:
+      'Notre passion est de nous associer à des clients qui adoptent de nouvelles idées globales qui aident à faire évoluer leur marketing à un nouveau niveau qui assure le succès futur de leur entreprise dans le monde entier.',
+    image: 'https://inclusion.dz/wp-content/uploads/2022/02/Our-Team-Inclusion.jpg',
+    items: [
+      {
+        title: 'Intégrité',
+        description:
+          'L’éthique des affaires est primordiale pour nous. Nous ne faisons aucune promesse trompeuse; de hautes revendications qui ne peuvent pas être pratiquement réalisées; ou des services de qualité inférieure pour des gains économiques.',
+      },
+      {
+        title: 'Orientation client',
+        description:
+          'Nos services sont conçus pour donner aux clients un motif singulier de dépasser leurs attentes. Nous visons la satisfaction absolue de nos clients en produisant constamment des solutions technologiques marquées par la haute performance et l’évolutivité.',
+      },
+      {
+        title: 'Innovation',
+        description:
+          'L’innovation est notre maitre mot. Nous offrons des solutions pionnières aux clients en analysant les tendances commerciales et en saisissant les opportunités. Nous nous efforçons d’être à la point de l’innovation pour obtenir un avantage commercial.',
+      },
+      {
+        title: 'Respect',
+        description:
+          'Respect absolu des individus à tous les niveaux de l’organisation, sans distinction de sexe, de race, de religion ou d’âge.',
+      },
+    ],
+  },
+  ar: {
+    title: 'Nos Valeurs',
+    subtitle:
+      'Notre passion est de nous associer à des clients qui adoptent de nouvelles idées globales qui aident à faire évoluer leur marketing à un nouveau niveau qui assure le succès futur de leur entreprise dans le monde entier.',
+    items: [
+      {
+        title: 'Intégrité',
+        description:
+          'L’éthique des affaires est primordiale pour nous. Nous ne faisons aucune promesse trompeuse; de hautes revendications qui ne peuvent pas être pratiquement réalisées; ou des services de qualité inférieure pour des gains économiques.',
+      },
+      {
+        title: 'Orientation client',
+        description:
+          'Nos services sont conçus pour donner aux clients un motif singulier de dépasser leurs attentes. Nous visons la satisfaction absolue de nos clients en produisant constamment des solutions technologiques marquées par la haute performance et l’évolutivité.',
+      },
+      {
+        title: 'Innovation',
+        description:
+          'L’innovation est notre maitre mot. Nous offrons des solutions pionnières aux clients en analysant les tendances commerciales et en saisissant les opportunités. Nous nous efforçons d’être à la point de l’innovation pour obtenir un avantage commercial.',
+      },
+      {
+        title: 'Respect',
+        description:
+          'Respect absolu des individus à tous les niveaux de l’organisation, sans distinction de sexe, de race, de religion ou d’âge.',
+      },
+    ],
+  },
+  en: {
+    title: 'Nos Valeurs',
+    subtitle:
+      'Notre passion est de nous associer à des clients qui adoptent de nouvelles idées globales qui aident à faire évoluer leur marketing à un nouveau niveau qui assure le succès futur de leur entreprise dans le monde entier.',
+    items: [
+      {
+        title: 'Intégrité',
+        description:
+          'L’éthique des affaires est primordiale pour nous. Nous ne faisons aucune promesse trompeuse; de hautes revendications qui ne peuvent pas être pratiquement réalisées; ou des services de qualité inférieure pour des gains économiques.',
+      },
+      {
+        title: 'Orientation client',
+        description:
+          'Nos services sont conçus pour donner aux clients un motif singulier de dépasser leurs attentes. Nous visons la satisfaction absolue de nos clients en produisant constamment des solutions technologiques marquées par la haute performance et l’évolutivité.',
+      },
+      {
+        title: 'Innovation',
+        description:
+          'L’innovation est notre maitre mot. Nous offrons des solutions pionnières aux clients en analysant les tendances commerciales et en saisissant les opportunités. Nous nous efforçons d’être à la point de l’innovation pour obtenir un avantage commercial.',
+      },
+      {
+        title: 'Respect',
+        description:
+          'Respect absolu des individus à tous les niveaux de l’organisation, sans distinction de sexe, de race, de religion ou d’âge.',
+      },
+    ],
+  },
+};
+
+const lang = getLangFromUrl(Astro.url);
+
+let useValues;
+let isReversed = false;
+if (lang === 'ar') {
+  useValues = values.ar;
+  isReversed = true;
+} else if (lang === 'en') useValues = values.en;
+else useValues = values.fr;
+---
+
+<section class=" relative  mx-auto  not-prose py-12 bg-top-left bg-cover bg-[url('https://inclusion.dz/wp-content/uploads/2022/02/RECTANGLE-ORANGE.png')]">
+  <div class={`max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-12 flex flex-col gap-8 md:gap-12 md:flex-row ${isReversed ? 'md:flex-row-reverse' : ''}`}>
+    <div class={`w-full lg:w-1/2 gap-8 md:gap-12 ${isReversed ? 'lg:ml-16 md:ml-8 ml-0' : 'lg:mr-16 md:mr-8 mr-0'}`}>
+      <Headline
+        title={useValues.title}
+        subtitle={useValues.subtitle}
+        tagline={useValues.tagline}
+        classes={{
+          container: 'text-center text-white md:text-left rtl:md:text-right mb-4 md:mb-8',
+          title: 'mb-4 text-3xl text-grey-100 lg:text-4xl font-bold font-heading',
+          subtitle: 'mb-8 text-xl text-white',
+          // ...((classes?.headline as {}) ?? {}),
+        }}
+      />
+
+      <div class="w-full text-center md:text-left rtl:md:text-right">
+        <div class="relative m-auto">
+          <img
+            class="mx-auto rounded-md h-full"
+            src={useValues.image}
+            alt="OUR VALUES"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="w-full lg:w-1/2 px-0">
+      <ul class="space-y-10">
+        {
+          useValues.items && useValues.items.length
+            ? useValues.items.map(({ title: title2, description, icon }, index) => (
+                <li class="flex md:-mx-4">
+                  <div class="pr-4 sm:pl-4 rtl:pr-0 rtl:pl-4 rtl:sm:pl-0 rtl:sm:pr-4">
+                    <span class="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold rounded-full bg-blue-100 text-primary">
+                      {icon ? <Icon name={icon} class="w-6 h-6 icon-bold" /> : index + 1}
+                    </span>
+                  </div>
+                  <div class="pl-4 rtl:pl-0 rtl:pr-4">
+                    <h3 class="mb-4 text-2xl text-white font-semibold font-heading" set:html={title2} />
+                    <p class="text-white text-xl" set:html={description} />
+                  </div>
+                </li>
+              ))
+            : ''
+        }
+      </ul>
+    </div>
+  </div>
+</section>

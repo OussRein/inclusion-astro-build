@@ -1,0 +1,30 @@
+---
+import ContactCallForAction from '~/components/widgets/ContactCallForAction.astro';
+import OtherServices from '~/components/widgets/OtherServices.astro';
+import ServiceHeader from '~/components/widgets/ServiceHeader.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import { headerData } from '~/navigation';
+
+const metadata = {
+  title: 'Stratégie Digitale — Inclusion',
+  ignoreTitleTemplate: true,
+};
+
+
+const languageHeaderData = headerData.fr;
+
+const services = languageHeaderData.links.find((link) => link.text === 'Services');
+const mainService = services?.links?.find((link) => link.title === 'Stratégie et Consulting');
+const pageService = mainService?.services?.find((service) => service.title === 'Stratégie Digitale');
+---
+
+<Layout metadata={metadata}>
+
+  <ServiceHeader service={pageService} />
+
+  <OtherServices services={services?.links} excludedServiceTitle={pageService?.title} />
+
+  <ContactCallForAction
+    description="We combine innovative technologies with proven digital expertise to develop strategies that grow awareness, traffic, engagement, and sales. We analyze emerging markets, positioning, customer profiles, behavioral data, and more to identify opportunities that will grow your business."
+  />
+</Layout>
