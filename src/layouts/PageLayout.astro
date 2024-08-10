@@ -16,20 +16,27 @@ const { metadata } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 var languageHeaderData;
-if (lang === 'ar') languageHeaderData = headerData.ar;
-else if (lang === 'en') languageHeaderData = headerData.en;
-else languageHeaderData = headerData.fr;
-
+var languageFooterData;
+if (lang === 'ar') {
+  languageHeaderData = headerData.ar;
+  languageFooterData = footerData.ar;
+} else if (lang === 'en') {
+  languageHeaderData = headerData.en;
+  languageFooterData = footerData.en;
+} else {
+  languageHeaderData = headerData.fr;
+  languageFooterData = footerData.fr;
+}
 ---
 
 <Layout metadata={metadata}>
   <slot name="header">
-    <Header {...languageHeaderData} isSticky showRssFeed showToggleTheme/>
+    <Header {...languageHeaderData} isSticky showRssFeed showToggleTheme />
   </slot>
   <main>
     <slot />
   </main>
   <slot name="footer">
-    <Footer {...footerData} />
+    <Footer {...languageFooterData} />
   </slot>
 </Layout>
