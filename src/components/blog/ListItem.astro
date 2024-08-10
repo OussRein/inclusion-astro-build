@@ -8,18 +8,21 @@ import type { Post } from '~/types';
 
 import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/utils';
+import { getLangFromUrl } from '~/i18n/utils';
 
 export interface Props {
   post: Post;
   currentPage: number;
 }
 
-const { post, currentPage } = Astro.props;
+const { post } = Astro.props;
 const image = post.featuredImage.sourceUrl;
 const date = new Date(post.date)
 const formattedDate = getFormattedDate(date);
 
-const link = currentPage === 1 ? 'blog/' + post.slug : post.slug;
+const lang = getLangFromUrl(Astro.url);
+
+const link = getPermalink(post.slug, 'post', lang);
 ---
 
 <article class={`max-w-md mx-auto md:max-w-none grid gap-6 md:gap-8 ${image ? 'md:grid-cols-2' : ''}`}>
@@ -81,7 +84,7 @@ const link = currentPage === 1 ? 'blog/' + post.slug : post.slug;
               <>
                 {' '}
                 ·{' '}
-                <a class="hover:underline" href={getPermalink(category.slug, 'category')}>
+                <a class="hover:underline" href={getPermalink(category.slug, 'category', lang)}>
                   {category.name}
                 </a>
               </>
