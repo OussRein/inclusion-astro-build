@@ -14,13 +14,10 @@ function translatePath(path: string, l: string) {
   const pathName = path.replaceAll('/', '');
   const hasTranslation = 'fr' !== l && routes[l] !== undefined && routes[l][pathName] !== undefined;
   if (!hasTranslation) {
-    const isPortfolio = Astro.url.pathname.includes('portfolio');
-    console.log('translatePath')
-    console.log(l)
+    const isPortfolioOrBlog = Astro.url.pathname.includes('portfolio') || Astro.url.pathname.includes('blog');
     let pth = Astro.url.pathname.replace('ar/','');
     pth = pth.replace('en/','');
-    console.log(pth)
-    if (isPortfolio) return l === 'fr' ? pth : `/${l}${pth}`;
+    if (isPortfolioOrBlog) return l === 'fr' ? pth : `/${l}${pth}`;
   }
   const translatedPath = hasTranslation ? '/' + routes[l][pathName] : path;
   if (path === '/') return l === 'fr' ? path : `/${l}`;
