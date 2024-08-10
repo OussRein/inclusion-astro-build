@@ -3,6 +3,28 @@ import type { HTMLAttributes, ImageMetadata } from 'astro/types';
 
 
 /** The main data structure for requesting posts from wordpress */
+export interface LocalizedServices {
+  fr: ServiceCategory[];
+  ar: ServiceCategory[];
+  en: ServiceCategory[];
+}
+
+export interface ServiceCategory {
+  title: string;
+  callToAction: string;
+  catchPhrase: string;
+  description: string;
+  href: string;
+  services: ServiceDetail[];
+}
+
+export interface ServiceDetail {
+  title: string;
+  callToAction: string;
+  catchPhrase: string;
+  description: string;
+  href: string;
+}
 
 export interface Post {
   /** A unique ID number that identifies a post. */
