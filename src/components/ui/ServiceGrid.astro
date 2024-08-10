@@ -4,7 +4,7 @@ const { service } = Astro.props;
 
 <div class="bg-orange-100 p-6 rounded-md m-3 mb-6">
   <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
-    <div class="pr-6 mb-6 relative bg-center relative flex flex-col">
+    <div class="pr-6 mb-6 relative bg-center flex flex-col">
       <h3 class="text-2xl font-bold text-orange-600 uppercase">
         {service.title}
       </h3>
@@ -12,15 +12,15 @@ const { service } = Astro.props;
     <div class="col-span-3 relative">
       <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
         {
-          service.services.map(({ title, subtitle = {} }) => (
+          service.services.map(({ title, description = {}, href }) => (
             <div class="flex flex-col justify-between  lg:border-r-[1px] lg:border-orange-400/75 ">
               <div class="pr-6 pt-3 pb-3">
                 <h4 class="text-md font-bold">{title}</h4>
-                <p class="text-sm text-gray-600 mt-2" set:html={subtitle} />
+                <p class="text-xs text-gray-600 mt-2" set:html={description} />
               </div>
               <div>
-                <button
-                  type="button"
+                <a
+                href={href}
                   class="text-gray-700 hover:text-orange-500 font-medium rounded-lg text-sm text-left inline-flex items-center"
                 >
                   Discover more
@@ -39,7 +39,7 @@ const { service } = Astro.props;
                       d="M1 5h12m0 0L9 1m4 4L9 9"
                     />
                   </svg>
-                </button>
+                </a>
               </div>
             </div>
           ))
