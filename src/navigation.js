@@ -679,7 +679,7 @@ export const headerData = {
         href: getPermalink('/ar/about'),
       },
       {
-        text: 'Services',
+        text: 'خدماتنا',
         links: services.ar,
       },
       {
@@ -693,6 +693,31 @@ export const headerData = {
     ],
   },
 };
+
+export const headerArticle = {
+  fr: {
+    title: 'C’EST QUOI LA TRANSFORMATION DIGITALE? POURQUOI EST-ELLE IMPORTANTE?',
+    callToAction: "En savoir plus",
+    description: 'Découvrez l’importance de la transformation digitale pour les entreprises modernes et comment elle peut améliorer leur efficacité et compétitivité.',
+    href: getPermalink('/blog/cest-quoi-la-transformation-digitale'),
+    image: 'https://inclusion.dz/wp-content/uploads/2022/11/TEMPLATE-INCLUSION-DIGITAL-MARKETING-14-1536x1097.jpg',
+  },
+  ar: {
+    title: 'ما هو التحول الرقمي؟ ولماذا هو مهم؟',
+    callToAction: "اقرأ المزيد",
+    description: 'اكتشف أهمية التحول الرقمي للشركات الحديثة وكيف يمكن أن يعزز من كفاءتها وقدرتها التنافسية.',
+    href: getPermalink('/ar/blog/ما-هي-التحول-الرقمي-ولماذا-هو-مهم'),
+    image: 'https://inclusion.dz/wp-content/uploads/2022/11/TEMPLATE-INCLUSION-DIGITAL-MARKETING-14-1536x1097.jpg',
+  },
+  en: {
+    title: 'WHAT IS DIGITAL TRANSFORMATION? WHY IS IT IMPORTANT?',
+    callToAction: "Learn more",
+    description: 'Explore the importance of digital transformation for modern businesses and how it can enhance their efficiency and competitiveness.',
+    href: getPermalink('/blog/branding-and-design/user-experience'),
+    image: 'https://inclusion.dz/wp-content/uploads/2022/11/TEMPLATE-INCLUSION-DIGITAL-MARKETING-14-1536x1097.jpg',
+  },
+};
+
 
 export const footerData = {
   fr: {
