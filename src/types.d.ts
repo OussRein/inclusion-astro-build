@@ -9,6 +9,14 @@ export interface LocalizedServices {
   en: ServiceCategory[];
 }
 
+export interface Article {
+  title: string;
+  callToAction: string;
+  description: string;
+  href: string;
+  image?: ImageMetadata | string;
+}
+
 export interface ServiceCategory {
   title: string;
   callToAction: string;
