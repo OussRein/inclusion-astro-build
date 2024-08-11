@@ -6,7 +6,7 @@ import HeaderServices from '~/components/widgets/HeaderServices.astro';
 
 import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash } from '~/utils/permalinks';
-import type { CallToAction, ServiceCategory } from '~/types';
+import type { Article, CallToAction, ServiceCategory } from '~/types';
 import LanguagePicker from './LanguagePicker.astro';
 import { getLangFromUrl } from '~/i18n/utils';
 import { useTranslatedPath, getRouteFromUrl } from '~/i18n/utils';
@@ -30,6 +30,7 @@ interface MenuLink extends Link {
 export interface Props {
   id?: string;
   links?: Array<MenuLink>;
+  languageHeaderArticle: Article;
   actions?: Array<ActionLink>;
   isSticky?: boolean;
   isDark?: boolean;
@@ -42,6 +43,7 @@ export interface Props {
 const {
   id = 'header',
   links = [],
+  languageHeaderArticle = [],
   isSticky = false,
   isDark = false,
   isFullWidth = false,
@@ -289,8 +291,8 @@ function translatePathOfLanguage(path: string, l: string) {
       >
         {
           links.map(({ text, href, links }) =>
-            text === 'Services' ? (
-              <HeaderServices services={(links as ServiceCategory[])} />
+            text === 'Services' || text === 'خدماتنا' ? (
+              <HeaderServices text={text} article={languageHeaderArticle as Article} services={(links as ServiceCategory[])} />
             ) : (
               <li class={links?.length ? 'dropdown' : ''}>
                 {links?.length ? (
