@@ -3,7 +3,7 @@ realisationDate: 2023-08-12T00:00:00Z
 order: 1
 language: fr
 title: Mobilis Twenty
-excerpt: 20 years aniv of mobilis.
+excerpt: Pour marquer le 20e anniversaire de MOBILIS, nous avons été chargés de créer une campagne visuelle et numérique complète célébrant deux décennies d'innovation et de service. Le projet comprenait la conception d'affiches commémoratives, la gestion des réseaux sociaux pour engager le public, et la mise en œuvre d'une stratégie de marketing digital pour souligner cet événement important.
 image: https://inclusion.dz/wp-content/uploads/2024/05/Visuel-Twenty-highlight-3.png
 category: UI/UX design
 tags:

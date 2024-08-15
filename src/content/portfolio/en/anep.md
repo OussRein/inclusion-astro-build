@@ -3,7 +3,7 @@ realisationDate: 2023-08-12T00:00:00Z
 order: 2
 language: en
 title: ANEP
-excerpt: Start your web journey with AstroWind – Use Astro and Tailwind CSS to create an amazing site. Explore our guide now.
+excerpt: ANEP entrusted us with an ambitious project; to completely overhaul its visual identity, including the creation of a new website and the redesign of its logo. The goal was to modernize the company's image and provide a digital platform that reflects its role as a leader in the publishing and advertising industry.
 image: https://inclusion.dz/wp-content/uploads/2024/05/41818d73cc6b34bcb3dd85115cbffcc0.png
 category: Brand Design
 tags:

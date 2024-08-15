@@ -3,7 +3,7 @@ realisationDate: 2023-08-12T00:00:00Z
 order: 1
 language: en
 title: Mobilis 20 Years
-excerpt: Celebrating 20 years since the establishment of Mobilis company.
+excerpt: To mark the 20th anniversary of MOBILIS, we were tasked with creating a comprehensive visual and digital campaign that celebrated two decades of innovation and service. The project included designing commemorative posters, managing social media channels to engage with the audience, and implementing a digital marketing strategy to highlight this milestone.
 image: https://inclusion.dz/wp-content/uploads/2024/05/Visuel-Twenty-highlight-3.png
 category: UI/UX Design
 tags:

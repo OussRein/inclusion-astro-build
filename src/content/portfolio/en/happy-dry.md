@@ -3,7 +3,7 @@ realisationDate: 2023-08-12T00:00:00Z
 order: 6
 language: en
 title: Happy Dry
-excerpt: Start your web journey with AstroWind – Use Astro and Tailwind CSS to create an amazing site. Explore our guide now.
+excerpt: HAPPY DRY entrusted us with the task of creating vibrant digital art and posters that reflect their brand’s fun and dynamic identity. The goal was to produce visually appealing designs that resonate with their target audience and effectively communicate the brand’s core messages.
 image: https://inclusion.dz/wp-content/uploads/2024/05/b592304c4b237727ead3c80d7e5bfcc9.png
 category: 3D Digital Art
 tags:
