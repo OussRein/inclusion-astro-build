@@ -218,6 +218,52 @@ export const services = {
         },
       ],
     },
+    {
+      title: 'Production audiovisuelle et cinématographie',
+      callToAction: 'Découvrez notre expertise',
+      catchPhrase: 'Transformez vos idées en images captivantes',
+      description: 'Nous offrons une gamme complète de services en production audiovisuelle et cinématographique pour donner vie à vos projets. De la gestion de projet à la réalisation de films, documentaires, et captations live, nous vous accompagnons à chaque étape.',
+      href: getPermalink('/services/production-audiovisuelle-et-cinimatographie'),
+      image: designImage,
+      services: [
+        {
+          title: 'Gestion de projet audiovisuel et cinématographique',
+          callToAction: 'En savoir plus',
+          catchPhrase: 'Planifiez, produisez et réussissez',
+          description: 'De la conception à la post-production, nous gérons tous les aspects de votre projet audiovisuel pour garantir un résultat de qualité supérieure.',
+          href: getPermalink('/services/production-audiovisuelle-et-cinimatographie/gestion-de-projet-audiovisuel-et-cinématographique'),
+        },
+        {
+          title: 'Films',
+          callToAction: 'Découvrez nos films',
+          catchPhrase: 'Racontez votre histoire à travers l’art du cinéma',
+          description: 'Nos experts réalisent des films qui captivent, inspirent et laissent une impression durable sur votre public.',
+          href: getPermalink('/services/production-audiovisuelle-et-cinimatographie/films'),
+        },
+        {
+          title: 'Documentaires',
+          callToAction: 'Explorez nos documentaires',
+          catchPhrase: 'Informez, éduquez et inspirez à travers des récits authentiques',
+          description: 'Nous créons des documentaires qui explorent des sujets profonds, avec un regard unique et une narration engageante.',
+          href: getPermalink('/services/production-audiovisuelle-et-cinimatographie/documentaires'),
+        },
+        {
+          title: 'Événementiel et captation live',
+          callToAction: 'Découvrez nos services live',
+          catchPhrase: 'Immortalisez vos événements avec une captation professionnelle',
+          description: 'Nous couvrons vos événements en direct, capturant chaque moment avec une qualité audiovisuelle exceptionnelle.',
+          href: getPermalink('/services/production-audiovisuelle-et-cinimatographie/evenementiel-et-captation-live'),
+        },
+        {
+          title: 'Shooting photo et vidéo',
+          callToAction: 'Réservez votre séance',
+          catchPhrase: 'Capturez l’essence de vos moments avec style',
+          description: 'Nos services de shooting photo et vidéo sont conçus pour mettre en valeur votre vision, qu’il s’agisse de portraits, de publicités, ou de contenus créatifs.',
+          href: getPermalink('/services/production-audiovisuelle-et-cinimatographie/shooting-photo-et-video'),
+        },
+      ],
+    },
+    
   ],
   en: [
     {
@@ -421,6 +467,51 @@ export const services = {
         },
       ],
     },
+    {
+      title: 'Audiovisual Production and Cinematography',
+      callToAction: 'Discover our expertise',
+      catchPhrase: 'Transform your ideas into captivating visuals',
+      description: 'We offer a full range of audiovisual and cinematography production services to bring your projects to life. From project management to the creation of films, documentaries, and live events, we support you at every step.',
+      href: getPermalink('/services/audiovisual-production-and-cinematography'),
+      image: designImage,
+      services: [
+        {
+          title: 'Audiovisual and Cinematographic Project Management',
+          callToAction: 'Learn more',
+          catchPhrase: 'Plan, produce, and succeed',
+          description: 'From conception to post-production, we manage all aspects of your audiovisual project to ensure a superior result.',
+          href: getPermalink('/services/audiovisual-production-and-cinematography/project-management'),
+        },
+        {
+          title: 'Films',
+          callToAction: 'Discover our films',
+          catchPhrase: 'Tell your story through the art of cinema',
+          description: 'Our experts create films that captivate, inspire, and leave a lasting impression on your audience.',
+          href: getPermalink('/services/audiovisual-production-and-cinematography/films'),
+        },
+        {
+          title: 'Documentaries',
+          callToAction: 'Explore our documentaries',
+          catchPhrase: 'Inform, educate, and inspire through authentic storytelling',
+          description: 'We create documentaries that explore deep subjects with a unique perspective and engaging narrative.',
+          href: getPermalink('/services/audiovisual-production-and-cinematography/documentaries'),
+        },
+        {
+          title: 'Event Coverage and Live Recording',
+          callToAction: 'Discover our live services',
+          catchPhrase: 'Capture your events with professional quality',
+          description: 'We cover your events live, capturing every moment with exceptional audiovisual quality.',
+          href: getPermalink('/services/audiovisual-production-and-cinematography/event-coverage-and-live-recording'),
+        },
+        {
+          title: 'Photo and Video Shooting',
+          callToAction: 'Book your session',
+          catchPhrase: 'Capture the essence of your moments in style',
+          description: 'Our photo and video shooting services are designed to highlight your vision, whether it’s portraits, advertisements, or creative content.',
+          href: getPermalink('/services/audiovisual-production-and-cinematography/photo-and-video-shooting'),
+        },
+      ],
+    },    
   ],
   ar: [
     {
@@ -628,6 +719,51 @@ export const services = {
         },
       ],
     },
+    {
+      title: 'الإنتاج السمعي البصري والسينمائي',
+      callToAction: 'اكتشف خبراتنا',
+      catchPhrase: 'حوّل أفكارك إلى صور جذابة',
+      description: 'نقدم مجموعة كاملة من خدمات الإنتاج السمعي البصري والسينمائي لإحياء مشاريعك. من إدارة المشاريع إلى إنتاج الأفلام، الوثائقيات، وتغطية الأحداث الحية، نحن ندعمك في كل خطوة.',
+      href: getPermalink('/services/الإنتاج-السمعي-البصري-والسينمائي'),
+      image: designImage,
+      services: [
+        {
+          title: 'إدارة المشاريع السمعية البصرية والسينمائية',
+          callToAction: 'تعرف على المزيد',
+          catchPhrase: 'خطط، أنتج ونجح',
+          description: 'من التصور إلى ما بعد الإنتاج، ندير جميع جوانب مشروعك السمعي البصري لضمان نتيجة ذات جودة عالية.',
+          href: getPermalink('/services/الإنتاج-السمعي-البصري-والسينمائي/إدارة-المشاريع'),
+        },
+        {
+          title: 'الأفلام',
+          callToAction: 'اكتشف أفلامنا',
+          catchPhrase: 'احكي قصتك من خلال فن السينما',
+          description: 'يبتكر خبراؤنا أفلامًا تجذب، تلهم، وتترك انطباعًا دائمًا على جمهورك.',
+          href: getPermalink('/services/الإنتاج-السمعي-البصري-والسينمائي/الأفلام'),
+        },
+        {
+          title: 'الوثائقيات',
+          callToAction: 'استكشف وثائقياتنا',
+          catchPhrase: 'أبلغ، علم، وألهم من خلال سرد القصص الأصيل',
+          description: 'ننتج وثائقيات تستكشف مواضيع عميقة برؤية فريدة وسرد مشوق.',
+          href: getPermalink('/services/الإنتاج-السمعي-البصري-والسينمائي/الوثائقيات'),
+        },
+        {
+          title: 'تغطية الأحداث والتصوير المباشر',
+          callToAction: 'اكتشف خدماتنا المباشرة',
+          catchPhrase: 'وثّق أحداثك بجودة احترافية',
+          description: 'نقوم بتغطية أحداثك بشكل مباشر، نلتقط كل لحظة بجودة سمعية بصرية استثنائية.',
+          href: getPermalink('/services/الإنتاج-السمعي-البصري-والسينمائي/تغطية-الأحداث-والتصوير-المباشر'),
+        },
+        {
+          title: 'التصوير الفوتوغرافي والفيديو',
+          callToAction: 'احجز جلستك',
+          catchPhrase: 'التقط جوهر لحظاتك بأسلوب مميز',
+          description: 'خدماتنا في التصوير الفوتوغرافي والفيديو مصممة لتبرز رؤيتك، سواء كانت بورتريهات، إعلانات، أو محتوى إبداعي.',
+          href: getPermalink('/services/الإنتاج-السمعي-البصري-والسينمائي/التصوير-الفوتوغرافي-والفيديو'),
+        },
+      ],
+    },    
   ],
 };
 
@@ -697,27 +833,28 @@ export const headerData = {
 export const headerArticle = {
   fr: {
     title: 'C’EST QUOI LA TRANSFORMATION DIGITALE? POURQUOI EST-ELLE IMPORTANTE?',
-    callToAction: "En savoir plus",
-    description: 'Découvrez l’importance de la transformation digitale pour les entreprises modernes et comment elle peut améliorer leur efficacité et compétitivité.',
+    callToAction: 'En savoir plus',
+    description:
+      'Découvrez l’importance de la transformation digitale pour les entreprises modernes et comment elle peut améliorer leur efficacité et compétitivité.',
     href: getPermalink('/blog/cest-quoi-la-transformation-digitale'),
     image: 'https://inclusion.dz/wp-content/uploads/2022/11/TEMPLATE-INCLUSION-DIGITAL-MARKETING-14-1536x1097.jpg',
   },
   ar: {
     title: 'ما هو التحول الرقمي؟ ولماذا هو مهم؟',
-    callToAction: "اقرأ المزيد",
+    callToAction: 'اقرأ المزيد',
     description: 'اكتشف أهمية التحول الرقمي للشركات الحديثة وكيف يمكن أن يعزز من كفاءتها وقدرتها التنافسية.',
     href: getPermalink('/ar/blog/ما-هي-التحول-الرقمي-ولماذا-هو-مهم'),
     image: 'https://inclusion.dz/wp-content/uploads/2022/11/TEMPLATE-INCLUSION-DIGITAL-MARKETING-14-1536x1097.jpg',
   },
   en: {
     title: 'WHAT IS DIGITAL TRANSFORMATION? WHY IS IT IMPORTANT?',
-    callToAction: "Learn more",
-    description: 'Explore the importance of digital transformation for modern businesses and how it can enhance their efficiency and competitiveness.',
+    callToAction: 'Learn more',
+    description:
+      'Explore the importance of digital transformation for modern businesses and how it can enhance their efficiency and competitiveness.',
     href: getPermalink('/blog/branding-and-design/user-experience'),
     image: 'https://inclusion.dz/wp-content/uploads/2022/11/TEMPLATE-INCLUSION-DIGITAL-MARKETING-14-1536x1097.jpg',
   },
 };
-
 
 export const footerData = {
   fr: {
