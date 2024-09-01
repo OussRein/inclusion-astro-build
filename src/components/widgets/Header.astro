@@ -1,8 +1,6 @@
 ---
-import { Icon } from 'astro-icon/components';
 import Logo from '~/components/Logo.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
-import HeaderServices from '~/components/widgets/HeaderServices.astro';
 
 import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash } from '~/utils/permalinks';
@@ -40,15 +38,7 @@ export interface Props {
   position?: string;
 }
 
-const {
-  id = 'header',
-  links = [],
-  languageHeaderArticle = [],
-  isSticky = false,
-  isDark = false,
-  isFullWidth = false,
-  position = 'center',
-} = Astro.props;
+const { id = 'header', links = [], isSticky = false, isDark = false, position = 'center' } = Astro.props;
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 
@@ -69,304 +59,316 @@ function translatePathOfLanguage(path: string, l: string) {
 <header
   class:list={[
     { sticky: isSticky, relative: !isSticky, dark: isDark },
-    'top-0 z-40 flex-none mx-auto w-full border-gray-50/0 transition-[opacity] ease-in-out',
+    'top-0 z-40 flex-none ml-0 rtl:mr-0  border-gray-50/0 transition-[opacity] ease-in-out',
   ]}
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
 >
   <div
     class:list={[
-      'relative text-default md:px-6 mx-auto w-full bg-[#F38300]',
+      'absolute text-default mx-auto  bg-white/90 my-auto  md:rounded-br-md navbar-container hidden',
       {
-        'md:flex md:justify-between': position !== 'center',
+        'md:flex ': position !== 'center',
       },
       {
-        'md:grid md:grid-cols-2 md:items-center': position === 'center',
-      },
-      {
-        'max-w-7xl': !isFullWidth,
+        'md:flex md: py-2 md:flex-row md:items-center': position === 'center',
       },
     ]}
   >
-    <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex px-2 justify-between']}>
+    <div
+      class:list={[
+        { 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' },
+        'absolute flex px-2 justify-between w-40 mb-2',
+      ]}
+    >
       <a class="flex items-center" href={translatePath(getHomePermalink())}>
         <Logo />
       </a>
-      <div class="flex items-center md:hidden text-black">
+    </div>
+    <div
+      class:list={[
+        { 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' },
+        'flex px-2 justify-self-end toggle-container',
+      ]}
+    >
+      <div class="flex ml-6 items-center text-orange-600">
         <ToggleMenu />
       </div>
     </div>
 
-    <nav id="mobile-menu" class="bg-[#F38300] border-gray-200 md:hidden text-black" aria-label="Mobile navigation">
-      <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-        <ul class="space-y-2 font-medium">
-          {
-            links.map(({ text, href, links }) =>
-              text === 'Services' ? (
-                <li>
-                  <button
-                    type="button"
-                    id="services"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100"
-                  >
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Services</span>
-                    <svg
-                      class="w-3 h-3"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 10 6"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m1 1 4 4 4-4"
-                      />
-                    </svg>
-                  </button>
-                  <ul id="dropdown-example" class="hidden py-2 space-y-2">
-                    {links?.map((serviceCategory: ServiceCategory, index) => (
-                      <li>
-                        <button
-                          type="button"
-                          class="first-menu-level flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                        >
-                          <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
-                            {serviceCategory.title}
-                          </span>
-                          <svg
-                            class="w-3 h-3"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 10 6"
-                          >
-                            <path
-                              stroke="currentColor"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="m1 1 4 4 4-4"
-                            />
-                          </svg>
-                        </button>
-                        <ul class="dropdown-example2 hidden py-2 space-y-2" data-index={index}>
-                          {serviceCategory.services.map((service) => (
-                            <li>
-                              <a
-                                href="#"
-                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                              >
-                                {service.title}{' '}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ) : links?.length ? (
-              (links as Link[]).map(({ text: text2, href: href2 }) => (
-                  <li>
-                    <a
-                      href={translatePath(href2!)}
-                      class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                    >
-                      <svg
-                        class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor"
-                        viewBox="0 0 18 18"
-                      >
-                        <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
-                      </svg>
-                      <span class="flex-1 ms-3 whitespace-nowrap">{text2}</span>
-                      <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">
-                        Pro
-                      </span>
-                    </a>
-                  </li>
-                ))
-              ) : (
-                <a
-                  class:list={[
-                    'hover:text-link px-4 py-3 flex items-center',
-                    { 'aw-link-active': href === currentPath },
-                  ]}
-                  href={href}
-                >
-                  {text}
-                </a>
-              )
-            )
-          }
-
-          <li>
-            <>
-              <button
-                type="button"
-                class="first-menu-level flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-              >
-                <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap"
-                  ><svg
-                    class="w-4 h-4 rtl:flip-180"
-                    fill="black"
-                    viewBox="0 0 512 512"
-                    xmlns="http://www.w3.org/2000/svg"
-                    ><title>ionicons-v5-l</title><line
-                      x1="48"
-                      y1="112"
-                      x2="336"
-                      y2="112"
-                      style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
-                    ></line><line
-                      x1="192"
-                      y1="64"
-                      x2="192"
-                      y2="112"
-                      style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
-                    ></line><polyline
-                      points="272 448 368 224 464 448"
-                      style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
-                    ></polyline><line
-                      x1="301.5"
-                      y1="384"
-                      x2="434.5"
-                      y2="384"
-                      style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
-                    ></line><path
-                      d="M281.3,112S257,206,199,277,80,384,80,384"
-                      style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
-                    ></path><path
-                      d="M256,336s-35-27-72-75-56-85-56-85"
-                      style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
-                    ></path></svg
-                  >Languages</span
-                >
-                <svg
-                  class="w-3 h-3"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m1 1 4 4 4-4"></path>
-                </svg>
-              </button>
-              <ul class="dropdown-example2 hidden py-2 space-y-2">
-                {
-                  Object.entries(languages).map(([lang, label]) => (
-                    <li>
-                      <a
-                        href={translatePathOfLanguage(`/${route ? route : ''}`, lang)}
-                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >
-                        {label}
-                      </a>
-                    </li>
-                  ))
-                }
-              </ul>
-            </>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <nav
-      class="items-right w-full md:w-auto hidden md:flex md:mx-5 text-default text-white overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:justify-self-end"
-      aria-label="Main navigation"
-    >
+    <nav class="main-nav" aria-label="Main navigation">
       <ul
-        class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center"
+        class="nav-list flex flex-row md:self-center w-screen text-xl md:text-[0.9375rem] font-medium justify-end"
       >
         {
-          links.map(({ text, href, links }) =>
-            text === 'Services' || text === 'خدماتنا' ? (
-              <HeaderServices text={text} article={languageHeaderArticle as Article} services={(links as ServiceCategory[])} />
-            ) : (
-              <li class={links?.length ? 'dropdown' : ''}>
-                {links?.length ? (
-                  <>
-                    <button type="button" class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center">
-                      {text}{' '}
-                      <Icon
-                        name="tabler:chevron-down"
-                        class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline"
-                      />
-                    </button>
-                    <ul class="dropdown-menu md:backdrop-blur-md  rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-orange-400 md:min-w-[200px] drop-shadow-xl">
-                      {(links as Link[]).map(({ text: text2, href: href2 }) => (
-                        <li>
-                          <a
-                            class:list={[
-                              'first:rounded-t last:rounded-b md:hover:bg-orange-300 hover:text-link py-2 px-5 block whitespace-no-wrap',
-                              { 'aw-link-active': href2 === currentPath },
-                            ]}
-                            href={translatePath(href2!)}
-                          >
-                            {text2}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                ) : (
-                  <a
-                    class:list={[
-                      'hover:text-link dark:hover:text-white px-4 py-3 flex items-center',
-                      { 'aw-link-active': href === currentPath },
-                    ]}
-                    href={href}
-                  >
-                    {text}
-                  </a>
-                )}
-              </li>
-            )
-          )
+          links.map(({ text, href }) => (
+            <li class="nav-item">
+              <a
+                class:list={[
+                  'hover:text-link px-4 py-3 flex items-center',
+                  { 'aw-link-active': href === currentPath },
+                ]}
+                href={href}
+              >
+                {text}
+              </a>
+            </li>
+          ))
         }
 
         <LanguagePicker />
+      </ul>
+    </nav>
+  </div>
 
-        {/* Mega Menu –––––––––––––––––––––––––––––––––––––––––––––––––– */}
+  <div class="mobile-navbar md:hidden flex bg-white">
+    <a class="logo flex items-center" href={translatePath(getHomePermalink())}>
+      <Logo />
+    </a>
+    <input id="menu-toggler" type="checkbox" class="menu-toggler" />
+    <label for="menu-toggler" class="show-menu">
+      <span></span>
+    </label>
+
+    <nav class="nav" aria-label="Mobile navigation">
+      <ul class="nav__menu">
+        {
+          links.map(({ text, href }) => (
+            <a class:list={['nav__link', { 'border-none aw-link-active': href === currentPath }]} href={href}>
+              {text}
+            </a>
+          ))
+        }
+
+        <li class="nav__item">
+          <>
+            <button
+              type="button"
+              class="first-menu-level flex items-center w-full p-2 text-base text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+            >
+              <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap"
+                ><svg class="w-4 h-4 rtl:flip-180" fill="white" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
+                  ><title>ionicons-v5-l</title><line
+                    x1="48"
+                    y1="112"
+                    x2="336"
+                    y2="112"
+                    style="fill:none;stroke:#FFF;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                  ></line><line
+                    x1="192"
+                    y1="64"
+                    x2="192"
+                    y2="112"
+                    style="fill:none;stroke:#FFF;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                  ></line><polyline
+                    points="272 448 368 224 464 448"
+                    style="fill:none;stroke:#FFF;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                  ></polyline><line
+                    x1="301.5"
+                    y1="384"
+                    x2="434.5"
+                    y2="384"
+                    style="fill:none;stroke:#FFF;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                  ></line><path
+                    d="M281.3,112S257,206,199,277,80,384,80,384"
+                    style="fill:none;stroke:#FFF;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                  ></path><path
+                    d="M256,336s-35-27-72-75-56-85-56-85"
+                    style="fill:none;stroke:#FFF;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                  ></path></svg
+                >Languages</span
+              >
+              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 4 4 4-4"></path>
+              </svg>
+            </button>
+            <ul class="dropdown-example2 hidden py-2 space-y-2">
+              {
+                Object.entries(languages).map(([lang, label]) => (
+                  <li>
+                    <a
+                      href={translatePathOfLanguage(`/${route ? route : ''}`, lang)}
+                      class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </>
+        </li>
       </ul>
     </nav>
   </div>
 </header>
 
-<script>
-  document.addEventListener('astro:page-load', () => {
-    const servicesButton = document.getElementById('services');
-    const firstMenuButtons = document.querySelectorAll('.first-menu-level');
-    const servicesDropdown = document.getElementById('dropdown-example');
+<style is:inline>
+  .mobile-navbar {
+    position: relative;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  .logo {
+    text-decoration: none;
+    margin-right: auto;
+    width: 170px;
+    font-weight: 500;
+  }
+  .menu-toggler {
+    left: 10px;
+    top: 15px;
+    opacity: 0;
+    position: absolute;
+  }
+  .menu-toggler:checked + .show-menu span {
+    background: transparent;
+  }
+  .menu-toggler:checked + .show-menu:after {
+    top: 9px;
+    transform: rotate(45deg);
+  }
+  .menu-toggler:checked + .show-menu:before {
+    top: 9px;
+    transform: rotate(-45deg);
+  }
+  .menu-toggler:checked ~ .nav {
+    display: block;
+    transform: translateX(0);
+  }
+  .show-menu {
+    width: 32px;
+    height: 22px;
+    display: flex;
+    left: auto;
+    cursor: pointer;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+  }
+  .show-menu span,
+  .show-menu:before,
+  .show-menu:after {
+    width: 100%;
+    height: 4px;
+    background: #d75d00;
+    border-radius: 3px;
+  }
+  .show-menu:before,
+  .show-menu:after {
+    content: '';
+    left: 0;
+    position: absolute;
+    transition: all 0.3s ease;
+  }
+  .show-menu:before {
+    top: 0;
+  }
+  .show-menu:after {
+    top: 18px;
+  }
+  .nav {
+    right: 0;
+    top: 70px;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    background: #d75d00;
+    transition: all 0.3s ease;
+    transform: translateX(100%);
+  }
+  .nav__menu {
+    list-style: none;
+  }
+  .nav__link {
+    color: #fff;
+    padding: 23px 23px;
+    display: block;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
 
-    firstMenuButtons.forEach((button) => {
-      button.addEventListener('click', function (event) {
-        event.stopPropagation();
-        const dropdown = button.nextElementSibling;
-        if (dropdown) {
-          dropdown.classList.toggle('hidden');
-        }
-      });
-    });
+  .navbar-container {
+    position: absolute;
+    width: 300px;
+    height: 75px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: all 1s ease-in-out;
+    transition-delay:3s;
+  }
 
-    servicesButton?.addEventListener('click', function (event) {
-      event.stopPropagation();
-      servicesDropdown?.classList.toggle('hidden');
-    });
+  .navbar-container:hover {
+    width: 100%;
+    height: 75px;
+    transition-delay: 0s;
+  }
 
-    document.querySelector('#mobile-menu')?.addEventListener('click', function (event) {
-      event.stopPropagation();
-    });
-  });
-</script>
+  .toggle-container {
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    transition: all 1s ease-in-out;
+    transition-delay:3s;
+  }
+
+  .navbar-container:hover .toggle-container {
+    opacity: 0;
+    transition-delay: 0s;
+  }
+
+  .main-nav {
+    width: auto;
+    height: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+    transition-delay:3s;
+  }
+
+  .navbar-container:hover .main-nav {
+    width: auto;
+    right: 0;
+    opacity: 1;
+    transition-delay: 0s;
+  }
+
+  .nav-list {
+    position: relative;
+    padding: 0;
+  }
+
+  .nav-item {
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    transition-delay:3s;
+  }
+
+  .navbar-container:hover .nav-item {
+    opacity: 1;
+  }
+
+  .navbar-container:hover .nav-item:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  .navbar-container:hover .nav-item:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  .navbar-container:hover .nav-item:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+  .navbar-container:hover .nav-item:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+  .navbar-container:hover .nav-item:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+</style>

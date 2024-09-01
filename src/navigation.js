@@ -776,6 +776,7 @@ export const headerData = {
       },
       {
         text: 'Services',
+        href: getPermalink('/services'),
         links: services.fr,
       },
       {
@@ -796,6 +797,7 @@ export const headerData = {
       },
       {
         text: 'Services',
+        href: getPermalink('/en/services'),
         links: services.en,
       },
       {
@@ -816,6 +818,7 @@ export const headerData = {
       },
       {
         text: 'خدماتنا',
+        href: getPermalink('/ar/services'),
         links: services.ar,
       },
       {

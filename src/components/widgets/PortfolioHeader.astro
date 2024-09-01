@@ -13,12 +13,13 @@ export interface Props extends Widget {
 
 const count = 12;
 
-const portfolioElements = (await findLatestPortfolios({ count })).sort((a,b) => a.order - b.order);;
+const portfolioElements = (await findLatestPortfolios({ count })).sort((a,b) => a.order - b.order).slice(0, 6);;
+
 
 ---
 <section class="relative not-prose" id="portfolio-header">
 
-<div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
+<div class="grid lg:grid-cols-12 md:gap-1 lg:grid-rows-6 md:grid-rows-2 md:grid-cols-10 sm:grid-cols-6 grid-cols-1">
   {portfolioElements.map((portfolio) => <PortfolioItem portfolio={portfolio} />)}
 </div>
 </section>

@@ -10,20 +10,20 @@ const {
 } = Astro.props;
 ---
 
-<button type="button text-black" class={className} aria-label="Mobile navigation" data-aw-toggle-menu>
+<button type="button" class={className} aria-label="Mobile navigation" data-aw-sticky-header>
   <span class="sr-only">{label}</span>
   <slot>
     <span
       aria-hidden="true"
-      class="h-0.5 w-6 my-1 rounded-full bg-black transition ease transform duration-200 opacity-80 group-[.expanded]:rotate-45 group-[.expanded]:translate-y-2.5"
+      class="h-1 w-6 mb-0.5 rounded-full bg-orange-500 transition ease transform duration-200 opacity-80 group-[.expanded]:rotate-45 group-[.expanded]:translate-y-2.5"
     ></span>
     <span
       aria-hidden="true"
-      class="h-0.5 w-6 my-1 rounded-full bg-black transition ease transform duration-200 opacity-80 group-[.expanded]:opacity-0"
+      class="h-1 w-6 my-0.5 rounded-full bg-orange-500 transition ease transform duration-200 opacity-80 group-[.expanded]:opacity-0"
     ></span>
     <span
       aria-hidden="true"
-      class="h-0.5 w-6 my-1 rounded-full bg-black transition ease transform duration-200 opacity-80 group-[.expanded]:-rotate-45 group-[.expanded]:-translate-y-2.5"
+      class="h-1 w-6 my-0.5 rounded-full bg-orange-500 transition ease transform duration-200 opacity-80 group-[.expanded]:-rotate-45 group-[.expanded]:-translate-y-2.5"
     ></span>
   </slot>
 </button>

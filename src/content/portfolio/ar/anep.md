@@ -3,7 +3,8 @@ realisationDate: 2023-08-12T00:00:00Z
 order: 2
 language: ar
 title: أناب
-excerpt: ابدأ رحلتك على الويب مع AstroWind – استخدم Astro و Tailwind CSS لإنشاء موقع رائع. استكشف دليلنا الآن.
+excerpt:  قامت ANEP بتكليفنا بمشروع طموح يتمثل في إعادة تصميم هويتها البصرية بالكامل، بما في ذلك إنشاء موقع إلكتروني جديد وإعادة تصميم شعارها. كان الهدف هو تحديث صورة الشركة وتقديم منصة رقمية تعكس دورها كقائد في مجال النشر والإعلان.
+
 image: https://inclusion.dz/wp-content/uploads/2024/05/41818d73cc6b34bcb3dd85115cbffcc0.png
 category: تصميم العلامة التجارية
 tags:

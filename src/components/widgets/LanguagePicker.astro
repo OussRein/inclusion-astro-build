@@ -25,7 +25,7 @@ function translatePath(path: string, l: string) {
 }
 ---
 
-<li class="dropdown">
+<li class="dropdown nav-item">
   <>
     <button type="button" class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center">
       <div>
@@ -35,30 +35,30 @@ function translatePath(path: string, l: string) {
             y1="112"
             x2="336"
             y2="112"
-            style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><line
+            style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><line
             x1="192"
             y1="64"
             x2="192"
             y2="112"
-            style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><polyline
+            style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><polyline
             points="272 448 368 224 464 448"
-            style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></polyline><line
+            style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></polyline><line
             x1="301.5"
             y1="384"
             x2="434.5"
             y2="384"
-            style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><path
+            style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><path
             d="M281.3,112S257,206,199,277,80,384,80,384"
-            style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><path
+            style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><path
             d="M256,336s-35-27-72-75-56-85-56-85"
-            style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path></svg
+            style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path></svg
         >
       </div>
       {selectedLanguage}
       <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
     </button>
     <ul
-      class="dropdown-menu md:backdrop-blur-md rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-orange-400 md:min-w-[200px] drop-shadow-xl"
+      class="dropdown-menu md:backdrop-blur-md rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white md:min-w-[200px] drop-shadow-xl"
     >
       {
         Object.entries(languages).map(([lang, label]) => (
