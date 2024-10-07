@@ -430,20 +430,7 @@ function translatePathOfLanguage(path: string, l: string) {
       timeout = setTimeout(removeHoverClasses, 5000);
     });
 
-    // Cleanup function to prevent memory leaks
-    function cleanup() {
-      if (timeout) {
-        clearTimeout(timeout);
-      }
-    }
-
-    // Add cleanup on page unload
-    window.addEventListener('unload', cleanup);
   }
-
-  document.addEventListener("astro:beforeload", setupNavbarAnimation)
-
-
   document.addEventListener("astro:page-load", setupNavbarAnimation)
 
 </script>
