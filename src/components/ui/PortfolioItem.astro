@@ -12,29 +12,67 @@ const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
 const link = translatePath(getPermalink(portfolio.permalink, 'portfolio'));
 ---
-<a href={link} transition:name={portfolio.id} class:list={[
-  'relative bg-center flex flex-col justify-end shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur',
-  {
-    'lg:col-span-3 lg:row-span-2 md:col-span-4 md:row-span-1 sm:col-span-3': portfolio.order === 1 || portfolio.order === 2,
-  },
-  {
-    'lg:col-span-3 md:col-span-2 lg:row-span-6 md:row-span-1 sm:col-span-3': portfolio.order === 3,
-  },
-  {
-    'lg:col-span-3 lg:row-span-3 md:row-span-1 md:col-span-3 sm:col-span-3': portfolio.order === 4,
-  },
-  {
-    'lg:col-span-6 lg:row-span-4 md:col-span-4 sm:col-span-3': portfolio.order === 5 ,
-  },
-  {
-    'lg:col-span-3 lg:row-span-3 md:row-span-1 md:col-span-3 sm:col-span-3': portfolio.order === 6,
-  },
-]}>
-      <img class="h-full object-cover" src={portfolio.image} alt={portfolio.title}>
-      <div class="w-full h-full absolute p-6 bg-gradient-to-t from-black/40 from-20% flex flex-col justify-end">
-        <div class="mb-0">
-          <div class="text-lg font-bold text-white uppercase" style="text-shadow: 0 0px 2px rgb(69, 69, 69);">{portfolio.title}</div>
-          <p class="font-semi uppercase text-white" style="text-shadow: 0 0px 2px black;">{portfolio.category ? portfolio.category.title : ""}</p>    
+
+{
+  portfolio.order === 1 ? (
+    <div
+      transition:name={portfolio.id}
+      class:list={[
+        'relative h-full w-full bg-center min-h-72 flex flex-col justify-end shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur bg-cover',
+        {
+          'lg:col-span-5 lg:row-span-6 md:col-span-6 md:row-span-2 sm:col-span-3': portfolio.order === 1,
+        },
+        "bg-[url('https://inclusion.dz/wp-content/uploads/2024/05/Visuel-Twenty-highlight-3.png')]"
+      ]}
+    >
+      <a href={link} class=" h-full w-full">
+        <div class="w-full h-full absolute p-6 bg-gradient-to-t from-orange-600/40 from-20% flex flex-col justify-end">
+          <div class="mb-0">
+            <div class="text-lg font-bold text-white uppercase" style="text-shadow: 0 0px 2px rgb(69, 69, 69);">
+              {portfolio.title}
+            </div>
+            <p class="font-semi uppercase text-white" style="text-shadow: 0 0px 2px black;">
+              {portfolio.category ? portfolio.category.title : ''}
+            </p>
+          </div>
         </div>
+      </a>
+    </div>
+  ) : (
+    <div
+      transition:name={portfolio.id}
+      class:list={[
+        'relative h-full w-full min-h-72 bg-cover bg-center flex flex-col md:row-span-1 justify-end shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur',
+        {
+          'lg:col-span-4 lg:row-span-3 md:col-span-4  sm:col-span-3': portfolio.order === 2,
+        },
+        {
+          'lg:col-span-3 lg:row-span-3 md:col-span-4 sm:col-span-3': portfolio.order === 3,
+        },
+        {
+          'lg:col-span-2 lg:row-span-3 md:col-span-3 sm:col-span-3': portfolio.order === 4,
+        },
+        {
+          'lg:col-span-3 lg:row-span-3 md:col-span-4 sm:col-span-3': portfolio.order === 5,
+        },
+        {
+          'lg:col-span-2 lg:row-span-3 md:col-span-3 sm:col-span-3': portfolio.order === 6,
+        },
+        "bg-[url('" + portfolio.image + "')]"
+      ]}
+    >
+      <a href={link} class=" h-full w-full">
+        <div class="w-full h-full absolute p-6 bg-gradient-to-t from-black/40 from-20% flex flex-col justify-end">
+          <div class="mb-0">
+            <div class="text-lg font-bold text-white uppercase" style="text-shadow: 0 0px 2px rgb(69, 69, 69);">
+              {portfolio.title}
+            </div>
+            <p class="font-semi uppercase text-white" style="text-shadow: 0 0px 2px black;">
+              {portfolio.category ? portfolio.category.title : ''}
+            </p>
+          </div>
         </div>
-  </a>
+      </a>
+    </div>
+  )
+}
