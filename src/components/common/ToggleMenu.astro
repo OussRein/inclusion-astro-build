@@ -5,25 +5,23 @@ export interface Props {
 }
 
 const {
-  label = 'Toggle Menu',
   class: className = 'text-black flex flex-col h-12 w-12 rounded justify-center items-center cursor-pointer group',
 } = Astro.props;
 ---
 
 <button type="button" class={className} aria-label="Mobile navigation" data-aw-sticky-header>
-  <span class="sr-only">{label}</span>
   <slot>
     <span
       aria-hidden="true"
-      class="h-1 w-6 mb-0.5 rounded-full bg-orange-500 transition ease transform duration-200 opacity-80 group-[.expanded]:rotate-45 group-[.expanded]:translate-y-2.5"
+      class="h-[3px] w-6 mt-1 rounded-full bg-[#FF8800] "
     ></span>
     <span
       aria-hidden="true"
-      class="h-1 w-6 my-0.5 rounded-full bg-orange-500 transition ease transform duration-200 opacity-80 group-[.expanded]:opacity-0"
+      class="h-[3px] w-6  mt-1 rounded-full bg-[#FF8800] "
     ></span>
     <span
       aria-hidden="true"
-      class="h-1 w-6 my-0.5 rounded-full bg-orange-500 transition ease transform duration-200 opacity-80 group-[.expanded]:-rotate-45 group-[.expanded]:-translate-y-2.5"
+      class="h-[3px] w-6 mt-1 rounded-full bg-[#FF8800] "
     ></span>
   </slot>
 </button>

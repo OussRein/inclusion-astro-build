@@ -22,7 +22,7 @@ const link = translatePath(getPermalink(portfolio.permalink, 'portfolio'));
         {
           'lg:col-span-5 lg:row-span-6 md:col-span-6 md:row-span-2 sm:col-span-3': portfolio.order === 1,
         },
-        "bg-[url('https://inclusion.dz/wp-content/uploads/2024/05/Visuel-Twenty-highlight-3.png')]"
+        "bg-[url('" + portfolio.image + "')]"
       ]}
     >
       <a href={link} class=" h-full w-full">

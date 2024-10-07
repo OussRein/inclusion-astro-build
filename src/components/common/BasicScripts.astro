@@ -138,6 +138,8 @@ import { UI } from 'astrowind:config';
         ticking = true;
       }
     });
+
+    
   };
   const onPageShow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');
@@ -148,7 +150,7 @@ import { UI } from 'astrowind:config';
     document.body.classList.remove('overflow-hidden');
     document.getElementById('header')?.classList.remove('h-screen');
     document.getElementById('header')?.classList.remove('expanded');
-    document.querySelector('#header nav')?.classList.add('hidden');
+
   };
 
   window.onload = onLoad;
