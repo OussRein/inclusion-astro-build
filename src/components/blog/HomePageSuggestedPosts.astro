@@ -1,0 +1,86 @@
+---
+import { getRelatedPosts } from '~/utils/blog';
+import type { Post } from '~/types';
+import { getBlogPermalink } from '~/utils/permalinks';
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
+import Image from '~/components/common/Image.astro';
+import { getLangFromUrl } from '~/i18n/utils';
+
+export interface Props {
+  post?: Post;
+}
+
+const { post } = Astro.props;
+
+const relatedPosts = await getRelatedPosts(post, 3);
+
+const lang = getLangFromUrl(Astro.url);
+let title: string;
+let subtitle: string;
+if (lang === 'ar') {
+ title = 'اكتشف <span class="text-accent text-orange-400"> مقالاتنا</span> المميزة';
+ subtitle = 'قم بزيارة مدونتنا »';
+}else if (lang === 'en') {
+    title = 'Explore our <span class="text-accent text-orange-400">top</span> articles';
+    subtitle = 'Visit our Blog »';
+}else {
+    title = 'Explorez nos  <span class="text-accent text-orange-400"> meilleurs</span> articles';
+    subtitle = 'Visiter notre Blog »';
+}
+---
+
+{
+  (
+    <section class="max-w-5xl mx-auto">
+      <WidgetWrapper>
+        <div class="flex flex-col lg:justify-between lg:flex-row mb-8">
+          {
+            <div class="md:max-w-xl">
+              <h2 class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2" set:html={title} />
+              <a
+                class="text-gray-700 dark:text-slate-400 hover:text-primary transition ease-in duration-200 block mb-6 lg:mb-0"
+                href={getBlogPermalink()}
+                set:html={subtitle}
+              />
+            </div>
+          }
+        </div>
+
+        <div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-3 -mb-6">
+          {relatedPosts.map((post) => (
+            <article class="mb-6 transition bg-white rounded-xl shadow-xl">
+              <div class="relative rounded-xl ">
+                <a href={'blog/' + post.slug}>
+                  <Image
+                    src={post.featuredImage.sourceUrl}
+                    class="w-full rounded-t-lg "
+                    widths={[400, 900]}
+                    width={400}
+                    sizes="(max-width: 900px) 400px, 900px"
+                    alt={post.title}
+                    layout="fullWidth"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </div>
+              <div class="p-6">
+                <h3 class="text-md sm:text-md font-bold leading-tight mb-2 font-heading dark:text-slate-300">
+                  <a
+                    class="inline-block hover:text-primary dark:hover:text-blue-700 transition ease-in duration-200"
+                    href={'blog/' + post.slug}
+                  >
+                    {post.title}
+                  </a>
+                </h3>
+                <div class="flex-grow text-slate-800 text-sm">
+                  <p set:html={post.excerpt} />
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </WidgetWrapper>
+    </section>
+  )
+}
