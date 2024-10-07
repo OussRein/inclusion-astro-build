@@ -374,7 +374,7 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
 };
 
 /** */
-export async function getRelatedPosts(originalPost: Post, maxResults: number = 4): Promise<Post[]> {
+export async function getRelatedPosts(originalPost?: Post, maxResults: number = 4): Promise<Post[]> {
   const allPosts = await fetchPosts();
   const i = 0.5 - Math.random();
 
