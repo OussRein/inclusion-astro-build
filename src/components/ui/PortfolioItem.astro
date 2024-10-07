@@ -17,16 +17,17 @@ const link = translatePath(getPermalink(portfolio.permalink, 'portfolio'));
   portfolio.order === 1 ? (
     <div
       transition:name={portfolio.id}
+      style={{'--image-url': `url(${portfolio.image})`}} 
       class:list={[
         'relative h-full w-full bg-center min-h-72 flex flex-col justify-end shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur bg-cover',
         {
           'lg:col-span-5 lg:row-span-6 md:col-span-6 md:row-span-2 sm:col-span-3': portfolio.order === 1,
         },
-        "bg-[url('" + portfolio.image + "')]"
+        "bg-[image:var(--image-url)]"
       ]}
     >
       <a href={link} class=" h-full w-full">
-        <div class="w-full h-full absolute p-6 bg-gradient-to-t from-orange-600/40 from-20% flex flex-col justify-end">
+        <div class="w-full h-full absolute p-6 bg-gradient-to-t from-[#FF7A00]/80 from-20% flex flex-col justify-end">
           <div class="mb-0">
             <div class="text-lg font-bold text-white uppercase" style="text-shadow: 0 0px 2px rgb(69, 69, 69);">
               {portfolio.title}
@@ -40,6 +41,7 @@ const link = translatePath(getPermalink(portfolio.permalink, 'portfolio'));
     </div>
   ) : (
     <div
+      style={{'--image-url': `url(${portfolio.image})`}} 
       transition:name={portfolio.id}
       class:list={[
         'relative h-full w-full min-h-72 bg-cover bg-center flex flex-col md:row-span-1 justify-end shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur',
@@ -58,10 +60,10 @@ const link = translatePath(getPermalink(portfolio.permalink, 'portfolio'));
         {
           'lg:col-span-2 lg:row-span-3 md:col-span-3 sm:col-span-3': portfolio.order === 6,
         },
-        "bg-[url('" + portfolio.image + "')]"
+        "bg-[image:var(--image-url)] group"
       ]}
     >
-      <a href={link} class=" h-full w-full">
+      <a href={link} class=" h-full w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div class="w-full h-full absolute p-6 bg-gradient-to-t from-black/40 from-20% flex flex-col justify-end">
           <div class="mb-0">
             <div class="text-lg font-bold text-white uppercase" style="text-shadow: 0 0px 2px rgb(69, 69, 69);">
