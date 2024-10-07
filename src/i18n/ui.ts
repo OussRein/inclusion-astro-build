@@ -1,7 +1,7 @@
 export const languages = {
     en: 'English',
     fr: 'Français',
-    ar: 'Arabic',
+    ar: 'عربي',
   };
   
   export const defaultLang = 'fr';

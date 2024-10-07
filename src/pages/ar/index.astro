@@ -3,8 +3,9 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
 import PortfolioHeader from '~/components/widgets/PortfolioHeader.astro';
-import Brands from '~/components/widgets/Brands.astro';
-import Services from '~/components/widgets/Services.astro';
+import Expertice from '~/components/widgets/Expertice.astro';
+import Carousel from '~/components/widgets/Carousel.astro';
+import HomePageSuggestedPosts from '~/components/blog/HomePageSuggestedPosts.astro';
 
 const metadata = {
   title: ' واحدة من أولى الوكالات التي قامت ببناء فريق من المهنيين الحقيقيين القادرين على العمل بشكل كلي ، سواء لتقديم الحلول أو للدعم الرقمي. بالإضافة إلى استخدام أحدث تقنيات العمل وأكثرها إبداعًا.',
@@ -14,62 +15,24 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <!-- Portfolio Header Widget ******************* -->
+
   <PortfolioHeader />
-  
+
   <!-- Hero Widget ******************* -->
 
   <Hero />
 
+  <!-- Expertice Widget ************** -->
+
+  <Expertice />
+
+  <!-- Carousel Widget ****************** -->
+
+  <Carousel />
+
   <!-- Brands Widget ****************** -->
 
-  <Brands
-    title="Partnerships & Clients"
-    subtitle="At INCLUSION, we believe in the power of collaboration to drive innovation and create exceptional experiences."
-    icons={[]}
-    images={[
-      {
-        src: 'https://inclusion.dz/wp-content/uploads/2024/05/images.jpeg',
-        alt: 'Algerie poste',
-      },
-      {
-        src: 'https://inclusion.dz/wp-content/uploads/2024/05/images.png',
-        alt: 'Mobilis',
-      },
-      {
-        src: 'https://inclusion.dz/wp-content/uploads/2024/05/images-1.jpeg',
-        alt: 'ANEP',
-      },
-
-      {
-        src: 'https://cdn.pixabay.com/photo/2015/04/13/17/45/icon-720944_1280.png',
-        alt: 'Youtube',
-      },
-      {
-        src: 'https://inclusion.dz/wp-content/uploads/2024/05/AZ-HOTELS-LOGO-MIN.png',
-        alt: 'AZ Hotels',
-      },
-      {
-        src: 'https://inclusion.dz/wp-content/uploads/2024/05/Picture2.png',
-        alt: 'ALvisory',
-      },
-      {
-        src: 'https://cdn.pixabay.com/photo/2015/10/31/12/54/google-1015751_1280.png',
-        alt: 'Google',
-      },
-      {
-        src: 'https://cdn.pixabay.com/photo/2021/12/06/13/45/meta-6850393_1280.png',
-        alt: 'Meta',
-      },
-      {
-        src: 'https://inclusion.dz/wp-content/uploads/2024/05/federation-algerienne-de-football-faf-logo-B32A59820A-seeklogo.com_.png',
-        alt: 'FAF',
-      },
-    ]}
-  />
-
-
-  <!-- Services Widget ************** -->
-
-  <Services />
+  <HomePageSuggestedPosts />
 
 </Layout>
