@@ -4,13 +4,13 @@ import { getPermalink } from "~/utils/permalinks";
 const { service } = Astro.props;
 ---
 
-<div class="bg-orange-100 p-6 rounded-md m-3 mb-6">
+<div class="bg-orange-50 p-6 rounded-md m-3 mb-6">
   <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
-    <div class="pr-6 mb-6 relative bg-center flex flex-col">
+    <div class="pr-6 mb-6 pt-3 relative bg-center flex flex-col">
       <h3 class="text-2xl font-bold text-orange-600 uppercase">
         <a
           href={getPermalink('/services/strategy-and-consulting')/* service.href */} 
-          class="text-gray-700 hover:text-orange-500 font-medium rounded-lg text-sm text-left inline-flex items-center"
+          class="text-orange-500 hover:text-orange-700 font-bold rounded-lg text-xl text-left inline-flex items-center"
         >
           {service.title}
         </a>
