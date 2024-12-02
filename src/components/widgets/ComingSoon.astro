@@ -1,0 +1,64 @@
+---
+
+---
+
+<div class="bg-gradient-custom absolute inset-0"></div>
+<div class="relative z-10 max-w-md w-full mx-auto px-4">
+  <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg p-8 text-center">
+    <h1 class="text-4xl font-bold text-white mb-4">Coming Soon</h1>
+    <p class="text-xl text-white mb-8">We're working hard to bring you something amazing. Stay tuned!</p>
+    <form id="notify-form" class="flex flex-col space-y-4">
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter your email"
+        required
+        class="bg-white bg-opacity-20 text-white placeholder-white placeholder-opacity-75 border-white border-opacity-25 p-2 rounded"
+      />
+      <button
+        type="submit"
+        class="bg-white text-orange-custom hover:bg-orange-100 transition duration-300 p-2 rounded font-semibold"
+      >
+        Notify Me
+      </button>
+    </form>
+  </div>
+</div>
+
+<style type="text/tailwindcss">
+  .bg-gradient-custom {
+    background: linear-gradient(45deg, #ff9800, #ff5722, #ff9800);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+  }
+  @keyframes gradientBG {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('notify-form');
+    const emailInput = document.getElementById('email');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = emailInput.value;
+
+      // TODO: Implement email submission logic
+      console.log('Submitted email:', email);
+
+      // Clear the input and show a confirmation message
+      emailInput!.value = '';
+      alert("Thank you! We'll notify you when we launch.");
+    });
+  });
+</script>
