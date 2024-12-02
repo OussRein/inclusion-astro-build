@@ -1,33 +1,33 @@
 ---
-import InclusionAnimation from '~/components/ui/InclusionAnimation.jsx';
-
 const {
   service,
 } = Astro.props;
 ---
 
-<section class="relative not-prose">
+<section class="relative not-prose bg-[#040d21]">
     <div class="relative max-w-7xl mx-auto h-dvh">
-      <div class="pt-12 md:pt-20 lg:flex lg:gap-8 content-center">
-        <div class="absolute w-full md:h-full">
-          <InclusionAnimation client:visible />
-        </div>
-        <div class="absolute text-center lg:text-left px-4 sm:px-6">
-          <p class="text-xl text-secondary font-bold tracking-wide uppercase">
+      <div class="lg:flex lg:gap-8 content-center">
+        
+        <div class="basis-1/2 pt-12 md:pt-32 text-center lg:text-left px-4 sm:px-6">
+          <p class="text-xl text-orange-100 font-bold tracking-wide uppercase">
             {service.title}
           </p>
           <h1
-            class="text-2xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
+            class="text-2xl md:text-5xl font-bold leading-tighter text-white tracking-tighter mb-4 font-heading"
           >
           {service.callToAction}
           </h1>
           <div class="max-w-3xl mx-auto lg:max-w-none">
-            <p class="text-lg text-slate-600">
+            <p class="text-lg text-slate-300">
                 {service.description}
             </p>
           </div>
         </div>
-        
+        <div class="basis-1/2 right-0 top-0 w-screen md:h-full">
+          <div id="viewport" class="h-screen w-full" ></div>
+        </div>
       </div>
     </div>
   </section>
+
+  <script src="./Globedata.js"></script>
