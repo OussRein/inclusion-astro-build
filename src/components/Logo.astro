@@ -1,14 +1,16 @@
 ---
-
+const {
+  fill,
+} = Astro.props;
 ---
 
 <span
-  class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-black"
+  class="self-center text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-black"
 >
   <svg
     version="1.1"
     class="w-full"
-    fill="black"
+    fill={fill}
     id="Calque_1"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
