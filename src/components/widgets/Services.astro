@@ -5,23 +5,35 @@ import { services } from '~/navigation';
 import type { ServiceCategory } from '~/types';
 
 const lang = getLangFromUrl(Astro.url);
-let languageServices : Array<ServiceCategory>;
-if (lang === 'ar') languageServices = services.ar;
-else if (lang === 'en') languageServices = services.en;
-else languageServices = services.fr;
+let languageServices: Array<ServiceCategory>;
+let title: string;
+let subtitle: string;
 
+if (lang === 'ar') {
+  languageServices = services.ar;
+  title = 'النجاح في العصر الرقمي';
+  subtitle = 'اكتشف ما يمكن أن تقدمه لك <span class="text-accent text-orange-500"> INCLUSION</span>';
+} else if (lang === 'en') {
+  languageServices = services.en;
+  title = 'Winning in the Digital Age';
+  subtitle = 'Discover what’s there for you with <span class="text-accent text-orange-500"> INCLUSION</span>';
+} else {
+  languageServices = services.fr;
+  title = "Gagner à l'ère numérique";
+  subtitle = 'Découvrez ce que <span class="text-accent text-orange-500"> INCLUSION</span> peut vous offrir';
+}
 ---
 
 <section class="max-w-5xl mx-auto mt-10">
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
-          <div class="text-center pb-6 md:pb-10 max-w-6xl mx-auto">
-            <p class="text-xl text-muted">
-                <span class="font-semibold text-lg text-orange-400 uppercase">Winning in the Digital Age</span>
-            </p>
-            <h2 class="pt-0 text-4xl md:text-4xl font-bold leading-tighter tracking-tighter font-heading">
-                Discover what’s there for you with <span class="text-accent text-orange-400"> INCLUSION</span>
-            </h2>
-          </div>
-      </div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center pb-6 md:pb-10 max-w-6xl mx-auto">
+      <p class="text-xl text-muted">
+        <span class="font-semibold text-2xl text-orange-400 uppercase">{title}</span>
+      </p>
+      <h2 set:html={subtitle}  class="pt-0 text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading">
+        
+      </h2>
+    </div>
+  </div>
   {languageServices.map((service) => <ServiceGrid service={service} />)}
 </section>
