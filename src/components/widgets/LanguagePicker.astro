@@ -15,8 +15,8 @@ function translatePath(path: string, l: string) {
   const hasTranslation = 'fr' !== l && routes[l] !== undefined && routes[l][pathName] !== undefined;
   if (!hasTranslation) {
     const isPortfolioOrBlog = Astro.url.pathname.includes('portfolio') || Astro.url.pathname.includes('blog');
-    let pth = Astro.url.pathname.replace('ar/','');
-    pth = pth.replace('en/','');
+    let pth = Astro.url.pathname.replace('ar/', '');
+    pth = pth.replace('en/', '');
     if (isPortfolioOrBlog) return l === 'fr' ? pth : `/${l}${pth}`;
   }
   const translatedPath = hasTranslation ? '/' + routes[l][pathName] : path;
@@ -25,55 +25,59 @@ function translatePath(path: string, l: string) {
 }
 ---
 
-<li class="dropdown nav-item">
-  <>
-    <button type="button" class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center">
-      <div>
-        <svg class="w-4 h-4 rtl:flip-180" fill="white" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
-          ><title>ionicons-v5-l</title><line
-            x1="48"
-            y1="112"
-            x2="336"
-            y2="112"
-            style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><line
-            x1="192"
-            y1="64"
-            x2="192"
-            y2="112"
-            style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><polyline
-            points="272 448 368 224 464 448"
-            style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></polyline><line
-            x1="301.5"
-            y1="384"
-            x2="434.5"
-            y2="384"
-            style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><path
-            d="M281.3,112S257,206,199,277,80,384,80,384"
-            style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><path
-            d="M256,336s-35-27-72-75-56-85-56-85"
-            style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path></svg
-        >
-      </div>
-      {selectedLanguage}
-      <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
-    </button>
-    <ul
-      class="dropdown-menu md:backdrop-blur-md rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white md:min-w-[200px] drop-shadow-xl"
-    >
-      {
-        Object.entries(languages).map(([lang, label]) => (
-          <li>
-            <a
-              class:list={[
-                'first:rounded-t text-sm last:rounded-b md:hover:bg-orange-300 hover:text-link py-2 px-5 block whitespace-no-wrap',
-              ]}
-              href={translatePath(`/${route ? route : ''}`, lang)}
-            >
-              {label}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </>
+<li class="group nav-item">
+  <button type="button" class="px-4 py-3 flex items-center group-hover:text-orange-600">
+    <div>
+      <svg class="w-4 h-4 rtl:flip-180" fill="white" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
+        ><title>ionicons-v5-l</title><line
+        class="group-hover:stroke-orange-600 stroke-black"
+          x1="48"
+          y1="112"
+          x2="336"
+          y2="112"
+          style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><line
+          class="group-hover:stroke-orange-600 stroke-black"
+          x1="192"
+          y1="64"
+          x2="192"
+          y2="112"
+          style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><polyline
+          points="272 448 368 224 464 448"
+          class="group-hover:stroke-orange-600 stroke-black"
+          style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></polyline><line
+          class="group-hover:stroke-orange-600 stroke-black"
+          x1="301.5"
+          y1="384"
+          x2="434.5"
+          y2="384"
+          style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><path
+          class="group-hover:stroke-orange-600 stroke-black"
+          d="M281.3,112S257,206,199,277,80,384,80,384"
+          style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><path
+          class="group-hover:stroke-orange-600 stroke-black"
+          d="M256,336s-35-27-72-75-56-85-56-85"
+          style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path></svg
+      >
+    </div>
+    {selectedLanguage}
+    <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
+  </button>
+  <ul
+    class="group-hover:block backdrop-blur-md rounded absolute pl-0 hidden font-medium bg-white min-w-[200px] drop-shadow-xl"
+  >
+    {
+      Object.entries(languages).map(([lang, label]) => (
+        <li>
+          <a
+            class:list={[
+              'first:rounded-t text-sm last:rounded-b md:hover:bg-orange-300 hover:text-link py-2 px-5 block whitespace-no-wrap',
+            ]}
+            href={translatePath(`/${route ? route : ''}`, lang)}
+          >
+            {label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </li>
