@@ -4,7 +4,7 @@ order: 2
 language: en
 title: ANEP
 excerpt: ANEP entrusted us with an ambitious project; to completely overhaul its visual identity, including the creation of a new website and the redesign of its logo. The goal was to modernize the company's image and provide a digital platform that reflects its role as a leader in the publishing and advertising industry.
-image: https://inclusion.dz/wp-content/uploads/2024/05/41818d73cc6b34bcb3dd85115cbffcc0.png
+image: https://inclusion.dz/wp-content/uploads/2024/11/anep.png
 category: Brand Design
 tags:
   - astro

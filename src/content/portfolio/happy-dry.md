@@ -1,6 +1,6 @@
 ---
 realisationDate: 2023-08-12T00:00:00Z
-order: 6
+order: 12
 language: fr
 title: Happy Dry
 excerpt: HAPPY DRY nous a confié la tâche de créer des œuvres d'art digital et des affiches vibrantes qui reflètent l'identité amusante et dynamique de leur marque. L'objectif était de produire des designs visuellement attrayants qui résonnent avec leur public cible et qui communiquent efficacement les messages clés de la marque.

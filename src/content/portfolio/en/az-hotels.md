@@ -1,6 +1,6 @@
 ---
 realisationDate: 2023-08-12T00:00:00Z
-order: 12
+order: 6
 language: en
 title: AZ Hotels
 excerpt: AZ Hotels is a hotel chain offering a wide range of high-quality hotels in various destinations. With a commitment to comfort, service, and customer experience.

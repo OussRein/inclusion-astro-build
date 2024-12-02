@@ -4,7 +4,7 @@ order: 1
 language: ar
 title: موبيليس 20 سنة
 excerpt: احتفالًا بالذكرى العشرين لتأسيس MOBILIS، تم تكليفنا بإنشاء حملة بصرية ورقمية شاملة تحتفل بعقدين من الابتكار والخدمة. شمل المشروع تصميم ملصقات تذكارية، وإدارة قنوات وسائل التواصل الاجتماعي للتفاعل مع الجمهور، وتنفيذ استراتيجية تسويق رقمي لتسليط الضوء على هذا الإنجاز.
-image: https://inclusion.dz/wp-content/uploads/2024/05/Visuel-Twenty-highlight-3.png
+image: https://inclusion.dz/wp-content/uploads/2024/11/POSTER-TWENTY-48-x-68.png
 category: UI/UX تصميم
 tags:
   - astro

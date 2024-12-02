@@ -5,7 +5,7 @@ language: ar
 title: أناب
 excerpt:  قامت ANEP بتكليفنا بمشروع طموح يتمثل في إعادة تصميم هويتها البصرية بالكامل، بما في ذلك إنشاء موقع إلكتروني جديد وإعادة تصميم شعارها. كان الهدف هو تحديث صورة الشركة وتقديم منصة رقمية تعكس دورها كقائد في مجال النشر والإعلان.
 
-image: https://inclusion.dz/wp-content/uploads/2024/05/41818d73cc6b34bcb3dd85115cbffcc0.png
+image: https://inclusion.dz/wp-content/uploads/2024/11/anep.png
 category: تصميم العلامة التجارية
 tags:
   - astro

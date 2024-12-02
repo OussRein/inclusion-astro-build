@@ -1,6 +1,6 @@
 ---
 realisationDate: 2023-08-12T00:00:00Z
-order: 6
+order: 12
 language: en
 title: Happy Dry
 excerpt: HAPPY DRY entrusted us with the task of creating vibrant digital art and posters that reflect their brand’s fun and dynamic identity. The goal was to produce visually appealing designs that resonate with their target audience and effectively communicate the brand’s core messages.
