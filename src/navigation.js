@@ -868,9 +868,10 @@ export const footerData = {
       { text: 'Contacts', href: getPermalink('/contact') },
     ],
     socialLinks: [
-      { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-      { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-      { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
+      { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/Inclusiondz' },
+      { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/inclusion.dz/' },
+      { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/company/inclusion-algerie/' },
+      { ariaLabel: 'TikTok', icon: 'tabler:brand-tiktok', href: 'https://www.tiktok.com/@inclusion.dz' },
       { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
     ],
     footNote: `
