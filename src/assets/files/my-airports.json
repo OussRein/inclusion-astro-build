@@ -2,92 +2,108 @@
     "type": "AirportsCollection",
     "airports": [
         {
-            "text": "FRU",
+            "text": "ALG",
             "size": 1.0,
-            "country": "Kyrgyzstan",
-            "city": "Bishkek",
-            "lat": "42.85",
-            "lng": "74.583333333"
+            "country": "Algeria",
+            "city": "Algiers",
+            "lat": "36.691",
+            "lng": "3.215"
         },
         {
-            "text": "TAS",
+            "text": "LHR",
             "size": 1.0,
-            "country": "Uzbekistan",
-            "city": "Tashkent",
-            "lat": "41.266666666667",
-            "lng": "69.366666666667"
+            "country": "United Kingdom",
+            "city": "London",
+            "lat": "51.4706",
+            "lng": "-0.461941"
         },
         {
-            "text": "ALA",
+            "text": "JFK",
             "size": 1.0,
-            "country": "Kazakhstan",
-            "city": "Almaty",
-            "lat": "43.35",
-            "lng": "75.033333333333"
+            "country": "United States",
+            "city": "New York",
+            "lat": "40.6413",
+            "lng": "-73.7781"
         },
         {
-            "text": "ICN",
+            "text": "HND",
             "size": 1.0,
-            "country": "South Korea",
-            "city": "Incheon",
-            "lat": "37.472222222222",
-            "lng": "126.60833333333"
+            "country": "Japan",
+            "city": "Tokyo",
+            "lat": "35.5494",
+            "lng": "139.7798"
         },
         {
-            "text": "KJA",
+            "text": "CDG",
             "size": 1.0,
-            "country": "Russia",
-            "city": "Krasnoyarsk",
-            "lat": "56.05",
-            "lng": "92.9"
+            "country": "France",
+            "city": "Paris",
+            "lat": "49.0097",
+            "lng": "2.5479"
         },
         {
-            "text": "OVB",
+            "text": "PEK",
             "size": 1.0,
-            "country": "Russia",
-            "city": "Novosibirsk",
-            "lat": "55.033333333333",
-            "lng": "83"
+            "country": "China",
+            "city": "Beijing",
+            "lat": "40.0799",
+            "lng": "116.6031"
         },
         {
-            "text": "KUL",
+            "text": "DXB",
             "size": 1.0,
-            "country": "Malaysia",
-            "city": "Kuala-Lumpur",
-            "lat": "3.11666666666",
-            "lng": "101.7"
+            "country": "United Arab Emirates",
+            "city": "Dubai",
+            "lat": "25.2532",
+            "lng": "55.3657"
         },
         {
-            "text": "SIN",
+            "text": "SYD",
             "size": 1.0,
-            "country": "Singapore",
-            "city": "Singapore",
-            "lat": "1.2916666666667",
-            "lng": "103.85"
+            "country": "Australia",
+            "city": "Sydney",
+            "lat": "-33.9399",
+            "lng": "151.1753"
         },
         {
-            "text": "DPS",
+            "text": "GRU",
             "size": 1.0,
-            "country": "Indonesia",
-            "city": "Denpasar",
-            "lat": "-8.75",
-            "lng": "115.16666666667"
+            "country": "Brazil",
+            "city": "São Paulo",
+            "lat": "-23.4323",
+            "lng": "-46.4695"
         },
         {
-            "text": "DMK",
+            "text": "DEL",
             "size": 1.0,
-            "country": "Thailand",
-            "city": "Bangkok",
-            "lat": "13.9255",
-            "lng": "100.5923"
+            "country": "India",
+            "city": "New Delhi",
+            "lat": "28.5562",
+            "lng": "77.1000"
         },
         {
-            "text": "BKK",
+            "text": "MEX",
             "size": 1.0,
-            "country": "Thailand",
-            "city": "",
-            "lat": "13.6900",
-            "lng": "100.7501"
+            "country": "Mexico",
+            "city": "Mexico City",
+            "lat": "19.4361",
+            "lng": "-99.0719"
+        },
+        {
+            "text": "IST",
+            "size": 1.0,
+            "country": "Turkey",
+            "city": "Istanbul",
+            "lat": "41.2753",
+            "lng": "28.7519"
+        },
+        {
+            "text": "EZE",
+            "size": 1.0,
+            "country": "Argentina",
+            "city": "Buenos Aires",
+            "lat": "-34.8222",
+            "lng": "-58.5358"
         }
     ]
 }
