@@ -1,38 +1,33 @@
 ---
+import InclusionAnimation from '~/components/ui/InclusionAnimation.jsx';
+
 const {
   service,
 } = Astro.props;
 ---
 
 <section class="relative not-prose">
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="py-12 md:py-20 lg:flex lg:items-center lg:h-screen lg:gap-8 content-center">
-        <div class="basis-1/2 text-center lg:text-left pb-10 md:pb-16 mx-auto">
-          <p class="text-xl text-secondary dark:text-blue-200 font-bold tracking-wide uppercase">
+    <div class="relative max-w-7xl mx-auto h-dvh">
+      <div class="pt-12 md:pt-20 lg:flex lg:gap-8 content-center">
+        <div class="absolute w-full md:h-full">
+          <InclusionAnimation client:visible />
+        </div>
+        <div class="absolute text-center lg:text-left px-4 sm:px-6">
+          <p class="text-xl text-secondary font-bold tracking-wide uppercase">
             {service.title}
           </p>
           <h1
-            class="text-2xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
+            class="text-2xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
           >
           {service.callToAction}
           </h1>
           <div class="max-w-3xl mx-auto lg:max-w-none">
-            <p class="text-lg mb-6 text-slate-600">
+            <p class="text-lg text-slate-600">
                 {service.description}
             </p>
           </div>
         </div>
-        <div class="basis-1/2">
-          <div class="relative m-auto px-16">
-            <img
-              class="mx-auto rounded-md w-full lg:max-w-screen-md md:lg:max-w-screen-sm xl:max-w-screen-lg"
-              src={service.image}
-              alt="Mobilis Twenty"
-              width="500"
-              height="600"
-            />
-          </div>
-        </div>
+        
       </div>
     </div>
   </section>
