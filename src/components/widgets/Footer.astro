@@ -1,9 +1,8 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { SITE } from 'astrowind:config';
 import { getHomePermalink } from '~/utils/permalinks';
 import type { ServiceCategory } from '~/types';
-
+import Logo from '../Logo.astro';
 
 // Existing Link type with optional properties
 interface Link {
@@ -22,22 +21,21 @@ export interface Props {
 }
 
 const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
-
 ---
 
 <footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800 not-prose']}>
   <div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300">
     <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
-      <div class="col-span-12 lg:col-span-2">
+      <div class="col-span-12 lg:col-span-2 flex flex-col">
         <div class="mb-2">
-          <a class="inline-block font-bold text-xl" href={getHomePermalink()}>{SITE?.name}</a>
+          <a class="inline-block font-bold text-xl text-left" href={getHomePermalink()}><Logo fill="FFF" /></a>
         </div>
-        <div class="text-sm text-muted flex gap-1">
+        <div class="text-md text-muted flex gap-1 ml-1 rtl:ml-0 rtl:mr-1 lg:flex lg:flex-col">
           {
             secondaryLinks.map(({ text, href }, index) => (
               <>
-                {index !== 0 ? ' · ' : ''}
+                <span class="lg:hidden">{index !== 0 ? ' · ' : ''}</span>
                 <a
                   class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
                   href={href}

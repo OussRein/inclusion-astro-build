@@ -13,19 +13,19 @@ let discoverServices: string;
 
 if (lang === 'ar') {
   languageServices = services.ar;
-  title = 'تعرف على   <span class="text-accent text-orange-400"> خبراتنا</span>';
+  title = 'تعرف على   <span class="text-[#FF7A00]"> خبراتنا</span>';
   subtitle = 'نحن هنا لمساعدتك';
   discoverMore = 'تعرف على المزيد';
   discoverServices = 'تعرف على كامل خدماتنا';
 } else if (lang === 'en') {
   languageServices = services.en;
-  title = 'Discover our <span class="text-accent text-orange-400">Expertise</span>';
+  title = 'Discover our <span class="text-[#FF7A00]">Expertise</span>';
   subtitle = 'We are here to help you';
   discoverMore = 'Discover more';
   discoverServices = 'Discover all our services';
 } else {
   languageServices = services.fr;
-  title = 'Découvrez notre <span class="text-accent text-orange-400">Expertise</span>';
+  title = 'Découvrez notre <span class="text-[#FF7A00]">Expertise</span>';
   subtitle = 'We are here to help you';
   discoverMore = 'Découvrez plus';
   discoverServices = 'Découvrez tous nos services';
@@ -39,7 +39,7 @@ const firstServices = languageServices.slice(0, 3);
     <div class="text-center pb-6 md:pb-10 max-w-6xl mx-auto">
       <h2 class="pt-0 text-4xl md:text-6xl font-bold leading-tighter tracking-tighter font-heading" set:html={title} />
       <p class="text-xl text-muted">
-        <span class="font-semibold text-lg text-orange-400 uppercase" set:html={subtitle} />
+        <span class="font-semibold text-lg text-[#FF7A00] uppercase" set:html={subtitle} />
       </p>
     </div>
   </div>
