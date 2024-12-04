@@ -1,0 +1,47 @@
+---
+import { getLangFromUrl } from '~/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+let title: string;
+let subtitle: string;
+let description: string;
+
+if (lang === 'ar') {
+  title = 'تمكين الشركات بحلول شاملة';
+  subtitle = 'اكتشف كيف يمكن لـ <span class="text-accent text-orange-500">INCLUSION</span> تعزيز أعمالك';
+  description =
+    'نقدم في INCLUSION خدمات شاملة ومتكاملة تهدف إلى تلبية احتياجات عملك الخاصة. من الاستراتيجية والاستشارات إلى التطوير التكنولوجي المتقدم، فريقنا ملتزم بتقديم حلول مبتكرة تعزز نجاحك.';
+} else if (lang === 'en') {
+  title = 'Empowering Businesses with Comprehensive Solutions';
+  subtitle = 'Discover how <span class="text-accent text-orange-500">INCLUSION</span> can elevate your business';
+  description =
+    'At INCLUSION, we offer holistic and integrated services designed to meet your unique business needs. From strategy and consulting to advanced technological development, our team is committed to delivering innovative solutions that drive success.';
+} else {
+  title = 'Des Solutions Complètes pour Booster Votre Entreprise';
+  subtitle =
+    'Découvrez comment <span class="text-accent text-black">INCLUSION</span> peut faire évoluer votre entreprise';
+  description =
+    "Chez INCLUSION, nous proposons des services holistiques et intégrés pour répondre aux besoins uniques de votre entreprise. De la stratégie et du consulting au développement technologique avancé, notre équipe s'engage à offrir des solutions innovantes qui stimulent votre succès.";
+}
+---
+
+<section class="relative not-prose bg-[#ff7626]">
+  <div class="relative max-w-7xl mx-auto h-dvh">
+    <div class="lg:flex lg:gap-8 content-center">
+      <div class="basis-1/2 pt-12 md:pt-24 text-center lg:text-left px-4 sm:px-6">
+        <p set:html={title} class="text-xl text-orange-100 font-bold tracking-wide uppercase" />
+        <h1 set:html={subtitle} class="text-2xl md:text-5xl font-bold leading-tighter text-white tracking-tighter mb-4 font-heading" />
+        <div class="max-w-3xl mx-auto lg:max-w-none">
+          <p class="text-lg text-slate-300">
+            {description}
+          </p>
+        </div>
+      </div>
+      <div class="basis-1/2 right-0 top-0 w-screen md:h-full">
+        <div id="viewport" class="h-screen w-full"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="./Globedata.js"></script>
