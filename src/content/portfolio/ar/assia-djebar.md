@@ -4,7 +4,7 @@ order: 5
 language: ar
 title: جائزة أسيا جبار الكبرى
 excerpt: جائزة أسيا جبار الكبرى هي جائزة أدبية تكرم الكاتبة الجزائرية الشهيرة أسيا جبار. تكرم هذه الجائزة الأعمال الأدبية، وخاصة الروايات والمقالات أو مجموعات الشعر، التي تساهم في تعزيز الثقافة والتنوع في العالم الفرنكوفوني.
-image: https://inclusion.dz/wp-content/uploads/2024/05/2afb8483870f6dba492e816708b10a92.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/2afb8483870f6dba492e816708b10a92.png
 category: العلامة التجارية والتصميم
 tags:
   - astro

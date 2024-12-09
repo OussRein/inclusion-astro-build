@@ -4,7 +4,7 @@ order: 6
 language: en
 title: AZ Hotels
 excerpt: AZ Hotels is a hotel chain offering a wide range of high-quality hotels in various destinations. With a commitment to comfort, service, and customer experience.
-image: https://inclusion.dz/wp-content/uploads/2024/05/Capture-décran-2023-11-09-à-17.34.37.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/Capture-décran-2023-11-09-à-17.34.37.png
 category: Branding and Web Design
 tags:
   - astro

@@ -4,7 +4,7 @@ order: 12
 language: ar
 title: هابي الجاف
 excerpt: كلفتنا HAPPY DRY بمهمة إنشاء فنون رقمية وملصقات حيوية تعكس هوية علامتهم التجارية الممتعة والديناميكية. كان الهدف هو إنتاج تصاميم جذابة بصريًا تتماشى مع الجمهور المستهدف وتنقل رسائل العلامة التجارية الأساسية بفاعلية.
-image: https://inclusion.dz/wp-content/uploads/2024/05/b592304c4b237727ead3c80d7e5bfcc9.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/b592304c4b237727ead3c80d7e5bfcc9.png
 category: فن رقمي ثلاثي الأبعاد
 tags:
 - أسترو

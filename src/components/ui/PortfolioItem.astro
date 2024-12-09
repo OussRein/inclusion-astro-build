@@ -2,6 +2,7 @@
 import { getLangFromUrl, useTranslatedPath } from '~/i18n/utils';
 import type { Portfolio } from '~/types';
 import { getPermalink } from '~/utils/permalinks';
+import Image from '../common/Image.astro';
 
 export interface Props {
   portfolio: Portfolio;
@@ -17,16 +18,26 @@ const link = translatePath(getPermalink(portfolio.permalink, 'portfolio'));
   portfolio.order === 1 ? (
     <div
       transition:name={portfolio.id}
-      style={{'--image-url': `url(${portfolio.image})`}} 
       class:list={[
         'relative h-full w-full bg-center min-h-72 flex flex-col justify-end shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur bg-cover',
         {
           'lg:col-span-5 lg:row-span-6 md:col-span-6 md:row-span-2 sm:col-span-3': portfolio.order === 1,
         },
-        "bg-[image:var(--image-url)]"
       ]}
     >
-      <a href={link} class=" h-full w-full">
+      <a class=" h-full w-full" href={link}>
+        <Image
+          src={portfolio.image}
+          class="w-full md:h-full absolute rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+          widths={[400, 900]}
+          width={400}
+          sizes="(max-width: 900px) 400px, 900px"
+          alt={portfolio.title}
+          aspectRatio="16:9"
+          layout="cover"
+          loading="lazy"
+          decoding="async"
+        />
         <div class="w-full h-full absolute p-6 bg-gradient-to-t from-[#FF7A00]/80 from-20% flex flex-col justify-end">
           <div class="mb-0">
             <div class="text-lg font-bold text-white uppercase" style="text-shadow: 0 0px 2px rgb(69, 69, 69);">
@@ -41,10 +52,9 @@ const link = translatePath(getPermalink(portfolio.permalink, 'portfolio'));
     </div>
   ) : (
     <div
-      style={{'--image-url': `url(${portfolio.image})`}} 
       transition:name={portfolio.id}
       class:list={[
-        'relative h-full w-full min-h-72 bg-cover bg-center flex flex-col md:row-span-1 justify-end shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur',
+        'relative group h-full w-full min-h-72 bg-cover bg-center flex flex-col md:row-span-1 justify-end shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur',
         {
           'lg:col-span-4 lg:row-span-3 md:col-span-4  sm:col-span-3': portfolio.order === 2,
         },
@@ -60,12 +70,23 @@ const link = translatePath(getPermalink(portfolio.permalink, 'portfolio'));
         {
           'lg:col-span-2 lg:row-span-3 md:col-span-3 sm:col-span-3': portfolio.order === 6,
         },
-        "bg-[image:var(--image-url)] group"
       ]}
     >
-      <a href={link} class=" h-full w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div class="w-full h-full absolute p-6 bg-gradient-to-t from-black/40 from-20% flex flex-col justify-end">
-          <div class="mb-0">
+      <a href={link} class="h-full w-full ">
+        <Image
+          src={portfolio.image}
+          class="w-full md:h-full absolute rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+          widths={[400, 900]}
+          width={400}
+          sizes="(max-width: 900px) 400px, 900px"
+          alt={portfolio.title}
+          aspectRatio="16:9"
+          layout="cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute w-full h-full  lg:opacity-0 lg:group-hover:opacity-100 lg:transition-opacity lg:duration-300">
+          <div class="w-full h-full  p-6 bg-gradient-to-t from-black/40 from-20% flex flex-col justify-end ">
             <div class="text-lg font-bold text-white uppercase" style="text-shadow: 0 0px 2px rgb(69, 69, 69);">
               {portfolio.title}
             </div>

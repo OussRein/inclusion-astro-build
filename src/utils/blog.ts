@@ -145,7 +145,7 @@ enum LanguageCodeFilterEnum {
 
 
 const load = async function (lang?:LanguageCodeFilterEnum): Promise<Array<Post>> {
-  const response = await fetch('https://inclusion.dz/graphql', {
+  const response = await fetch('https://inclusion.dz/wordpress/graphql', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

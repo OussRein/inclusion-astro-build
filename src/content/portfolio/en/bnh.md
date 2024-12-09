@@ -4,7 +4,7 @@ order: 9
 language: en
 title: BNH Bank
 excerpt: BNH Bank is an Algerian financial institution offering a wide range of banking services, including deposit services, loans, wealth management, and services for businesses.
-image: https://inclusion.dz/wp-content/uploads/2024/05/Plan-de-travail-1-copie-16-copy-9@4x.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/Plan-de-travail-1-copie-16-copy-9@4x.png
 category: Branding
 tags:
   - astro

@@ -4,7 +4,7 @@ order: 3
 language: fr
 title: Bose
 excerpt: BOSE nous a sollicités pour développer un art digital et des affiches visuellement percutants qui correspondent aux standards élevés de qualité et d'innovation de la marque. L'objectif était de créer des visuels saisissants qui communiquent efficacement le message de la marque BOSE tout en engageant leur public cible.
-image: https://inclusion.dz/wp-content/uploads/2024/05/2e2f26aedf230f2a01866bc043fa522b.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/2e2f26aedf230f2a01866bc043fa522b.png
 category: Digital art
 tags:
   - astro

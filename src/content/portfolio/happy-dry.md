@@ -4,7 +4,7 @@ order: 12
 language: fr
 title: Happy Dry
 excerpt: HAPPY DRY nous a confié la tâche de créer des œuvres d'art digital et des affiches vibrantes qui reflètent l'identité amusante et dynamique de leur marque. L'objectif était de produire des designs visuellement attrayants qui résonnent avec leur public cible et qui communiquent efficacement les messages clés de la marque.
-image: https://inclusion.dz/wp-content/uploads/2024/05/b592304c4b237727ead3c80d7e5bfcc9.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/b592304c4b237727ead3c80d7e5bfcc9.png
 category: 3D Digital art
 tags:
   - astro

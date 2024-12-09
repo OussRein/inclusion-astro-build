@@ -111,16 +111,16 @@ function initGlobe() {
     .atmosphereColor('#ffffff')
     .atmosphereAltitude(0.2)
     .hexPolygonColor((e) => {
-      if (['DZA', 'FRA', 'ENG', 'FR1', 'DEU', 'TUR', 'MYS'].includes(e.properties.ISO_A3)) {
+      if (['DZA', 'USA', 'GBR', 'FRA', 'ARE', 'TUR', 'ZAF'].includes(e.properties.ISO_A3)) {
         return 'rgba(255,255,255, 1)';
-      } else return 'rgba(255,255,255, 0.5)';
+      } else return 'rgba(255,0,0, 1)';
     });
 
   // NOTE Arc animations are followed after the globe enters the scene
   setTimeout(() => {
     Globe.arcsData(travelHistory.flights)
       .arcColor((e) => {
-        return e.status ? '#2986cc' : '#d63600';
+        return e.status ? '#2986cc' : '#34b7eb';
       })
       .arcAltitude((e) => {
         return e.arcAlt;
@@ -134,7 +134,7 @@ function initGlobe() {
       .arcsTransitionDuration(1000)
       .arcDashInitialGap((e) => e.order * 1)
       .labelsData(airportHistory.airports)
-      .labelColor(() => '#ffcb21')
+      .labelColor(() => '#ffffff')
       .labelDotOrientation((e) => {
         return e.text === 'ALA' ? 'top' : 'right';
       })
@@ -155,7 +155,7 @@ function initGlobe() {
   const globeMaterial = Globe.globeMaterial();
   globeMaterial.color = new Color(0xfc782b);
   globeMaterial.emissive = new Color(0xf55b00);
-  globeMaterial.emissiveIntensity = 0.2;
+  globeMaterial.emissiveIntensity = 0.4;
   globeMaterial.shininess = 0.7;
   // NOTE Cool stuff
   // globeMaterial.wireframe = true;

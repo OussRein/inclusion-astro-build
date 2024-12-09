@@ -5,7 +5,7 @@ language: ar
 title: بوز
 excerpt: تواصلت معنا BOSE لتطوير فن رقمي وملصقات بصرية مؤثرة تتماشى مع المعايير العالية لجودة وابتكار علامتها التجارية. كان الهدف هو إنشاء تصاميم ملفتة للانتباه تنقل رسالة علامة BOSE بفاعلية وتجذب جمهورها المستهدف.
 
-image: https://inclusion.dz/wp-content/uploads/2024/05/2e2f26aedf230f2a01866bc043fa522b.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/2e2f26aedf230f2a01866bc043fa522b.png
 category: الفن الرقمي
 tags:
   - astro

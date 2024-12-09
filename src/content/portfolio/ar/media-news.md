@@ -4,7 +4,7 @@ order: 8
 language: ar
 title: قناة أخبار الإعلام
 excerpt: AL24 News، قناة تلفزيونية مخصصة حصريا للأخبار على مدار الساعة ، تبث من الجزائر العاصمة عبر القمر الصناعي نايل سات. تركز AL24 News على الأخبار الدولية على وجه الخصوص. تغطي أقسام القناة المختلفة أخبار اليوم ، وهي  السياسة والاقتصاد والمالية والأعمال والصحة والزراعة والثقافة والرياضة.
-image: https://inclusion.dz/wp-content/uploads/2024/05/shooting-studio-scenes-silhouette-images-which-film-team-working-movie-video.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/shooting-studio-scenes-silhouette-images-which-film-team-working-movie-video.png
 category: الاستراتيجية والإشراف الرقمي
 tags:
   - astro

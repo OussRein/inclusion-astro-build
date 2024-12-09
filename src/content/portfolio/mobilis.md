@@ -4,7 +4,7 @@ order: 10
 language: fr
 title: Mobilis
 excerpt: Mobilis est l'un des principaux opérateurs de télécommunications en Algérie, offrant une gamme complète de services de téléphonie mobile, d'internet et de solutions de communication aux particuliers et aux entreprises.
-image: https://inclusion.dz/wp-content/uploads/2024/05/Capture-décran-2023-11-09-à-18.39.57.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/Capture-décran-2023-11-09-à-18.39.57.png
 category: Graphic design
 tags:
   - astro

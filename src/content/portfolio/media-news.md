@@ -4,7 +4,7 @@ order: 8
 language: fr
 title: Media News channel
 excerpt: AL24 News, est une chaîne TV dédiée exclusivement à l’information en continu, elle est diffusée à partir d’Alger via Nilesat.AL24 News se focalise sur l’information nationale en particulier mais aussi sur l’actualité à l’internationale. Les différentes rubriques couvrent l’actualité du jour à savoir la politique, l’économie, la finance, l’entreprise, la santé, l’agriculture, la culture et le sport.
-image: https://inclusion.dz/wp-content/uploads/2024/05/shooting-studio-scenes-silhouette-images-which-film-team-working-movie-video.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/shooting-studio-scenes-silhouette-images-which-film-team-working-movie-video.png
 category: Strategy & Digital Moderation
 tags:
   - astro

@@ -4,7 +4,7 @@ order: 5
 language: fr
 title: Grand Prix Assia Djebbar
 excerpt: Le Grand Prix Assia Djebar est une distinction littéraire qui rend hommage à la célèbre écrivaine algérienne Assia Djebar. Ce prix récompense les œuvres littéraires, notamment les romans, les essais, ou les recueils de poésie, qui contribuent à la promotion de la culture et de la diversité dans le monde francophone.
-image: https://inclusion.dz/wp-content/uploads/2024/05/2afb8483870f6dba492e816708b10a92.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/2afb8483870f6dba492e816708b10a92.png
 category: Branding & Design
 tags:
   - astro

@@ -4,7 +4,7 @@ order: 8
 language: en
 title: Media News Channel
 excerpt: AL24 News, a television channel exclusively dedicated to 24-hour news, broadcasts from Algiers via the Nilesat satellite. AL24 News focuses particularly on international news. The channel's various sections cover today's news, including politics, economics and finance, business, health, agriculture, culture, and sports.
-image: https://inclusion.dz/wp-content/uploads/2024/05/shooting-studio-scenes-silhouette-images-which-film-team-working-movie-video.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/shooting-studio-scenes-silhouette-images-which-film-team-working-movie-video.png
 category: Digital Strategy and Supervision
 tags:
   - astro

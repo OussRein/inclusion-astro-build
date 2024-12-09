@@ -4,7 +4,7 @@ order: 5
 language: en
 title: Assia Djebar Grand Prize
 excerpt: The Assia Djebar Grand Prize is a literary award honoring the renowned Algerian writer Assia Djebar. This prize recognizes literary works, particularly novels, essays, or poetry collections, that contribute to promoting culture and diversity in the Francophone world.
-image: https://inclusion.dz/wp-content/uploads/2024/05/2afb8483870f6dba492e816708b10a92.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/2afb8483870f6dba492e816708b10a92.png
 category: Branding and Design
 tags:
   - astro

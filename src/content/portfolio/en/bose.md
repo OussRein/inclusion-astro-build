@@ -5,7 +5,7 @@ language: en
 title: Bose
 excerpt: BOSE approached us to develop visually impactful digital art and posters that align with their brand's high standards of quality and innovation. The goal was to create striking visuals that effectively communicate BOSE's brand message while engaging their target audience.
 
-image: https://inclusion.dz/wp-content/uploads/2024/05/2e2f26aedf230f2a01866bc043fa522b.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/2e2f26aedf230f2a01866bc043fa522b.png
 category: Digital Art
 tags:
   - astro

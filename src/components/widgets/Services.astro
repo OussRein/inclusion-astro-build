@@ -24,16 +24,20 @@ if (lang === 'ar') {
 }
 ---
 
-<section class="max-w-5xl mx-auto mt-16">
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="text-center pb-6 md:pb-10 max-w-6xl mx-auto">
-      <p class="text-xl text-muted">
-        <span class="font-semibold text-2xl text-orange-400 uppercase">{title}</span>
-      </p>
-      <h2 set:html={subtitle}  class="pt-0 text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading">
-        
-      </h2>
+<section class="relative top-[600px] lg:top-[800px] w-full bg-white">
+  <div class="max-w-5xl mx-auto"> 
+    <div class="relative mx-auto px-4 sm:px-6 pt-16">
+      <div class="text-center pb-6 md:pb-10 max-w-6xl mx-auto">
+        <p class="text-xl text-muted">
+          <span class="font-semibold text-2xl text-orange-400 uppercase">{title}</span>
+        </p>
+        <h2
+          set:html={subtitle}
+          class="pt-0 text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading"
+        />
+      </div>
     </div>
+    {languageServices.map((service) => <ServiceGrid service={service} />)}
   </div>
-  {languageServices.map((service) => <ServiceGrid service={service} />)}
+  
 </section>

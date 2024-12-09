@@ -4,7 +4,7 @@ order: 7
 language: en
 title: RGPH 2022
 excerpt: The Algerian General Census of Population and Housing (RGPH) 2022 is an essential survey to collect data on population, housing, economy, and social aspects. It guides public policies, urban planning, and ensures that services meet the needs of the population.
-image: https://inclusion.dz/wp-content/uploads/2024/05/5c0524afa92414f2a0a505d4ff1934cc.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/5c0524afa92414f2a0a505d4ff1934cc.png
 category: Website Design and Development
 tags:
   - astro

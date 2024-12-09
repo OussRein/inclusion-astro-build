@@ -4,7 +4,7 @@ order: 10
 language: ar
 title: موبيليس
 excerpt: موبيليس هي واحدة من الشركات الرئيسية في مجال الاتصالات في الجزائر، حيث تقدم مجموعة كاملة من خدمات الهاتف المحمول والإنترنت وحلول الاتصال للأفراد والشركات.
-image: https://inclusion.dz/wp-content/uploads/2024/05/Capture-décran-2023-11-09-à-18.39.57.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/Capture-décran-2023-11-09-à-18.39.57.png
 category: تصميم وديزاين
 tags:
   - astro

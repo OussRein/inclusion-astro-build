@@ -5,7 +5,7 @@ language: en
 title: Algeria Poste
 excerpt: Algérie Poste tasked us with a comprehensive project to enhance its visual communication and digital presence. The project included designing posters that effectively communicate key messages, managing the company’s social media channels to engage with the audience, and implementing a digital marketing strategy to boost online visibility.
 
-image: https://inclusion.dz/wp-content/uploads/2024/05/af858f3353b90b7d1da3f592f32f7759.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/af858f3353b90b7d1da3f592f32f7759.png
 category: Digital Design
 tags:
   - astro

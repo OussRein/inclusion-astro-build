@@ -4,7 +4,7 @@ order: 10
 language: en
 title: Mobilis
 excerpt: Mobilis is one of the main telecommunications companies in Algeria, offering a complete range of mobile phone, internet, and connectivity solutions for individuals and businesses.
-image: https://inclusion.dz/wp-content/uploads/2024/05/Capture-décran-2023-11-09-à-18.39.57.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/Capture-décran-2023-11-09-à-18.39.57.png
 category: Design and Styling
 tags:
   - astro

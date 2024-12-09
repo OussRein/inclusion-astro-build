@@ -4,7 +4,7 @@ order: 9
 language: ar
 title: بنك BNH
 excerpt: بنك BNH هو مؤسسة مالية جزائرية تقدم مجموعة واسعة من الخدمات المصرفية، بما في ذلك خدمات الإيداع، القروض، إدارة الثروات والخدمات للشركات.
-image: https://inclusion.dz/wp-content/uploads/2024/05/Plan-de-travail-1-copie-16-copy-9@4x.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/Plan-de-travail-1-copie-16-copy-9@4x.png
 category: العلامة التجارية
 tags:
   - astro

@@ -4,7 +4,7 @@ order: 2
 language: fr
 title: RGPH 2022
 excerpt: Le Recensement Général de la Population et de l'Habitat algérien (RGPH) 2022 est une enquête essentielle pour recueillir des données sur la population, le logement, l'économie et les aspects sociaux. Il guide les politiques publiques, l'aménagement urbain et assure que les services répondent aux besoins de la population.
-image: https://inclusion.dz/wp-content/uploads/2024/05/5c0524afa92414f2a0a505d4ff1934cc.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/5c0524afa92414f2a0a505d4ff1934cc.png
 category: Design & Web dev
 tags:
   - astro

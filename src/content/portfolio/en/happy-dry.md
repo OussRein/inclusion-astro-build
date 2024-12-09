@@ -4,7 +4,7 @@ order: 12
 language: en
 title: Happy Dry
 excerpt: HAPPY DRY entrusted us with the task of creating vibrant digital art and posters that reflect their brand’s fun and dynamic identity. The goal was to produce visually appealing designs that resonate with their target audience and effectively communicate the brand’s core messages.
-image: https://inclusion.dz/wp-content/uploads/2024/05/b592304c4b237727ead3c80d7e5bfcc9.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/b592304c4b237727ead3c80d7e5bfcc9.png
 category: 3D Digital Art
 tags:
 - inclusion

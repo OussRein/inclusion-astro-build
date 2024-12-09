@@ -4,7 +4,7 @@ order: 6
 language: ar
 title: فنادق AZ
 excerpt: فنادق AZ هي سلسلة فندقية تقدم مجموعة واسعة من الفنادق عالية الجودة في وجهات مختلفة. مع التزام بالراحة والخدمة وتجربة العميل.
-image: https://inclusion.dz/wp-content/uploads/2024/05/Capture-décran-2023-11-09-à-17.34.37.png
+image: https://inclusion.dz/wordpress/wp-content/uploads/2024/05/Capture-décran-2023-11-09-à-17.34.37.png
 category: العلامة التجارية وتصميم الويب
 tags:
   - astro
