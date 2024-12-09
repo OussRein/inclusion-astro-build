@@ -259,7 +259,7 @@ export const findPostsBySlugs = async (slugs: Array<string>): Promise<Array<Post
 /** */
 export const findPostById = async (id: string): Promise<Post> => {
   
-  const postResponse = await fetch('https://inclusion.dz/graphql', {
+  const postResponse = await fetch('https://inclusion.dz/wordpress/graphql', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
